@@ -1,0 +1,249 @@
+.MyUpload{
+
+  &.upload {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex: 1;
+    position: relative;
+
+    width: 100%;
+    overflow: hidden;
+
+    @media (max-width: 570px) {
+      flex: none;
+    }
+
+    &.bottomRule{
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  }
+
+  .upload-label {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .label2 {
+    color: var(--text-default, #2e2e38);
+    text-align: right;
+    font-family: var(
+                    --body-500-b2-font-family,
+                    "IranYekanXvf-Medium",
+                    sans-serif
+    );
+    font-size: var(--body-500-b2-font-size, 14px);
+    line-height: var(--body-500-b2-line-height, 24px);
+    font-weight: var(--body-500-b2-font-weight, 500);
+    position: relative;
+    align-self: stretch;
+  }
+
+
+  .upload-restrictions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+    align-self: flex-start;
+  }
+  .file-format {
+    color: var(--text-light-soft, #747481);
+  }
+  .file-size {
+    color: var(--text-light-soft, #747481);
+  }
+
+  .fileRules{
+    color: #545456;
+    background-color: #ECF7FF;
+    width: max-content;
+    padding: 4px 12px 5px 13px;
+    border-radius: 14px;
+    direction: rtl;
+    text-align: right;
+    font-family: var(
+                    --large-body-400-b3-font-family,
+                    "IRANYekanRdFaNum",
+                    sans-serif
+    );
+    font-size: var(--large-body-400-b3-font-size, 12px);
+    line-height: var(--large-body-400-b3-line-height, 20px);
+    font-weight: var(--large-body-400-b3-font-weight, 400);
+    position: relative;
+  }
+
+
+  .drop-zone {
+    background: var(--surface-default, #ffffff);
+    border-radius: 4px;
+    border-style: dashed;
+    border-color: var(--border-default, #dadbe1);
+    border-width: 1px;
+    padding: 26px 16px 26px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    overflow: hidden;
+    width: 99%;
+    align-self: flex-start;
+
+    font-family: var(--font-family-fa, IRANYekanX);
+    font-size: var(--font-size-small, 12px);
+    font-style: normal;
+    font-weight: var(--font-weight-regular, 400);
+    line-height: var(--font-height-small, 20px); /* 166.667% */
+    position: relative;
+
+    input[type=file] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+  }
+  .outlined-button {
+    border-radius: 4px;
+    border-style: solid;
+    border-color: var(--border-default, #dadbe1);
+    border-width: 1px;
+    padding: 8px 12px 8px 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+
+  .cloud {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+  .group {
+    height: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+  }
+
+  .drop-zone{
+    max-height: 134px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+  .uploading-false {
+    border: 1px solid #D63031FF !important;
+    background-color: rgba(214, 48, 49, 0.06) !important;
+
+    .select-box{
+      color: #bd1f20;
+    }
+  }
+
+  .success-upload {
+    border: 1px solid #00B894 !important;
+    background-color: rgba(0, 184, 148, 0.05) !important;
+
+    .select-box{
+      color: #0b816b;
+    }
+  }
+
+
+
+  .upload-notify {
+    display: block;
+    width: 100%;
+    direction: rtl;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    position: absolute;
+  }
+
+  .uploadSuccess {
+    color: #00B894;
+  }
+  .uploadSuccess span {
+    color: #000 !important;
+    font-size: 13px;
+  }
+
+  .select-box {
+    position: relative;
+    font-size: 13px;
+    line-height: 22px;
+    text-align: right;
+    display: inline-block;
+    width: 100%;
+    height: 22px;
+  }
+  .select-box .title-uploading {
+    display: block;
+    width: 100%;
+    direction: rtl;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    position: absolute;
+  }
+  .select-box .selected {
+    text-decoration: underline;
+    color: #2B4A83;
+    cursor: pointer;
+  }
+
+  .uploading-file {
+    margin-bottom: -20px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .upload_required{
+    align-self: baseline;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    position: relative;
+    color: #c93637;
+    margin-bottom: 12px;
+    margin-top: -6px;
+  }
+
+}

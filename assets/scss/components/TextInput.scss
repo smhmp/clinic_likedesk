@@ -1,0 +1,189 @@
+.textInputCom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  direction: ltr;
+
+  .text-input {
+    background: var(--surface-default, #ffffff);
+    border-radius: 8px;
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 1px;
+    padding: 8px 12px 8px 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-delay: 100ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:has(input){
+      height: 56px;
+    }
+
+    &:has(textarea){
+      min-height: 132px;
+    }
+
+    textarea{
+      min-height: 128px;
+    }
+
+    &.inpFilled{
+      &:has(input){
+        height: 56px;
+      }
+
+      &:has(textarea){
+        min-height: 132px;
+      }
+    }
+
+    &.inpFocused{
+      border-color: #0a33ff;
+      border-color: var(--primary-default, #0a33ff);
+      box-shadow: 0px 0px 0px 2px rgba(10, 51, 255, 0.08);
+      box-shadow: var(--focus-soft-box-shadow, 0px 0px 0px 2px rgba(10, 51, 255, 0.08));
+      &:has(input){
+        height: 56px;
+      }
+
+      &:has(textarea){
+        min-height: 132px;
+      }
+    }
+  }
+  .content2 {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+  }
+  .text-input-label {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    position: relative;
+    top: 0;
+    transition-property: all;
+    transition-duration: 250ms;
+    transition-delay: 100ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .label {
+    color: var(--text-soft, #747481);
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 500;
+    position: relative;
+    transition-property: all;
+    transition-duration: 250ms;
+    transition-delay: 100ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .text {
+    color: var(--text-default, #2e2e38);
+    font-family: "IRANYekanRdFaNum", "IranYekanX-Medium", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+    align-self: stretch;
+  }
+
+
+  .caption2 {
+    color: var(--text-soft, #747481);
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    position: relative;
+    margin-top: 16px;
+    direction: rtl;
+  }
+
+
+
+
+  .text-input-label.noFocus {
+    position: absolute;
+    top: 6px;
+  }
+
+  .noFocus .label {
+    font-size: 14px;
+  }
+
+  .content2 {
+    position: relative;
+  }
+
+  input.text,textarea.text  {
+    background: none;
+    border: none;
+  }
+
+  .text:active,.text:focus-visible {
+    border: none;
+    outline: none;
+  }
+
+
+  .zpl-textfield-hint {
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    position: relative;
+    direction: rtl;
+  }
+
+  .zpl-textfield-hint.error {
+    color: rgb(201, 54, 55); /* text-text-danger */
+  }
+
+  .zpl-textfield-hint.hasError {
+    color: rgb(201, 54, 55); /* text-text-danger */
+  }
+
+  .moreGui {
+    margin-top: 16px;
+    color: var(--text-soft, #747481);
+    text-align: right;
+    text-align: right;
+    font-family: IRANYekanX;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    direction: rtl;
+
+    a{
+      color: var(--Light-Interactive-Link, var(--Interactive-Link, #0A33FF));
+    }
+  }
+}

@@ -1,0 +1,166 @@
+.modal-lock {
+  background: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  margin: 0 8px;
+}
+
+.modalPro{
+  &.modal,&.modal * {
+    box-sizing: border-box;
+  }
+  &.modal {
+    background: var(--surface-default, #ffffff);
+    border-radius: 12px;
+    flex-direction: column;
+    gap: 0px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    //height: 424px;
+    width: 100%;
+    background: white;
+    box-shadow: 0px 4px 8px 2px rgba(95.88, 95.88, 108.12, 0.10);
+    display: inline-flex;
+    z-index: 1003;
+    top: 0%;
+    max-width: 440px;
+  }
+  .modal-body {
+    background: var(--surface-default, #ffffff);
+    padding: 40px 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    //height: 328px;
+    background: white;
+
+    > .Closebutton{
+      padding: 0px; left: 16px; top: 16px; position: absolute; background: white; border-radius: 999px; overflow: hidden; justify-content: center; align-items: center; gap: 8px; display: inline-flex;
+      cursor: pointer;
+    }
+  }
+  .headerAvatar {
+    padding: 0px 16px 0px 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    height: 144px;
+    position: relative;
+  }
+  .avatar {
+    background: var(--surface-soft, #f8f8f8);
+    border-radius: 1498.5px;
+    padding: 42px;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .profile-fill {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    position: relative;
+  }
+  .group {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+    left: 0%;
+    bottom: 0%;
+    top: 0%;
+    overflow: visible;
+  }
+  .image-1 {
+    border-radius: 999px;
+    border-style: solid;
+    border-color: var(--surface-default, #ffffff);
+    border-width: 4px;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 16px;
+    bottom: 12px;
+    object-fit: cover;
+  }
+
+  .midContent{
+    align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex;
+    //height: 96px;
+    direction: rtl;
+  }
+
+  .Title{
+    align-self: stretch; text-align: center; color: #2E2E38; font-size: 20px; font-family: IRANYekanX; font-weight: 600; line-height: 32px; word-wrap: break-word
+  }
+
+  .Caption{
+    align-self: stretch; text-align: center;
+
+    > span:nth-child(1){
+      color: var(--text-soft, #747481); font-size: 14px; font-family: IRANYekanX; font-weight: 500; line-height: 24px; word-wrap: break-word;
+    }
+
+    > span:nth-child(2){
+      color: #0A33FF; font-size: 14px; font-family: IRANYekanX; font-weight: 600; line-height: 24px; word-wrap: break-word;
+    }
+
+    > span:nth-child(3){
+      color: var(--text-soft, #747481); font-size: 14px; font-family: IRANYekanX; font-weight: 500; line-height: 24px; word-wrap: break-word;
+    }
+  }
+
+  .ModalFooter{
+    width: 100%;align-self: stretch; padding: 24px; background: white; justify-content: flex-start; align-items: center; gap: 16px; display: inline-flex;
+    flex-direction: column;
+
+    .Containedbutton{
+      //flex: 1 1 0;
+      height: 48px; padding-left: 20px; padding-right: 20px; padding-top: 12px; padding-bottom: 12px; background: #F5F5F5; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center; gap: 8px; display: flex;
+      cursor: pointer;
+      width: 100%;
+
+      .Label{
+        text-align: right; color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 600; line-height: 24px; word-wrap: break-word
+      }
+    }
+  }
+
+
+
+
+
+
+
+}

@@ -1,0 +1,41 @@
+.meter {
+  height: 5px;
+  position: relative;
+  background: #f1f1f1;
+  overflow: hidden;
+  direction: rtl;
+}
+
+.meter span {
+  display: block;
+  height: 100%;
+}
+
+.progress {
+  background-color: #415bff;
+}
+
+.sec1{
+  animation: progressBar 1s ease-in-out;
+  animation-fill-mode:both;
+}
+
+.sec2{
+  animation: progressBar 2s ease-in-out;
+  animation-fill-mode:both;
+}
+
+.sec3{
+  animation: progressBar 3s ease-in-out;
+  animation-fill-mode:both;
+}
+
+.sec4{
+  animation: progressBar 4s ease-in-out;
+  animation-fill-mode:both;
+}
+
+@keyframes progressBar {
+  0% { width: 0; }
+  100% { width: 100%; }
+}

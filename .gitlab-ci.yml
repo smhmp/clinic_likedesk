@@ -1,0 +1,64 @@
+stages:
+  - build
+  - deploy
+
+.docker_login:
+  before_script:
+    - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" $CI_REGISTRY
+    - export CI_COMMIT_TAG="${CI_COMMIT_TAG:-$CI_COMMIT_SHORT_SHA}"
+
+build:
+  stage: build
+  extends: .docker_login
+  script:
+    - docker build --network=host --build-arg BUILD_VERSION=$CI_COMMIT_TAG -f Dockerfile -t $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG  .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  tags:
+    - Finland-build-runner
+  only:
+    - tags
+    - develop
+    - master
+
+.deploy_helm: &deploy_helm
+  stage: deploy
+  image:
+    name: alpine/helm:3.15.3
+    entrypoint: [""] 
+  script:
+    - export CI_COMMIT_TAG="${CI_COMMIT_TAG:-$CI_COMMIT_SHORT_SHA}"  
+    - mkdir -p $HOME/.kube
+    - echo ${config} | base64 -d > $HOME/.kube/config
+    - helm repo add --username "gitlab-ci-token" --password "$CI_JOB_TOKEN" ${chart_name} ${CI_API_V4_URL}/projects/642/packages/helm/stable
+    - helm repo update
+    - helm search repo ${chart_name}
+    - helm upgrade --install ${project_name} -n ${NAMESPACE} ${chart_name}/${chart_name} --set image.tag=$CI_COMMIT_TAG --values ${values_file} --timeout 30m0s
+
+
+deploy_demo:
+  <<: *deploy_helm
+  variables:
+    config: "${kube_config_demo}"
+    NAMESPACE: "connect-front-demo"
+    chart_name: "connect-front"
+    project_name: "connect-front-demo"
+    values_file: ./deployment/values-demo.yaml
+  tags:
+    - Runner-Static
+  only:
+    - develop
+
+
+deploy_stage:
+  <<: *deploy_helm
+  variables:
+    config: "${kube_config}"
+    NAMESPACE: "connect-front-stage"
+    chart_name: "connect-front"
+    project_name: "connect-front-stage"
+    values_file: ./deployment/values-stg.yaml
+  tags:
+    - Runner-Static
+  only:
+    - master
+

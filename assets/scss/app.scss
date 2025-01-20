@@ -1,0 +1,50 @@
+:root {
+  --text-soft: #747481; //#404050 //#4c4c5d
+  --text-light-soft: #747481; //#404050
+  color-scheme: light only;
+  --sidebar-width: 250px;
+  --primary-new: #624ED6;
+  --primary-new-hover: #624ED6;
+  --primary-new-active: #624ED6;
+}
+
+@import './global/_config';
+@import './global/common_init';
+@import './global/fonts';
+@import './global/layout';
+
+@import './components/modal-pro';
+@import './components/page-heading';
+@import './components/BirthDate';
+@import './components/TextInput';
+
+//todo todo test
+@import './components/test/ButtonPro';
+@import './components/test/TextField';
+@import './components/test/Tooltip';
+
+@import './components/tooltipPro';
+@import './components/chkBoxes';
+@import './components/ActionItem';
+@import './components/ActionInlineItem';
+@import './components/ButtonSimple';
+@import './components/NavLink';
+@import './components/services';
+@import './components/MyUpload';
+
+@import './global/pages';
+@import './global/progress';
+@import './pages/profile';
+@import './pages/FormPersonal';
+@import './pages/PreviewPersonal';
+@import './pages/form-email';
+@import './pages/FormLegal';
+@import './pages/forms';
+@import './pages/otp-email';
+@import './pages/ManualKyc';
+@import './pages/FormTracking';
+@import './components/toast';
+@import './components/RadioCard';
+@import './global/stats';
+@import './global/buttons';
+@import './global/common_end';

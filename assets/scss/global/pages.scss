@@ -1,0 +1,59 @@
+.pgForm.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+  padding: 0 16px;
+
+  @media (max-width: 628px) {
+    padding: 0 10px;
+  }
+}
+
+.darkFilter {
+  background: var(--alpha-overlay, rgba(22, 21, 32, 0.45));
+  opacity: 0.7;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 11;
+
+  &.sidebar{
+    display: none;
+  }
+
+  &.sidebar{
+    @media (max-width: 980px) {
+      display: block;
+    }
+  }
+
+  &.modal{
+    z-index: 1002;
+  }
+}
+
+
+
+.rtl{
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr{
+  direction: ltr;
+  text-align: left;
+}
+
+
+

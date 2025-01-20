@@ -1,0 +1,76 @@
+.chkBoxes{
+  height: 40px; padding-top: 8px; padding-bottom: 8px; justify-content: flex-end; align-items: flex-start; gap: 24px; display: inline-flex;
+
+  .eachChkBox{
+    justify-content: flex-end; align-items: center; gap: 8px; display: flex;
+
+    .label{
+      text-align: right; color: #80868A; font-size: 12px; font-family: IRANYekanRd; font-weight: 500; line-height: 24px; word-wrap: break-word;
+    }
+
+    .chkBox{
+      width: 18px; height: 18px; position: relative;
+      cursor: pointer;
+
+      .checkbox{
+        width: 18px; height: 18px; left: 0px; top: 0px; position: absolute; background: white; border-radius: 4px; border: 1px #D5D7E1 solid;
+      }
+
+      &.seled{
+        .checkbox{
+          background: #28457B;
+          border:none;
+        }
+      }
+    }
+  }
+}
+
+.easy-checkbox{
+  position: relative;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+
+  &.tikError .borderTik{
+    width: 20px;
+    height: 20px;
+    border: 2px solid red;
+    position: absolute;
+    z-index: 1;
+    background: none;
+    top: 4px;
+    right: 0px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .outside {
+    cursor: pointer;
+    background: var(--surface-light-default, #ffffff);
+    border-radius: 4px;
+    border-style: solid;
+    border-color: var(--border-light-default, #dadbe1);
+    border-width: 2px;
+    width: 20px;
+    height: 20px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+  }
+
+  &[value="true"] .outside{
+    width: 20px;
+    height: 20px;
+    -moz-appearance: auto;
+    -webkit-appearance: auto;
+    -o-appearance: auto;
+  }
+
+  label {
+     font-size: 15px;
+     font-weight: 400;
+     cursor: pointer;
+    white-space: nowrap;
+   }
+}

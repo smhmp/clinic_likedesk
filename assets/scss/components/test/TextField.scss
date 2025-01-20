@@ -1,0 +1,291 @@
+.zpl-textfield-group {
+  /* Default */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+}
+.zpl-textfield-group .zpl-tooltip-container {
+  width: auto !important;
+}
+
+.zpl-copy-button {
+  margin-left: -8px; /* -ml-xs */
+}
+.zpl-copy-button > .zpl-button {
+  height: 38px;
+}
+.zpl-copy-button > .zpl-button span {
+  white-space: nowrap;
+}
+
+.zpl-textfield {
+  /* Default */
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(218, 219, 225); /* border-border */
+  border-radius: 4px; /* rounded-sm */
+  width: 100%;
+  color: rgb(116, 116, 129); /* text-text-soft */
+  height: 48px; /* h-3xl */
+  gap: 8px; /* gap-x-xs */
+  padding-left: 12px; /* px-sm */
+  padding-right: 12px;
+  font-family: IRANYekanFaNum, sans-serif;
+  background-color: rgb(255, 255, 255); /* bg-surface */
+}
+
+.dark .zpl-textfield {
+  background-color: rgb(25, 25, 26); /* dark:bg-surface-dark */
+  border-color: rgb(82, 82, 82); /* dark:border-border-dark */
+  color: rgb(255, 255, 255); /* dark:text-text-dark */
+}
+
+.zpl-textfield:hover:not(:focus-within):not(.invalid):not([disabled]) {
+  box-shadow: 0 0 0 2px rgba(218, 219, 225, 0.4); /* shadow-border-hover */
+}
+
+.zpl-textfield[disabled] {
+  background-color: rgb(239, 239, 240); /* bg-surface-disabled */
+  border-color: rgb(230, 230, 234); /* border-border-disabled */
+}
+
+.dark .zpl-textfield[disabled] {
+  background-color: rgb(43, 43, 44); /* dark:bg-surface-dark-disabled */
+  border-color: rgb(43, 43, 44); /* dark:border-border-dark-disabled */
+}
+
+.zpl-textfield:focus-within:not(.invalid) {
+  border-color: rgb(102, 166, 255); /* border-interactive-focus */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(102, 166, 255, 0.4); /* shadow-border-focus-soft */
+}
+
+.dark .zpl-textfield:focus-within:not(.invalid) {
+  border-color: rgb(255, 203, 102); /* dark:border-interactive-dark-focus */
+  box-shadow: 0 0 0 2px rgba(255, 203, 102, 0.4); /* dark:shadow-dark-border-focus-soft */
+}
+
+.zpl-textfield.invalid:not([disabled]) {
+  border-color: rgb(201, 54, 55); /* border-border-danger */
+}
+
+.dark .zpl-textfield.invalid:not([disabled]) {
+  border-color: rgb(255, 92, 93); /* dark:border-border-dark-danger */
+}
+
+.zpl-textfield-loading {
+  border: 1px solid rgb(230, 230, 234); /* border-border-disabled */
+  border-radius: 4px; /* rounded-sm */
+  padding-top: 17px;
+  padding-bottom: 17px;
+  padding-left: 12px; /* px-sm */
+  padding-right: 12px;
+}
+
+.dark .zpl-textfield-loading {
+  border-color: rgb(43, 43, 44); /* dark:border-border-dark-disabled */
+}
+
+.zpl-textfield-input-box {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.zpl-textfield-input {
+  /* Default */
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  z-index: 10;
+  padding-top: 12px; /* py-sm */
+  padding-bottom: 12px;
+  font-size: 14px; /* text-b2 */
+  line-height: 1.5rem; /* text-b2 */
+  color: rgb(46, 46, 56); /* text-text */
+}
+
+.dark .zpl-textfield-input {
+  color: rgb(255, 255, 255); /* dark:text-text-dark */
+}
+
+.zpl-textfield-input::placeholder {
+  font-size: 14px; /* text-b2 */
+  line-height: 1.5rem; /* text-b2 */
+  color: rgb(116, 116, 129); /* text-text-soft */
+}
+
+.dark .zpl-textfield-input::placeholder {
+  color: rgb(189, 189, 189); /* dark:text-text-dark-soft */
+}
+
+.zpl-textfield-input.ltr {
+  direction: ltr;
+  text-align: left;
+  font-family: sans-serif;
+}
+
+.zpl-textfield-input.numLtr {
+  direction: ltr !important;
+  text-align: right;
+}
+
+.zpl-textfield-icon {
+  height: 24px; /* h-xl */
+  width: 24px; /* w-xl */
+}
+
+.zpl-textfield-unit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px; /* p-xs */
+  background-color: rgb(248, 248, 248); /* bg-surface-soft */
+  border-radius: 2px;
+  font-size: 14px; /* text-b2 */
+  line-height: 1.5rem; /* text-b2 */
+  color: rgb(46, 46, 56); /* text-text */
+  margin-top: 4px; /* my-2xs */
+  margin-right: 4px; /* mr-2xs */
+  margin-left: -8px; /* -ml-xs */
+  user-select: none;
+}
+
+.dark .zpl-textfield-unit {
+  background-color: rgb(18, 18, 18); /* dark:bg-surface-dark-soft */
+  color: rgb(255, 255, 255); /* dark:text-text-dark */
+}
+
+.zpl-textfield-stepper {
+  display: flex;
+  flex-direction: column;
+  margin-right: 4px; /* mr-2xs */
+  margin-left: -8px; /* -ml-xs */
+}
+
+.zpl-textfield-stepper-btn {
+  display: flex;
+  padding: 7px 4px; /* py-[7px] px-2xs */
+  background-color: rgb(248, 248, 248); /* bg-surface-soft */
+  border-radius: 2px;
+  color: rgb(57, 57, 70); /* text-icon */
+}
+
+.dark .zpl-textfield-stepper-btn {
+  background-color: rgb(18, 18, 18); /* dark:bg-surface-dark-soft */
+  color: rgb(233, 233, 237); /* dark:text-icon-dark */
+}
+
+.zpl-textfield-stepper-btn:disabled {
+  background-color: rgb(239, 239, 240); /* disabled:bg-surface-disabled */
+  color: rgb(140, 140, 140); /* disabled:text-icon-disabled */
+  cursor: default;
+}
+
+.dark .zpl-textfield-stepper-btn:disabled {
+  background-color: rgb(43, 43, 44); /* dark:disabled:bg-surface-dark-disabled */
+  color: rgb(94, 94, 94); /* dark:disabled:text-icon-dark-disabled */
+}
+
+.zpl-textfield-stepper-btn svg {
+  width: 12px; /* w-xs */
+  height: 5px;
+}
+
+.zpl-textfield-stepper-btn:last-child {
+  margin-top: 2px; /* mt-[2px] */
+}
+
+.zpl-textfield-label {
+  position: absolute;
+  top: 12px; /* top-sm */
+  right: 12px; /* right-sm */
+  z-index: 0;
+  padding-left: 4px; /* px-2xs */
+  padding-right: 4px;
+  transition: all 100ms ease-in-out; /* transition-all delay-100 ease-in-out */
+  color: rgb(116, 116, 129); /* text-text-soft */
+  font-family: sans-serif;
+  font-weight: 500; /* font-medium */
+  font-size: 14px; /* text-b2 */
+}
+
+.dark .zpl-textfield-label {
+  color: rgb(189, 189, 189); /* dark:text-text-dark-soft */
+}
+
+.zpl-textfield-label.isInputFocused {
+  top: -8px; /* -top-xs */
+  background-color: rgb(255, 255, 255); /* bg-surface */
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 11px; /* text-ls-cp */
+}
+
+.dark .zpl-textfield-label.isInputFocused {
+  background-color: rgb(25, 25, 26); /* dark:bg-surface-dark */
+}
+
+.zpl-textfield-hint-box {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.zpl-textfield-hint {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* gap-x-2xs */
+  padding: 4px 12px; /* py-2xs px-sm */
+  font-size: 12px; /* text-b3 */
+  line-height: 1.25rem;
+  color: rgb(116, 116, 129); /* text-text-soft */
+  font-family: IRANYekanFaNum, sans-serif;
+}
+
+.dark .zpl-textfield-hint.helper {
+  color: rgb(189, 189, 189); /* dark:text-text-dark-soft */
+}
+
+.zpl-textfield-hint.error {
+  color: rgb(201, 54, 55); /* text-text-danger */
+}
+
+.dark .zpl-textfield-hint.error {
+  color: rgb(255, 92, 93); /* dark:text-text-dark-danger */
+}
+
+.zpl-textfield-hint.success {
+  position: absolute;
+  color: rgb(36, 128, 97); /* text-text-success */
+}
+
+.dark .zpl-textfield-hint.success {
+  color: rgb(0, 204, 136); /* dark:text-text-dark-success */
+}
+
+.zpl-textfield-hint-maxlength {
+  margin-right: auto;
+  padding: 4px 8px; /* py-2xs px-xs */
+  font-size: 12px; /* text-b3 */
+  line-height: 1.25rem;
+  color: rgb(116, 116, 129); /* text-text-soft */
+  font-family: IRANYekanFaNum, sans-serif;
+}
+
+.dark .zpl-textfield-hint-maxlength {
+  color: rgb(189, 189, 189); /* dark:text-text-dark-soft */
+}
+
+.zpl-textfield-hint-limit {
+  margin-right: auto;
+  padding: 4px 8px; /* py-2xs px-xs */
+  font-size: 12px; /* text-b3 */
+  line-height: 1.25rem;
+  color: rgb(116, 116, 129); /* text-text-soft */
+}
+
+.dark .zpl-textfield-hint-limit {
+  color: rgb(189, 189, 189); /* dark:text-text-dark-soft */
+}

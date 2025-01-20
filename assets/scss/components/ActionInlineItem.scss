@@ -1,0 +1,976 @@
+.ActInline.card,
+.ActInline.card * {
+  box-sizing: border-box;
+}
+.ActInline.card {
+  direction: rtl;
+  background: var(--surface-default, #ffffff);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+
+
+  .page-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+    align-self: stretch;
+    flex-wrap: wrap;
+    @media (max-width: 670px) {
+      flex-direction: column;
+    }
+  }
+  .action {
+    border-radius: 12px;
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 1px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+  }
+  .angle-left {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+  }
+  .group {
+    height: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+  }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+  }
+  .label {
+    color: var(--text-default, #2e2e38);
+    text-align: right;
+    font-family: "IranYekanX-DemiBold", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+  }
+  .value {
+    color: var(--text-soft, #747481);
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .warning {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    position: relative;
+  }
+  .fluent-emoji-bookmark-tabs {
+    width: 72px;
+    height: 72px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+  }
+  .group2 {
+    height: auto;
+    position: absolute;
+  }
+  .fluent-emoji-magnifying-glass-tilted-left {
+    width: 37.4px;
+    height: 37.4px;
+    position: absolute;
+    left: 34.4px;
+    top: 27.42px;
+    overflow: hidden;
+  }
+  .group3 {
+    height: auto;
+    position: absolute;
+    left: 2.45px;
+    top: 2.54px;
+    overflow: visible;
+  }
+  .group4 {
+    height: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+  }
+  .fluent-emoji-credit-card {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .warning2 {
+    width: 72px;
+    height: 72px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+  .group5 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+    left: 0%;
+    bottom: 0%;
+    top: 0%;
+    overflow: visible;
+  }
+  .section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .heading {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .srch-contained-button {
+    background: var(--surface-default, #ffffff);
+    border-radius: 8px;
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 1px;
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+
+    .search {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      position: relative;
+    }
+    .group5 {
+      width: 100.04%;
+      height: 100.04%;
+      position: absolute;
+      right: -0.02%;
+      left: -0.02%;
+      bottom: -0.02%;
+      top: -0.02%;
+      overflow: visible;
+    }
+  }
+
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+  }
+  .title {
+    color: var(--text-default, #2e2e38);
+    text-align: right;
+    font-family: "IranYekanX-DemiBold", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+  }
+  .caption {
+    color: var(--text-soft, #747481);
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+    align-self: stretch;
+  }
+  .list-empty {
+    border-radius: 12px;
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 1px;
+    padding: 40px 24px 40px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    min-height: 320px;
+    position: relative;
+  }
+  .error {
+    //background: var(--surfaceinformation-defualt, #e0f0fe);
+    border-radius: 168.75px;
+    padding: 6.75px;
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    position: relative;
+  }
+  .card-add {
+    width: 72px;
+    height: 72px;
+    position: absolute;
+    left: 6px;
+    top: 6px;
+  }
+  .group6 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+    left: 0%;
+    bottom: 0%;
+    top: 0%;
+    overflow: visible;
+  }
+  .content2 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    flex-shrink: 0;
+    max-width: 400px;
+    position: relative;
+  }
+  .title2 {
+    color: var(--text-default, #2e2e38);
+    text-align: center;
+    font-family: "IranYekanX-DemiBold", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+  }
+  .caption2 {
+    color: var(--text-soft, #747481);
+    text-align: center;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+    align-self: stretch;
+  }
+  .contained-button {
+    background: var(--primary-default, #0a33ff);
+    border-radius: 8px;
+    padding: 12px 20px 12px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+
+    .label2 {
+      color: var(--text-on-primary, #ffffff);
+      text-align: right;
+      font-family: "IranYekanX-DemiBold", sans-serif;
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 400;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+  .plus {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    overflow: visible;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  .listTrans{
+    direction: rtl;
+    text-align: right;
+    font-family: 'IranYekanX-DemiBold', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+    &.list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-end;
+      justify-content: flex-start;
+      align-self: stretch;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .list-itemA {
+      background: var(--surface-main-default, #ffffff);
+      border-radius: 12px;
+      border-style: solid;
+      border-color: var(--border-divider, #eeeef1);
+      border-width: 1px;
+      display: flex;
+      flex-direction: row;
+      gap: 0px;
+      align-items: flex-start;
+      justify-content: flex-end;
+      align-self: stretch;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .stack2 {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      align-items: flex-end;
+      justify-content: flex-start;
+      align-self: stretch;
+      flex: 1;
+      position: relative;
+    }
+    .title-and-detail {
+      border-style: solid;
+      border-color: var(--border-divider, #eeeef1);
+      border-width: 0px 0px 1px 0px;
+      padding: 16px 0px 16px 0px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
+      justify-content: center;
+      align-self: stretch;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .title6 {
+      display: flex;
+      flex-direction: row;
+      gap: var(--gap-tiny, 4px);
+      align-items: center;
+      justify-content: flex-end;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .currency-badge {
+      background: var(--surface-soft, #f8f8f8);
+      border-radius: var(--corner-radius-general-tiny, 4px);
+      padding: var(--gap-tiny, 4px) var(--gap-small, 6px) var(--gap-tiny, 4px)
+      var(--gap-small, 6px);
+      display: flex;
+      flex-direction: row;
+      gap: 0px;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .rial-symbol {
+      display: flex;
+      flex-direction: row;
+      gap: 0px;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 20px;
+      height: 16px;
+      position: relative;
+      overflow: visible;
+    }
+    .title7 {
+      color: var(--text-default, #2e2e38);
+      text-align: right;
+      font-family: "IranYekanX-DemiBold", sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .details {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      align-items: center;
+      justify-content: flex-start;
+      align-self: stretch;
+      flex-shrink: 0;
+      position: relative;
+      flex-wrap: wrap;
+    }
+    .data {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      align-items: center;
+      justify-content: flex-start;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .detail-2 {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      align-items: center;
+      justify-content: flex-end;
+      flex-shrink: 0;
+      height: 24px;
+      position: relative;
+    }
+    .title8 {
+      color: var(--text-soft, #747481);
+      text-align: right;
+      font-family: "IranYekanX-Medium", sans-serif;
+      font-size: 12px;
+      line-height: 24px;
+      font-weight: 500;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .date-fill {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      overflow: visible;
+    }
+    .data2 {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .detail-4 {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      align-items: center;
+      justify-content: flex-end;
+      flex-shrink: 0;
+      height: 24px;
+      position: relative;
+    }
+    .ic-round-store {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      overflow: visible;
+    }
+    .mingcute-hashtag-fill {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .group6 {
+      width: 56.73%;
+      height: 65.36%;
+      position: absolute;
+      right: 20.59%;
+      left: 22.68%;
+      bottom: 17.97%;
+      top: 16.67%;
+      overflow: visible;
+    }
+    .data3 {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-start;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .detail-1 {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      align-items: center;
+      justify-content: flex-end;
+      flex-shrink: 0;
+      height: 24px;
+      position: relative;
+    }
+    .title9 {
+      color: var(--text-soft, #747481);
+      text-align: right;
+      font-family: "JetBrainsMono-Medium", sans-serif;
+      font-size: 12px;
+      line-height: 24px;
+      font-weight: 500;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .bank-logo7 {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      position: relative;
+      overflow: visible;
+    }
+    .actions {
+      padding: 16px 0px 16px 12px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      align-self: stretch;
+      flex-shrink: 0;
+      position: relative;
+      flex-wrap: wrap;
+    }
+    .link {
+      background: var(--surface-default, #ffffff);
+      padding: 8px 12px 8px 12px;
+      display: flex;
+      flex-direction: row;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      cursor: pointer;
+    }
+    .label {
+      color: var(--text-disabled, #8c8c8c);
+      text-align: right;
+      font-family: "IranYekanX-Medium", sans-serif;
+      font-size: 12px;
+      line-height: 24px;
+      font-weight: 500;
+      text-decoration: underline;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .contained-button2 {
+      background: var(--surface-default, #ffffff);
+      border-radius: 999px;
+      border-style: solid;
+      border-color: var(--border-divider, #eeeef1);
+      border-width: 1px;
+      padding: 8px 16px 8px 16px;
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      cursor: pointer;
+    }
+    .label2 {
+      color: var(--text-default, #2e2e38);
+      text-align: right;
+      font-family: "IranYekanX-Medium", sans-serif;
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 500;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .illustration {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      align-items: flex-end;
+      justify-content: flex-start;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .big-status {
+      background: var(--surface-soft, #f8f8f8);
+      border-radius: 200px;
+      padding: 8px;
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      position: relative;
+    }
+    .transaction-local {
+      align-self: stretch;
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .group7 {
+      width: 56.23%;
+      height: 62.49%;
+      position: absolute;
+      right: 21.89%;
+      left: 21.89%;
+      bottom: 18.75%;
+      top: 18.76%;
+      overflow: visible;
+    }
+    .rial-symbol2 {
+      display: flex;
+      flex-direction: row;
+      gap: 0px;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 20px;
+      height: 16px;
+      position: relative;
+      overflow: visible;
+    }
+    .date-fill2 {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      overflow: visible;
+    }
+    .ic-round-store2 {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      overflow: visible;
+    }
+    .group8 {
+      width: 56.73%;
+      height: 65.36%;
+      position: absolute;
+      right: 20.59%;
+      left: 22.68%;
+      bottom: 17.97%;
+      top: 16.67%;
+      overflow: visible;
+    }
+    .bank-logo8 {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      position: relative;
+      overflow: visible;
+    }
+    .group9 {
+      width: 56.23%;
+      height: 62.49%;
+      position: absolute;
+      right: 21.89%;
+      left: 21.89%;
+      bottom: 18.75%;
+      top: 18.76%;
+      overflow: visible;
+    }
+    .rial-symbol3 {
+      display: flex;
+      flex-direction: row;
+      gap: 0px;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 20px;
+      height: 16px;
+      position: relative;
+      overflow: visible;
+    }
+    .date-fill3 {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      overflow: visible;
+    }
+    .ic-round-store3 {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      overflow: visible;
+    }
+    .group10 {
+      width: 56.73%;
+      height: 65.36%;
+      position: absolute;
+      right: 20.59%;
+      left: 22.68%;
+      bottom: 17.97%;
+      top: 16.67%;
+      overflow: visible;
+    }
+    .bank-logo9 {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      position: relative;
+      overflow: visible;
+    }
+    .group11 {
+      width: 56.23%;
+      height: 62.49%;
+      position: absolute;
+      right: 21.89%;
+      left: 21.89%;
+      bottom: 18.75%;
+      top: 18.76%;
+      overflow: visible;
+    }
+    .rial-symbol4 {
+      display: flex;
+      flex-direction: row;
+      gap: 0px;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 20px;
+      height: 16px;
+      position: relative;
+      overflow: visible;
+    }
+    .date-fill4 {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      overflow: visible;
+    }
+    .ic-round-store4 {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      overflow: visible;
+    }
+    .group12 {
+      width: 56.73%;
+      height: 65.36%;
+      position: absolute;
+      right: 20.59%;
+      left: 22.68%;
+      bottom: 17.97%;
+      top: 16.67%;
+      overflow: visible;
+    }
+    .bank-logo10 {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      position: relative;
+      overflow: visible;
+    }
+    .group13 {
+      width: 56.23%;
+      height: 62.49%;
+      position: absolute;
+      right: 21.89%;
+      left: 21.89%;
+      bottom: 18.75%;
+      top: 18.76%;
+      overflow: visible;
+    }
+  }
+
+
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+
+    @media (max-width: 670px) {
+      gap: 2px;
+    }
+  }
+  .contained-button3 {
+    background: var(--surface-default, #ffffff);
+    border-radius: 999px;
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 1px;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    position: relative;
+    cursor: pointer;
+  }
+  .angle-left2 {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+  }
+  .group14 {
+    height: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+  }
+  .divider {
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 0 0 0 1px;
+    flex-shrink: 0;
+    width: 0px;
+    height: 24px;
+    position: relative;
+    top: 8px;
+    left: 8px;
+  }
+  .pages {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .contained-button4 {
+    background: var(--primary-default, #0a33ff);
+    border-radius: 999px;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    position: relative;
+    cursor: pointer;
+  }
+  .label3 {
+    color: var(--text-on-primary, #ffffff);
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .angle-right {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+  }
+  .group15 {
+    height: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+  }
+}

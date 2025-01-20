@@ -1,0 +1,501 @@
+.formPersonalPg{
+  .card {
+    background: var(--surface-default, #ffffff);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+
+    &.gap-24{
+      gap: 24px;
+    }
+  }
+
+
+
+
+  .text-input2 {
+    background: var(--surface-default, #ffffff);
+    border-radius: 8px;
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 1px;
+    padding: 16px 12px 16px 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .text-input-label2 {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex: 1;
+    position: relative;
+  }
+  .label2 {
+    color: var(--text-soft, #747481);
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+  }
+  .check-box {
+    padding: 8px 0px 8px 0px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .label3 {
+    color: var(--text-light-default, #2e2e38);
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+    flex: 1;
+  }
+  .birth-date-input {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .select {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+  }
+  .select-field {
+    background: var(--surface-light-default, #ffffff);
+    border-radius: 8px 0px 0px 8px;
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 1px 0px 1px 1px;
+    padding: 16px 12px 16px 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .angle-down2 {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+
+  .lable-null {
+    align-self: stretch;
+    flex-shrink: 0;
+    height: 0px;
+    position: relative;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+  }
+  .text-filed-label {
+    padding: 0px 4px 0px 4px;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    right: 8.33px;
+    top: -40px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+  }
+  .label4 {
+    color: var(--text-light-soft, #747481);
+    text-align: right;
+    font-family: "IranYekanX-DemiBold", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    position: relative;
+  }
+  .select-field2 {
+    background: var(--surface-light-default, #ffffff);
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 1px 0px 1px 1px;
+    padding: 16px 12px 16px 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .group5 {
+    height: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+  }
+  .select-field3 {
+    background: var(--surface-light-default, #ffffff);
+    border-radius: 0px 8px 8px 0px;
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 1px;
+    padding: 16px 12px 16px 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+}
+
+
+
+// Inputs
+// ----------------------------------
+.input {
+  padding: 12px 0;
+  text-align: center;
+  border: solid 1px;
+  border-radius: 4px;
+  width: 100%;
+  outline: none;
+  font-family: 'IRANYekanRdFaNum';
+
+  @include themed() {
+    color: t(text);
+    background-color: t(surface);
+    border-color: t(border);
+  }
+
+  &:focus {
+    @include themed() {
+      //box-shadow: 0px 0px 0px 2px t(interactive-focus-light);
+      //border-color: t(interactive-focus);
+    }
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
+.input-wrapper {
+  text-align: center;
+  border: solid 1px;
+  border-radius: 8px;
+  outline: none;
+  padding: 0;
+  width: 100%;
+  height: 56px;
+  position: relative;
+  display: flex;
+  font-family: "IranYekanX-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  border-color: #eeeef1;
+
+  @include themed() {
+    color: t(text);
+    background-color: t(surface);
+    border-color: t(border);
+  }
+
+  > input {
+    background-color: transparent;
+    font: inherit;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 0 12px;
+
+    @include themed() {
+      color: t(text);
+    }
+
+    &:not(:placeholder-shown) {
+      + label {
+        font-size: 12px;
+        top: -2px;
+        right: 8px;
+      }
+    }
+  }
+
+  > label {
+    font: inherit;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+    padding: 2px 4px;
+    pointer-events: none;
+
+    @include themed() {
+      color: t(text-soft);
+      background-color: t(surface);
+    }
+  }
+
+  &:focus-within {
+    @include themed() {
+      box-shadow: 0px 0px 0px 2px t(interactive-focus-light);
+      border-color: t(interactive-focus);
+    }
+
+    > label {
+      font: inherit;
+      font-size: 12px;
+      top: -2px;
+      right: 8px;
+    }
+  }
+
+  &.ltr-right {
+    > input {
+      text-align: right;
+      direction: ltr;
+    }
+  }
+
+  &.hasError {
+    @include themed () {
+      border-color: t(danger);
+    }
+
+    &:focus-within {
+      @include themed () {
+        box-shadow: 0px 0px 0px 2px t(danger-focus) !important;
+      }
+    }
+  }
+}
+
+.select-wrapper {
+  width: 100%;
+  position: relative;
+  direction: rtl;
+
+  > select {
+    display: none;
+  }
+
+  > .select-input {
+    position: relative;
+
+    > input {
+      text-align: right !important;
+      padding: 12px 12px;
+    }
+
+    > svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 12px;
+    }
+
+    &.open {
+      > svg {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+  }
+
+  > .options {
+    border-radius: 4px;
+    position: absolute;
+    padding: 8px;
+    right: -2px;
+    top: -2px;
+    width: 101%;
+    display: flex;
+    flex-direction: column;
+    z-index: 9;
+    max-height: 248px;
+
+    > input {
+      border: 0;
+      background: transparent;
+      border-bottom: 1px solid #eeeef1;
+      padding: 8px 12px;
+      outline: none;
+      font-family: 'IRANYekanRd';
+      margin-bottom: 8px;
+      font-weight: 400;
+
+      @include themed () {
+        color: t(text);
+        border-color: t(border-divider);
+      }
+    }
+
+    @include themed () {
+      background: white;
+      border: 1px solid #eeeef1;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow: auto;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-family: 'IranYekanRd';
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      line-height: 24px;
+      cursor: pointer;
+
+      @include themed () {
+        color: t(text);
+      }
+
+      svg {
+        display: none;
+      }
+
+      @include themed () {
+        background: t(surface);
+      }
+
+      &:hover {
+        @include themed () {
+          background: t(surface-hover);
+        }
+      }
+
+      &:active {
+        @include themed () {
+          background: t(surface-pressed);
+        }
+      }
+
+      &.selected {
+        @include themed () {
+          background: t(surface-primary-selected);
+        }
+
+        svg {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.input-error {
+  text-align: right;
+  font-family: "IranYekanX-Medium", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 500;
+  padding: 4px 12px;
+
+  @include themed () {
+    color: t(danger);
+  }
+}
+
+
+.w-full.nonIranGrp2 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+
+.FormTracking .document {
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+
+
+
+
+

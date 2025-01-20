@@ -1,0 +1,38 @@
+query GetUpdateUser {
+  Me {
+    ssn
+    birthday
+    cell_number
+    level
+    avatar
+    full_name
+    first_name
+    last_name
+    gender
+    referral_id
+    email
+    vip_level
+    next_level
+    next_level_step
+    tax_id
+    company_name
+    company_rid
+    company_registered_at
+    data_status {
+      kyc
+      email
+      personal
+      legal
+    }
+    additional_identification_info {
+      passport {
+        passport_number
+        expire_date
+        nationality
+      }
+    }
+    personal_link {
+      domain
+    }
+  }
+}

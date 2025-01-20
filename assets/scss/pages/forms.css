@@ -1,0 +1,14 @@
+
+
+.error_msg {
+  width: 100%;
+  color: var(--Light-Text-Danger, var(--Text-Danger, #C93637));
+  text-align: right;
+  font-family: IRANYekanX;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 171.429% */
+  align-self: stretch;
+  direction: rtl;
+}

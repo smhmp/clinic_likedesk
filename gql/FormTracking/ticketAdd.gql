@@ -1,0 +1,22 @@
+mutation ticketAdd(
+$ticket_department_id: ID!,
+$priority: TicketPriorityEnum,
+$title: String!,
+$content: String!,
+$attachment: String
+){
+  resource: TicketAdd(
+  ticket_department_id:$ticket_department_id,
+  priority:$priority,
+  title:$title,
+  content:$content,
+  attachment:$attachment
+  ) {
+    id
+    ticket_department_id
+    priority
+    title
+    model_type
+    model_id
+  }
+}

@@ -1,0 +1,20 @@
+.st_NOT_COMPLETED{
+  background-color: #F8F8F8;
+  color: var(--text-soft, #747481);
+}
+.st_COMPLETED{
+  background-color: #E0FFF5;
+  color: #248061;
+}
+.st_WAITING{
+  background-color: #FFF5EB;
+  color: #9C6300;
+}
+.st_PROCESSING{
+  background-color: #E0F0FE;
+  color: #006BC9;
+}
+.st_REJECTED{
+  background-color: #FFEBEB;
+  color: #C93637;
+}

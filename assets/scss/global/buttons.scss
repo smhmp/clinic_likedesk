@@ -1,0 +1,39 @@
+.asBtn{
+  color: #2E2E38;
+
+  &:hover{
+    background-color: #F7F7F8;
+  }
+
+  &:active{
+    background-color: #EEEEF1;
+  }
+
+  &.disabled{
+    background-color: #EFEFF0;
+    color: #8C8C8C;
+  }
+
+  &.loading{
+    background-color: #EFEFF0;
+  }
+}
+
+.asParentBtn{
+  &:hover .asBtn{
+    background-color: #F7F7F8;
+  }
+
+  &:active .asBtn{
+    background-color: #EEEEF1;
+  }
+
+  &.disabled .asBtn{
+    background-color: #EFEFF0;
+    color: #8C8C8C;
+  }
+
+  &.loading .asBtn{
+    background-color: #EFEFF0;
+  }
+}

@@ -1,0 +1,294 @@
+.services,
+.services * {
+  box-sizing: border-box;
+}
+.services {
+  //background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  backdrop-filter: blur(28px);
+  //direction: ltr;
+  background: #fff;
+
+  .header {
+    padding: 0px 8px 0px 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .title {
+    color: var(--text-soft, #747481);
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .services-container {
+    border-radius: 8px;
+    border-style: solid;
+    border-color: var(--border-soft, #f4f4f6);
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    max-height: 320px;
+    position: relative;
+    overflow-y: auto;
+    width: 100%;
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: rgba(183, 183, 183, 0.48);
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(121, 121, 121, 0.49);
+    }
+  }
+  .row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .service-item {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    position: relative;
+    flex: 1 0 0;
+    margin-bottom: 0px;
+    padding: 8px;
+
+    &:hover{
+      background: #fbfbfb;
+    }
+  }
+  .service-logos {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: visible;
+  }
+  .name {
+    color: var(--text-default, #2e2e38);
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    position: relative;
+  }
+  .service-logos2 {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: visible;
+  }
+  .avatar {
+    border-radius: 999px;
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 1px;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+    left: 0%;
+    bottom: 0%;
+    top: 0%;
+    object-fit: cover;
+  }
+  .service-logos3 {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: visible;
+  }
+  .service-logos4 {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: visible;
+  }
+  .service-logos5 {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: visible;
+  }
+  .service-logos6 {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: visible;
+  }
+  .service-logos7 {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: visible;
+  }
+  .service-logos8 {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: visible;
+  }
+  .service-item2 {
+    border-radius: 8px;
+    opacity: 0;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 80px;
+    position: relative;
+  }
+  .service-logos9 {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: visible;
+  }
+  .service-logos10 {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: visible;
+  }
+  .service-logos11 {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: visible;
+  }
+  .more-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 296px;
+    position: relative;
+  }
+  .nav-link-item {
+    border-radius: 12px;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .lebel {
+    color: var(--text-default, #2e2e38);
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .code-block {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    position: relative;
+  }
+  .group {
+    height: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+  }
+  .information-square {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    position: relative;
+  }
+  .group2 {
+    width: 100.04%;
+    height: 100.04%;
+    position: absolute;
+    right: -0.02%;
+    left: -0.02%;
+    bottom: -0.02%;
+    top: -0.02%;
+    overflow: visible;
+  }
+}

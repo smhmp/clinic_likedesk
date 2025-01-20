@@ -1,0 +1,43 @@
+mutation editPersonal(
+  $gender: GenderEnum,
+  $first_name: String,
+  $last_name: String,
+  $birthday: Date,
+  $ssn: String,
+  $is_foreign: Boolean,
+  $passport_number: String,
+  $nationality: String,
+  $passport_expire_date: Date,
+  $foreign_pervasive_code: String,
+  $tax_id: String,
+  $company_rid: String,
+  $company_name: String,
+  $company_registered_at: Date,
+) {
+  PreferencesEdit(
+    gender: $gender,
+    first_name: $first_name,
+    last_name: $last_name,
+    birthday: $birthday,
+    ssn: $ssn,
+    is_foreign: $is_foreign,
+    passport_number: $passport_number,
+    nationality: $nationality,
+    passport_expire_date: $passport_expire_date,
+    foreign_pervasive_code: $foreign_pervasive_code,
+    tax_id:$tax_id,
+    company_rid:$company_rid,
+    company_name:$company_name,
+    company_registered_at:$company_registered_at
+  ){
+    gender
+    first_name
+    last_name
+    birthday
+    ssn
+    company_rid
+    tax_id
+    company_registered_at
+    company_name
+  }
+}

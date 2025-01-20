@@ -1,0 +1,186 @@
+.PreviewPersonal{
+  &.card,
+  &.card * {
+    box-sizing: border-box;
+  }
+  &.card {
+    background: var(--surface-default, #ffffff);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .block {
+    border-radius: 8px;
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .heading {
+    padding: 24px 24px 16px 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .contentA {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+  }
+  .title {
+    color: var(--text-default, #2e2e38);
+    text-align: right;
+    font-family: "IranYekanX-DemiBold", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+  }
+  .action-list-item {
+    padding: 0px 24px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+
+    &:last-child .container{
+      border:none;
+    }
+  }
+  .container {
+    border-style: solid;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 0px 0px 1px 0px;
+    padding: 24px 0px 24px 24px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    position: relative;
+
+    &.loadingInf{
+      min-height: 200px;
+    }
+  }
+  .stack {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    position: relative;
+    direction: ltr;
+  }
+  .frame-12577 {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+  }
+  .status {
+    border-radius: 16px;
+    padding: 2px 8px 2px 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .label {
+    text-align: right;
+    font-family: var(
+                    --small-body-500-b3-font-family,
+                    "IranYekanRd",
+                    sans-serif
+    );
+    font-size: var(--small-body-500-b3-font-size, 12px);
+    line-height: var(--small-body-500-b3-line-height, 20px);
+    font-weight: var(--small-body-500-b3-font-weight, 500);
+    position: relative;
+  }
+  .stack2 {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+  }
+  .labelA2 {
+    color: var(--text-soft, #747481);
+    text-align: right;
+    font-family: "IranYekanX-DemiBold", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    position: relative;
+    flex: 1;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+  }
+  .value {
+    color: var(--text-default, #2e2e38);
+    text-align: right;
+    font-family: IRANYekanRdFaNum, "IranYekanX-Medium", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .label3 {
+    color: var(--text-soft, #747481);
+    text-align: right;
+    font-family: "IranYekanX-DemiBold", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    position: relative;
+    flex: 1;
+    max-width: 256px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+  }
+}

@@ -1,0 +1,26 @@
+.btn{
+  @apply px-md py-xs rounded-sm text-b2;
+  &.primary{
+    @apply bg-primaryClinic text-surface;
+    @apply hover:bg-primaryClinic-hover;
+  }
+  &.secondary{
+    @apply bg-secondary border border-border text-text;
+    @apply hover:bg-secondary-hover;
+  }
+  &.tertiary{
+    @apply bg-surface border border-border text-text;
+    @apply hover:bg-surface-hover;
+  }
+  &.danger{
+    @apply bg-text-danger text-surface;
+    @apply hover:bg-icon-danger;
+  }
+  //avtive statuses
+  &.active-secondary{
+    @apply bg-gray-dark-20 border-text;
+  }
+  &.active-tertiary{
+    @apply border-text bg-surface-active;
+  }
+}

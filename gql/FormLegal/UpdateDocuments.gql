@@ -1,0 +1,8 @@
+mutation UpdateDocuments($legal_documents: ValidFile,$has_legal_documents:Boolean) {
+    resource: UpdateDocuments(legal_documents: $legal_documents,has_legal_documents:$has_legal_documents) {
+        id
+        company_rid
+        company_name
+        company_registered_at
+    }
+}

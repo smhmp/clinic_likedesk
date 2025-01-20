@@ -1,0 +1,286 @@
+.ManualKyc{
+  &.content,
+  &.content * {
+    box-sizing: border-box;
+  }
+  &.content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+  }
+
+  .page-heading {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .heading-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+  }
+  .heading {
+    padding: 4px 0px 4px 0px;
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .title {
+    color: var(--text-default, #2e2e38);
+    text-align: right;
+    font-family: "IranYekanX-DemiBold", sans-serif;
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 400;
+    position: relative;
+    flex: 1;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+  }
+  .caption {
+    color: var(--text-soft, #747481);
+    text-align: right;
+    font-family: "IranYekanX-Medium", sans-serif;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 500;
+    position: relative;
+    align-self: stretch;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1);
+  }
+
+  .arrow-right {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+  .group {
+    height: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+  }
+  .personal-information-form {
+    background: var(--surface-default, #ffffff);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .row {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .guide {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 360px;
+    position: relative;
+  }
+  .image {
+    border-radius: 12px;
+    flex-shrink: 0;
+    width: 360px;
+    height: 280px;
+    position: relative;
+    object-fit: cover;
+  }
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .contained-button2 {
+    background: var(--surface-default, #ffffff);
+    border-radius: 8px;
+    border-style: solid;
+    border-color: var(--border-default, #dadbe1);
+    border-width: 1px;
+    padding: 12px 20px 12px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .labelGui {
+    color: var(--text-default, #2e2e38);
+    text-align: right;
+    font-family: "IranYekanX-DemiBold", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .interface-essential-play-loading {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+  .group2 {
+    width: 100.04%;
+    height: 100.04%;
+    position: absolute;
+    right: -0.02%;
+    left: -0.02%;
+    bottom: -0.02%;
+    top: -0.02%;
+    overflow: visible;
+  }
+  .interface-essential-user-single-select {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+  .group3 {
+    height: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: visible;
+  }
+  .divider {
+    margin-top: 0;
+    border-style: solid;
+    border-color: #eeeef1;
+    border-color: var(--border-divider, #eeeef1);
+    border-width: 0 1px 0 0;
+    align-self: stretch;
+    flex-shrink: 0;
+    width: 2px;
+    position: relative;
+    transform-origin: 0;
+    transform: none;
+    height: 100%;
+
+    @media (max-width: 1004px) {
+      transform: rotate(90deg) scale(1, 1);
+      height: auto;
+    }
+  }
+  .document {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex: 1;
+    position: relative;
+  }
+  .description {
+    color: var(--text-default, #2e2e38);
+    text-align: right;
+    font-family: var(
+                    --heading-600-h3-font-family,
+                    "IranYekanXvf-Bold",
+                    sans-serif
+    );
+    font-size: var(--heading-600-h3-font-size, 16px);
+    line-height: var(--heading-600-h3-line-height, 24px);
+    font-weight: var(--heading-600-h3-font-weight, 700);
+    position: relative;
+    align-self: stretch;
+  }
+  .description2 {
+    color: var(--text-default, #2e2e38);
+    text-align: right;
+    font-family: "Tahoma-Regular", sans-serif;
+    font-size: var(--font-size-base, 16px);
+    line-height: var(--font-height-regular, 24px);
+    font-weight: 400;
+    position: relative;
+    align-self: stretch;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .uploadSection {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+
+    @media (max-width: 570px) {
+      flex-direction: column;
+      gap: 0px;
+    }
+  }
+
+
+  .kycContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    direction: rtl;
+
+    @media (max-width: 1004px) {
+      flex-direction: column;
+    }
+  }
+
+}

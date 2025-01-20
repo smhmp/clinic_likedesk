@@ -1,0 +1,43 @@
+{
+  "pages":{
+    "tickets":{
+      "filters":{
+        "NEW":"جدید",
+        "NEW_IN_PROGRESS": "در انتظار پاسخ",
+        "MY_ASSIGNMENTS": "ارجاع داده شده به من",
+        "ALL_ASSIGNED": "ارجاع داده شده‌ها",
+        "MY_REPLIES": "تیکت‌های من",
+        "ALL": "همه"
+      },
+      "statuses":{
+        "NEW": "جدید",
+        "IN_PROGRESS": "در دست بررسی",
+        "SUPPORT_RESPONSE": "پاسخ پشتیبان",
+        "CLOSED": "بسته"
+      }
+    },
+    "reports":{
+      "repliesStatus":{
+        "NEW": "جدید",
+        "PENDING": "در دست بررسی",
+        "CHECKED": "دیده شده"
+      },
+      "feedbackType":{
+        "INSUFFICIENT" : "نامرتبط",
+        "DISRESPECTFUL" : "نامناسب",
+        "NONE" : "هیج‌کدام"
+      }
+    },
+    "settings": {
+      "messages": {
+        "TICKET_SHARE": "اشتراک گذاری تیکت",
+        "CLOSE_AUTOMATIC": "بستن اتوماتیک تیکت",
+        "CLOSE_MANUALLY": "بستن تیکت توسط کاربر",
+        "ASSIGN_SUPPORT": "اتصال تیکت به پشتیبان",
+        "REMOVE_SUPPORT": "قطع پشتیبان از تیکت",
+        "ASSIGN_USER": "اتصال کاربر دوم به تیکت",
+        "REMOVE_USER": "قطع دسترسی کاربر دوم از تیکت"
+      }
+    }
+  }
+}

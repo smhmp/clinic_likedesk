@@ -1,0 +1,6 @@
+query usersList ($id:Int, $filter:UserLevel) {
+  users(id:$id, filter:$filter) {
+    id
+    full_name
+  }
+}

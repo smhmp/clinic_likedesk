@@ -1,0 +1,12 @@
+mutation editEmail(
+  $email: String,
+  $mail_subscription: Boolean
+) {
+  PreferencesEdit(
+    email: $email,
+    mail_subscription: $mail_subscription,
+  ){
+    email
+    mail_subscription
+  }
+}

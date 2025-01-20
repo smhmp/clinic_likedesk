@@ -1,0 +1,9 @@
+mutation editLegal( $tax_id: String,$company_rid: String,$company_name: String,$company_registered_at: Date) {
+    resource: PreferencesEdit(tax_id:$tax_id,company_rid:$company_rid,company_name:$company_name,company_registered_at:$company_registered_at) {
+        id
+        company_rid
+        tax_id
+        company_registered_at
+        company_name
+    }
+}
