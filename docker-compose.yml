@@ -11,8 +11,7 @@ services:
       - "8080:80"
     environment:
       - NODE_ENV=development
-    #restart: unless-stopped
-    restart: no
+    restart: 'no'
     working_dir: /app
 
 
