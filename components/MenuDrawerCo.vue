@@ -1,14 +1,14 @@
 <template>
   <div :class="['parent_menuDrawer',{openedSidebar}]">
     <div class="MenuDrawer" style="">
-      <div class="Bgimg" style="">
-        <img src="@/assets/imgs/autohtml-all1/bg-img1.png" class="bg-img2" style=""></div>
-      <div class="Container" style="">
+      <div class="Bgimg"></div>
+      <div class="Container w-full">
         <div class="Right" style="justify-content: flex-end; align-items: center; gap: 4px; display: flex;">
-          <div class="zarin-pal-logo">
-            <div class="zarin-pal-logo2"><img src="@/assets/imgs/autohtml-all1/zarin-pal-convert-type-farsi0.svg" class="zarin-pal-convert-type-farsi">
+          <div class="insight-clinic-logo">
+            <div class="insight-clinic-logo2">
+              <div class="bitTitle" style="font-size: 18px;">کلینیک اینسایت</div>
             </div>
-            <div class="zarin-pal-logo3"><img src="@/assets/imgs/autohtml-all1/zarin-pal-convert-colorful0.svg" class="zarin-pal-convert-colorful">
+            <div class="insight-clinic-logo3"><img src="@/assets/imgs/autohtml-all1/clinicInsight-logo-black.svg" class="clinic-convert-colorful">
             </div>
           </div>
           <div class="MenuAction" @click="onClickMenu"

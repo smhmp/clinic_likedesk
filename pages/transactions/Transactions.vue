@@ -1,22 +1,6 @@
 <template>
   <div class="profilePg body">
-    <page-heading caption="مشاهده تراکنش‌های انجام شده از طریق درگاه پرداخت زرین‌پال" title="تراکنش‌های زرین‌پالی"/>
-<!--    <div class="card">
-      <ActionInlineGroup inline>
-        <ActionInlineItem
-          ttl="کارت‌های بانکی"
-          midCaption="کارت ثبت شده"
-          :onAct="onActBankCards"
-          :loadAct="loadingActBankCard"
-        />
-        <ActionInlineItem
-          ttl="پیگیری تراکنش"
-          midCaption="ارسال تیکت به پشتیبانی"
-          :onAct="onActTracking"
-          :loadAct="loadingActTracking"
-        />
-      </ActionInlineGroup>
-    </div>-->
+    <page-heading caption="مشاهده تراکنش‌های انجام شده از طریق درگاه پرداخت اینسایت" title="تراکنش‌های اینسایت" backPath="/profile/"/>
     <div class="ActInline card">
       <div class="page-actions">
         <div class="action">
@@ -53,7 +37,7 @@
           <div class="content">
             <div class="title">تاریخچه تراکنش‌ها</div>
             <div class="caption">
-              تراکنش‌هایی که با کارت‌های بانکی شخصی از درگاه پرداخت زرین‌پال انجام
+              تراکنش‌هایی که با کارت‌های بانکی شخصی از درگاه پرداخت اینسایت انجام
               داده‌اید.
             </div>
           </div>
@@ -74,7 +58,7 @@
           <div class="content2">
             <div class="title2">کارت‌های بانکی خود را اضافه کنید</div>
             <div class="caption2">
-              به منظور مشاهده تراکنش‌های انجام شده از درگاه پرداخت زرین‌پال نیاز است
+              به منظور مشاهده تراکنش‌های انجام شده از درگاه پرداخت اینسایت نیاز است
               که کارت‌‌های بانکی خود را اضافه کنید.
             </div>
           </div>
@@ -92,7 +76,7 @@
           <div class="content2">
             <div class="title2">تراکنشی یافت نشد</div>
             <div class="caption2">
-              تراکنشی در بستر زرین‌‌پال با کارت‌های ثبت شده شما یافت نشد. می‌توانید سایر‌ کارت‌های بانکی خود را اضافه کنید.
+              تراکنشی در بستر اینسایت با کارت‌های ثبت شده شما یافت نشد. می‌توانید سایر‌ کارت‌های بانکی خود را اضافه کنید.
             </div>
           </div>
           <div class="contained-button">
@@ -203,7 +187,7 @@ import StatMixin from "@/mixins/StatMixin";
 export default {
   name: "Transactions",
   head:{
-    title:'زرین‌پال | تراکنش‌های زرین‌پالی'
+    title:'اینسایت | تراکنش‌های اینسایت'
   },
   components: {ActionInlineGroup, ActionInlineItem, AHref, Loaders },
   data() {

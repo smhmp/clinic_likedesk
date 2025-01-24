@@ -21,11 +21,11 @@ export const indxLevel={
 };
 
 export const faLevel={
-  GOLD:'طلایی',
-  SILVER:'نقره‌ای',
-  BASIC:'آبی',
-  BLUE:'آبی',
-  NEW:'جدید',
+  GOLD:'CIP',
+  SILVER:'VIP',
+  BASIC:'معمولی',
+  BLUE:'معمولی',
+  NEW:'میهمان',
   ADMIN:'ادمین',
 };
 
@@ -41,7 +41,7 @@ export const testDataLevel = {
         $zpl.setStorage('curLevel','NEW');
         testDataLevel.aftTestLevel='BLUE';
         testDataLevel.statFormPersonal='COMPLETED';
-        testDataLevel.nextLevelStep='https://kyc.zarinpal.com';
+        testDataLevel.nextLevelStep='https://kyc.insight-clinic.com';
     }
   },
   onListener(){
@@ -64,7 +64,7 @@ let LevelMixin = {
   computed:{
     curLevel(){
       if($zpl.isTest().__curLevel__){
-        return 'BLUE' //NEW , BLUE, SILVER, GOLD
+        return 'NEW' //NEW , BLUE, SILVER, GOLD
       }
       return this.$store.state.application.userInfo.level || 'NEW'
     }

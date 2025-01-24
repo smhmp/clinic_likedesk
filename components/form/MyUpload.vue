@@ -125,7 +125,7 @@ export default {
         formData.append('file', files[0]);
 
         $zpl.zplConnectPrj_v2.reqDirect({
-          baseUrl:'https://uploads.zarinpal.com/',
+          baseUrl:'https://uploads.insight-clinic.com/',
           args:formData,
           configs:{
             emulateHTTP: true,

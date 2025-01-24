@@ -10,7 +10,7 @@ const StatMixin = {
     isPreview(actSubj){
       const st = this.statAct(actSubj);
       if($zpl.isTest().__isPreview__){
-        return true
+        return false
       }
 
       if(actSubj === 'legal'){

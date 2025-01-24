@@ -10,6 +10,7 @@ export type ISelectBirth = {
 }
 
 export type configs = {
+  offSearch:false,
   listOpts: [];
   onClick: string;
   onSelect(...any): void

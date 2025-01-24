@@ -12,7 +12,7 @@
         <div class="document">
           <div class="description">معرفی‌نامه رسمی</div>
           <div class="description2">
-            <div style="width: 98%;" class=""><p class="">برای ثبت حساب حقوقی، نیاز است یک <span class="bold">معرفی‌نامه‌ی رسمی</span> با <span class="bold">سربرگ شرکت</span>، به علاوه‌ی <span class="bold">مهر و امضاء مدیرعامل</span> و <span class="bold">شناسه‌ی ملی شرکت</span>، بارگذاری کنید.</p><p class="">لطفا توجه داشته باشید که معرفی‌نامه‌ خطاب به زرین‌پال باشد و فردی که در <span class="bold">زرین‌پال</span> ثبت‌نام کرده است در معرفی‌نامه به عنوان <span class="bold">رابط اداری و مالی</span> معرفی شده باشد.</p></div>
+            <div style="width: 98%;" class=""><p class="">برای ثبت حساب حقوقی، نیاز است یک <span class="bold">معرفی‌نامه‌ی رسمی</span> با <span class="bold">سربرگ شرکت</span>، به علاوه‌ی <span class="bold">مهر و امضاء مدیرعامل</span> و <span class="bold">شناسه‌ی ملی شرکت</span>، بارگذاری کنید.</p><p class="">لطفا توجه داشته باشید که معرفی‌نامه‌ خطاب به اینسایت باشد و فردی که در <span class="bold">اینسایت</span> ثبت‌نام کرده است در معرفی‌نامه به عنوان <span class="bold">رابط اداری و مالی</span> معرفی شده باشد.</p></div>
           </div>
           <MyUpload ref="MyUploadRef"
               :onSetFileId="onSetFileId"
@@ -54,7 +54,7 @@ import MyUpload from "~/components/form/MyUpload.vue";
 export default {
   name: "FormLegal",
   head:{
-    title:'کانکت زرین‌پال | مشخصات حقوقی'
+    title:'کلینیک اینسایت | مشخصات حقوقی'
   },
   props:{
 

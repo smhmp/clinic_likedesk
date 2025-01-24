@@ -127,8 +127,8 @@ let PaginateMixin = {
 
                 this.latestPosDest = untilNum
                 const token = vm.readyListenWheel({});
-                vm.$zplUi.animateMove({deadTime:1000,untilNum:untilNum-50,token:token},(elapsed,untilNum)=>{
-                  const count = Math.max(vm.$zplUi.getViewport({justTop:true}) - elapsed, untilNum);
+                vm.$zplUi.animateMove({deadTime:1000,untilNum:untilNum-50,token:token},({elapsed, untilNum, count})=>{
+                  count = Math.max(vm.$zplUi.getViewport({justTop:true}) - elapsed, untilNum);
                   vm.$zplUi.setScrollTop(count)
                   if(count === untilNum){
                     // this.$refs.paginationRef.updateOnScroll()

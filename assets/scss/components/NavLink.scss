@@ -12,17 +12,20 @@
   position: relative;
   background: none;
   cursor: pointer;
+  background: var(--menu-bg-unseled);
+  color: var(--menu-txt);
 
   &:hover{
-    background: #EDEDED;
+    background: var(--menu-bg-unseled);
   }
   &:active{
-    background: #F0F0F0;
+    background: var(--menu-bg-unseled);
   }
 
 
   .icon-container {
-    background: var(--visual-neutrals-black-black-20, rgba(19, 26, 40, 0.2));
+    background: var(--menu-icon-bg-unseled);
+    color: var(--menu-icon-stroke-unseled);
     border-radius: 8px;
     padding: 6px;
     flex-shrink: 0;
@@ -33,17 +36,21 @@
   }
 
   &.selected{
-    background: var(--surface-default, #ffffff);
+    background: var(--menu-bg-seled);
+    color: var(--menu-bg-seled);
 
     &:hover{
-      background: var(--surface-default, #FFFFFF);
+      background: var(--menu-bg-seled);
+      color: var(--menu-bg-seled);
     }
     &:active{
-      background: var(--surface-pressed, #EEEEF1);
+      background: var(--menu-bg-seled);
+      color: var(--menu-bg-seled);
     }
 
     .icon-container{
-      background: var(--primary-default, #0a33ff);
+      background: var(--menu-icon-bg-seled);
+      color: var(--menu-icon-stroke-seled);
     }
   }
 
@@ -78,4 +85,9 @@
   justify-content: flex-start;
   flex-shrink: 0;
   position: relative;
+  color: var(--menu-arrowIcon-unseled);
+
+  .selected{
+    color: var(--menu-arrowIcon-seled);
+  }
 }

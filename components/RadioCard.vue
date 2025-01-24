@@ -1,6 +1,6 @@
 <template>
-  <div class="options">
-    <div v-for="(info,indx) in infos" :key="indx" :class="['radio-card',{'chked':curRadioId===info['uniqKey']}]" @click="onClickInp(info['uniqKey'])">
+  <div :class="['options',{resp:!noResponsive}]">
+    <div v-if="info['label']" v-for="(info,indx) in infos" :key="indx" :class="['radio-card',{'chked':curRadioId===info['uniqKey']}]" @click="onClickInp(info['uniqKey'])">
       <div :for="info['uniqKey']" class="top">
         <div class="frame">
           <div class="user-single">
@@ -19,6 +19,7 @@
         </div>
       </div>
     </div>
+    <div v-else class="radio-card-end"></div>
   </div>
 </template>
 <script>
@@ -36,6 +37,7 @@ export default {
     onChked: {
       type: Function,
     },
+    noResponsive:0
   },
   data() {
     return {

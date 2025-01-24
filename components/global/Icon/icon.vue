@@ -1,5 +1,5 @@
 <template>
-  <component :is="name" role="img" class="inline-block" />
+  <component :is="name" :selected="selected" role="img" class="inline-block" />
 </template>
 
 <script>
@@ -38,6 +38,7 @@ export default {
   },
   name: 'Icon',
   props : {
+    selected:false,
     name:{
       type : String
     }

@@ -58,7 +58,7 @@
     "pan": "شماره‌کارت اشتباه است",
     "requiredwithout": "این فیلد در صورت نبود لازم است",
     "alphanum": "{_field_} فقط میتواند از حروف و اعداد تشکیل شود",
-    "appRulesUniqueUsername": "زرین‌لینک تکراری است",
+    "appRulesUniqueUsername": "اینسایت تکراری است",
     "appRulesUniqueDomain": "این دامنه قبلا در سیستم ثبت‌شده است"
   }
 }

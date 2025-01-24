@@ -32,66 +32,66 @@
 
 
   &.primary{
-    background: var(--primary-default, #0a33ff);
+    background: var(--primary-bg);
 
     &:hover{
-      background: var(--Primary-Hover, #082BD5);
+      background: var(--primary-bg);
     }
     &:active{
-      background: var(--Primary-Pressed, #0722AA);
+      background: var(--primary-bg);
     }
 
     .labelBtn{
-      color: var(--text-on-primary, #ffffff);
+      color: var(--primary-txt);
     }
   }
 
 
 
   &.new{
-    background: var(--primary-new);
+    background: var(--secondary-bg);
 
     &:hover{
-      background: var(--primary-new-hover);
+      background: var(--secondary-bg);
     }
     &:active{
-      background: var(--primary-new-active);
+      background: var(--secondary-bg);
     }
 
     .labelBtn{
-      color: var(--text-on-primary, #ffffff);
+      color: var(--secondary-txt);
     }
   }
 
   &.secondary{
-    background: var(--secondary-default, #f5f5f5);
+    background: var(--secondary-bg);
 
     &:hover{
-      background: var(--Scondary-Hover, #EDEDED);
+      background: var(--secondary-bg);
     }
     &:active{
-      background: var(--Scondary-Pressed, #F0F0F0);
+      background: var(--secondary-bg);
     }
 
 
     .labelBtn{
-      color: var(--text-default, #2e2e38);
+      color: var(--secondary-txt);
     }
   }
 
   &.surface{
-    background: var(--secondary-default, #ffffff);
+    background: var(--secondary-bg);
 
     &:hover{
-      background: var(--Scondary-Hover, #f6f6f6);
+      background: var(--secondary-bg);
     }
     &:active{
-      background: var(--Scondary-Pressed, #f6f6f6);
+      background: var(--secondary-bg);
     }
 
 
     .labelBtn{
-      color: var(--text-default, #2e2e38);
+      color: var(--secondary-txt);
     }
   }
 
@@ -231,12 +231,12 @@
 
   .contained-button {
     &.primary{
-      background: #9DADFF;
+      background: #d09c7d;
       &:hover{
-        background: #9DADFF;
+        background: #c48768;
       }
       &:active{
-        background: #9DADFF;
+        background: #b78268;
       }
     }
 

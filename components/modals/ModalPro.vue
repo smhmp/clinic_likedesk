@@ -56,7 +56,7 @@
           <div class="Caption">
             <span>در حال حاضر می‌توانید با استفاده از سرویس </span>
             <span>Gravatar</span>
-            <span> تصویر پروفایل‌ خود را تنظیم کنید و در زرین‌پال مشاهده کنید.</span>
+            <span> تصویر پروفایل‌ خود را تنظیم کنید و در اینسایت مشاهده کنید.</span>
           </div>
         </div>
         <div class="midContent" v-else-if="forLevel === 'BLUE'||forLevel === 'BASIC'">
@@ -68,7 +68,7 @@
         <div class="midContent" v-else-if="forLevel === 'SILVER'">
           <div class="Title">تبریک! سطح شما به نقره‌ای ارتقا یافت</div>
           <div class="Caption">
-            <span>احراز هویت شما با موفقیت انجام شد. اکنون می‌توانید از تمام خدمات زرین‌پال استفاده کنید.</span>
+            <span>احراز هویت شما با موفقیت انجام شد. اکنون می‌توانید از تمام خدمات کلینیک اینسایت استفاده کنید.</span>
           </div>
         </div>
         <div class="midContent" v-else-if="forNotif">
@@ -106,7 +106,7 @@
           isLoader="1"
           :val-btn="forLevel === 'BLUE'||forLevel === 'BASIC'?'احراز هویت ویدیویی':
           forKycNeed?(prsnIsProcess?'متوجه شدم':'تکمیل مشخصات فردی'):
-          forError?'پیشتیبانی زرین‌پال':
+          forError?'پیشتیبانی اینسایت':
           'متوجه شدم'"
           :type="forError?'secondary':'primary'"
           isFullWidth="1"
@@ -213,7 +213,7 @@ export default {
       this.$router.push({path:'/form-personal/'});
     },
     gotoSupport(){
-      $zpl.openLink('https://www.zarinpal.com/contact.html','_blank');
+      $zpl.openLink('https://www.insight-clinic.com/contact.html','_blank');
     },
     onClickAvatar(e){
       $zpl.openLink('https://gravatar.com','_blank')

@@ -1,13 +1,13 @@
 <template>
   <div class="formPersonalPg ManualKyc pgForm content">
     <page-heading caption="از طریق فرم زیر نسبت به تکمیل مدارک خود اقدام نمایید" title="بارگذاری مدارک هویتی" backPath="/profile/"/>
-    <form @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card','FormLegal',{loading}]">
+    <div @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card','FormLegal',{loading}]">
       <div class="w-full kycContainer">
 
         <div class="document" style="height: 560px; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 24px; display: inline-flex">
-          <div class="Description" style="align-self: stretch; text-align: right; color: #2E2E38; font-size: 16px; font-family: IRANYekanX; font-weight: 600; line-height: 24px; word-wrap: break-word">مراحل احراز هویت در زرین‌پال</div>
+          <div class="Description" style="align-self: stretch; text-align: right; color: #2E2E38; font-size: 16px; font-family: IRANYekanX; font-weight: 600; line-height: 24px; word-wrap: break-word">مراحل احراز هویت در اینسایت</div>
           <div class="Description" style="align-self: stretch; text-align: right"><span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word">۱. فرم احراز هویت را از </span>
-            <span style="color: #0A33FF; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word"><a href="https://cdn.zarinpal.com/files/auth.pdf" target="_blank">اینجا</a></span>
+            <span style="color: #0A33FF; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word"><a href="https://cdn.insight-clinic.com/files/auth.pdf" target="_blank">اینجا</a></span>
             <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word"> دانلود کنید، پرینت بگیرید و پس از مطالعه امضا کنید.<br/>۲.  اصل کارت ملی خود را در قسمت مربوطه پجسبانید و از خودتان در حالی که فرم احراز هویت را در دست گرفته‌اید عکس بگیرید.<br/>۳. از کارت کلی خود بصورت جداگانه عکس بگیرید.<br/>۴. عکس‌های گرفته شده را بارگذاری کنید.<br/><br/></span>
             <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 500; line-height: 24px; word-wrap: break-word">نکته:</span>
             <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word"> از فرم احراز هویت پرینت بگیرید یا متن آن را عینا روی کاغذ A4 بنویسید.<br/></span>
@@ -16,21 +16,9 @@
           </div>
 
           <div class="uploadSection">
-            <MyUpload ref="MyUploadKycRef"
-                      :onSetFileId="onSetFileIdKyc"
-                      reqMsg=" بارگذاری فرم تکمیل شده احراز هویت الزامی است."
-                      :top-rule="true"
-                      :alignBottomRule="false"
-                      :bottomRule="false"
-                      title="فرم تکمیل شده احراز هویت"
-            />
-            <MyUpload ref="MyUploadSsnRef"
-                      :onSetFileId="onSetFileIdSsn"
-                      reqMsg=" بارگذاری تصویر کارت ملی الزامی است."
-                      title="تصویر کارت ملی"
-                      :alignBottomRule="false"
-                      :bottomRule="false"
-            />
+            <div class="drop-zone asParentBtn" :class="{}">
+
+            </div>
           </div>
         </div>
 
@@ -47,7 +35,7 @@
               </div>
               <div class="labelGui">ویدیوی آموزشی نحوه ارسال مدارک</div>
             </a>
-            <a class="contained-button2 asBtn" href="https://cdn.zarinpal.com/files/auth-sample.jpg" target="_blank">
+            <a class="contained-button2 asBtn" href="https://cdn.insight-clinic.com/files/auth-sample.jpg" target="_blank">
               <div class="interface-essential-user-single-select">
                 <img class="group3" src="@/assets/imgs/manualkyc/group2.svg" />
               </div>
@@ -65,13 +53,8 @@
           val-btn="بارگذاری مدارک"
           type="primary"
         />
-        <ButtonSimple
-          :onClkBtn="cancelEdit" ButtonSimple
-          val-btn="انصراف"
-          type="secondary"
-        />
       </div>
-    </form>
+    </div>
   </div>
 </template>
 <script>
@@ -88,7 +71,7 @@ import MyUpload from "~/components/form/MyUpload.vue";
 export default {
   name: "ManualKYC",
   head:{
-    title:'کانکت زرین‌پال | احراز هویت دستی'
+    title:'کلینیک اینسایت | احراز هویت دستی'
   },
   props:{
 

@@ -6,7 +6,7 @@
     <div class="heading3">
       <div class="content">
         <div class="title2">{{ttl}}</div>
-        <div class="caption4">{{caption}}</div>
+        <div v-if="caption" class="caption4">{{caption}}</div>
       </div>
     </div>
     <slot/>

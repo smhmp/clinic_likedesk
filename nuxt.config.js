@@ -30,14 +30,11 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    /*link: [
-      { rel: "icon", type: "image/x-icon", href: "https://www.zarinpal.com/icons/favicon.ico" },
-      { rel: "shortcut icon", type: "image/x-icon", href: "https://www.zarinpal.com/icons/favicon.ico" },
-      { rel: "mask-icon", type: "image/png", href: "https://www.zarinpal.com/icons/safari-pinned-tab.svg" },
-      { rel: "apple-touch-icon", type: "image/png",sizes:"180x180", href: "https://www.zarinpal.com/icons/apple-touch-icon.png" },
-    ],*/
     link: [
-
+      { rel: "icon", type: "image/x-icon", href: "https://tests.insight-clinic.com/favicon.ico" },
+      // { rel: "shortcut icon", type: "image/x-icon", href: "http://www.insight-clinic.com/public/images/favicon/favicon-32x32.png" },
+      // { rel: "mask-icon", type: "image/png", href: "http://www.insight-clinic.com/public/images/favicon/favicon-16x16.png" },
+      // { rel: "apple-touch-icon", type: "image/png",sizes:"180x180", href: "https://www.insight-clinic.com/public/images/favicon/apple-touch-icon.png" },
     ],
 
     script: srcs

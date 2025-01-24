@@ -44,7 +44,7 @@
   }
 }
 .profile-action {
-  background: var(--surface-default, #ffffff);
+  background: var(--btn_quickProfile_bg);
   border-radius: 20px;
   padding: 4px 4px 4px 8px;
   display: flex;
@@ -56,6 +56,7 @@
   width: 64px;
   position: relative;
   cursor: pointer;
+  margin-left: 6px;
 
   &:hover{
     background: #F7F7F8;
@@ -256,7 +257,7 @@
     gap: 2px;
   }
 }
-.zarin-pal-logo {
+.insight-clinic-logo {
   display: flex;
   flex-direction: row;
   gap: 0px;
@@ -265,13 +266,14 @@
   flex-shrink: 0;
   position: relative;
 }
-.zarin-pal-logo2 {
+.insight-clinic-logo2 {
   flex-shrink: 0;
   width: 84px;
   height: 24px;
   position: relative;
+  width: 100%;
 }
-.zarin-pal-convert-type-farsi {
+.insight-clinic-convert-type-farsi {
   width: 84px;
   height: 24px;
   position: absolute;
@@ -279,18 +281,16 @@
   top: calc(50% - 12px);
   overflow: visible;
 }
-.zarin-pal-logo3 {
+.insight-clinic-logo3 {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 50px;
+  height: 50px;
   position: relative;
 }
-.zarin-pal-convert-colorful {
-  width: 24px;
-  height: 24px;
+.clinic-convert-colorful {
+  width: 50px;
+  height: 50px;
   position: absolute;
-  left: calc(50% - 12px);
-  top: calc(50% - 12px);
   overflow: visible;
 }
 
@@ -302,6 +302,8 @@
   height: 40px; border-radius: 4px; justify-content: center; align-items: center; gap: 8px;
   cursor: pointer;
   display: none;
+  padding-left: 10px;
+  padding-right: 10px;
 
   @media (max-width: 980px) {
     display: flex;
@@ -534,7 +536,7 @@ a.notifIcon {
     position: relative;
   }
   .title2 {
-    color: var(--text-default, #2e2e38);
+    color: var(--title_all);
     text-align: right;
     font-family: "IranYekanX-DemiBold", sans-serif;
     font-size: 14px;
@@ -583,3 +585,14 @@ a.notifIcon {
   }
 }
 
+
+.bitTitle{
+  color: #2e2e38;
+  text-align: right;
+  font-family: "YekanBakhFaNum", sans-serif;
+  font-size: 22px;
+  line-height: 32px;
+  font-weight: 400;
+  position: relative;
+  margin-right: 6px;
+}

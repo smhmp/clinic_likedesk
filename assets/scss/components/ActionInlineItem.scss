@@ -227,7 +227,7 @@
     position: relative;
   }
   .title {
-    color: var(--text-default, #2e2e38);
+    color: var(--title_all);
     text-align: right;
     font-family: "IranYekanX-DemiBold", sans-serif;
     font-size: 16px;
@@ -237,7 +237,7 @@
     align-self: stretch;
   }
   .caption {
-    color: var(--text-soft, #747481);
+    color: var(--caption_all);
     text-align: right;
     font-family: "IranYekanX-Medium", sans-serif;
     font-size: 12px;
@@ -300,7 +300,7 @@
     position: relative;
   }
   .title2 {
-    color: var(--text-default, #2e2e38);
+    color: var(--title_all);
     text-align: center;
     font-family: "IranYekanX-DemiBold", sans-serif;
     font-size: 16px;
@@ -310,7 +310,7 @@
     align-self: stretch;
   }
   .caption2 {
-    color: var(--text-soft, #747481);
+    color: var(--caption_all);
     text-align: center;
     font-family: "IranYekanX-Medium", sans-serif;
     font-size: 14px;
@@ -457,7 +457,7 @@
       overflow: visible;
     }
     .title7 {
-      color: var(--text-default, #2e2e38);
+      color: var(--title_all);
       text-align: right;
       font-family: "IranYekanX-DemiBold", sans-serif;
       font-size: 16px;
@@ -502,7 +502,7 @@
       position: relative;
     }
     .title8 {
-      color: var(--text-soft, #747481);
+      color: get_color_custom(map-get($theme_1, 'title_all'), 10%);
       text-align: right;
       font-family: "IranYekanX-Medium", sans-serif;
       font-size: 12px;
@@ -583,7 +583,7 @@
       position: relative;
     }
     .title9 {
-      color: var(--text-soft, #747481);
+      color: get_color_custom(map-get($theme_1, 'title_all'), 10%);
       text-align: right;
       font-family: "JetBrainsMono-Medium", sans-serif;
       font-size: 12px;

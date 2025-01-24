@@ -112,11 +112,11 @@ export const $zpl={
     let rootApi = '';
     let rootAuth = '';
     let rootAdr = '';
-    if(host.indexOf('.zarinpal.name')>-1){
-      panelZplBeta = 'https://stg-my.zarinpal.name';
-      panelZplOld = 'https://staging.zarinpal.com';
+    if(host.indexOf('.insight-clinic.name')>-1){
+      panelZplBeta = 'https://stg-my.insight-clinic.name';
+      panelZplOld = 'https://staging.insight-clinic.com';
       rootApi = configInf.reqApi.stageUrl;
-      rootAuth = 'https://connect-stg.zarinpal.name';
+      rootAuth = 'https://connect-stg.insight-clinic.name';
       rootAdr = rootAuth;
     }
     else if(host.indexOf('localhost')>-1){
@@ -129,16 +129,16 @@ export const $zpl={
           rootAuth = 'https://connect-demo.hamrah.in';
           break
         case '/stage':
-          panelZplBeta = 'https://stg-my.zarinpal.name';
-          panelZplOld = 'https://staging.zarinpal.com';
+          panelZplBeta = 'https://stg-my.insight-clinic.name';
+          panelZplOld = 'https://staging.insight-clinic.com';
           rootApi = configInf.reqApi.stageUrl;
-          rootAuth = 'https://connect-stg.zarinpal.name';
+          rootAuth = 'https://connect-stg.insight-clinic.name';
           break
         default:
-          panelZplBeta = 'https://beta.zarinpal.com';
-          panelZplOld = 'https://next.zarinpal.com';
+          panelZplBeta = 'https://beta.insight-clinic.com';
+          panelZplOld = 'https://next.insight-clinic.com';
           rootApi = configInf.reqApi.prdUrl;
-          rootAuth = 'https://connect.zarinpal.com';
+          rootAuth = 'https://connect.insight-clinic.com';
           break
       }
     }
@@ -150,10 +150,10 @@ export const $zpl={
       rootAdr = rootAuth;
     }
     else{
-      panelZplBeta = 'https://beta.zarinpal.com';
-      panelZplOld = 'https://next.zarinpal.com';
+      panelZplBeta = 'https://beta.insight-clinic.com';
+      panelZplOld = 'https://next.insight-clinic.com';
       rootApi = configInf.reqApi.prdUrl;
-      rootAuth = 'https://connect.zarinpal.com';
+      rootAuth = 'https://connect.insight-clinic.com';
       rootAdr = rootAuth;
     }
 
@@ -235,7 +235,7 @@ export const $zpl={
   },
   isStage(){
     const adr = this.getRootHost()
-    return this.getSwitcherSlug() === '/stage' || adr.indexOf('.zarinpal.name')>-1
+    return this.getSwitcherSlug() === '/stage' || adr.indexOf('.insight-clinic.name')>-1
   },
   isMob:function (){
     return false

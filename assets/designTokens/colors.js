@@ -184,7 +184,7 @@ module.exports = {
         information: '#44A6F8',
       },
     },
-    zarin: {
+    insight: {
       DEFAULT: '#FFD60A',
       soft: '#FFE66C',
       heavy: '#F0BA09',

@@ -1,34 +1,23 @@
 <template>
   <div class="formEmail pgForm content">
-    <page-heading caption="آدرس ایمیل جهت ورود و دریافت اطلاع‌رسانی‌ها" title="ایمیل" backPath="/profile/"/>
-    <PreviewEmail
-      :fieldsFa="fieldsFa"
-      :statAct="statAct('email')"
-      :statActFa="statActFa('email')"
-      v-if="isPreview('email')"
-    />
-    <form v-else @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card',{loading}]">
+    <page-heading caption="لطفا شماره موبایل خود را وارد کرده کلید مرحله بعد را بزنید" title="ورود / ثبت نام"/>
+    <form @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card',{loading}]">
       <div class="form">
         <TextInput
-          iName="email"
-          i-label="آدرس ایمیل"
+          iName="mobile"
+          i-label="شماره موبایل"
           maxlength="255"
-          dataRules="required,email,min:6,max:255"
-          v-model="fields.email"
+          dataRules="required,mobile"
+          v-model="fields.mobile"
           ltr
         />
       </div>
       <div class="button-group">
         <ButtonSimple
-          :onClkBtn="saveEmail" ButtonSimple
+          :onClkBtn="goToOtp" ButtonSimple
           isLoader="1"
-          :val-btn="`تایید ایمیل`"
-          type="primary"
-        />
-        <ButtonSimple
-          :onClkBtn="cancelEmail" ButtonSimple
-          :val-btn="`انصراف`"
-          type="secondary"
+          :val-btn="`مرحله بعد`"
+          type="new"
         />
       </div>
     </form>
@@ -52,18 +41,18 @@ import {langTools} from "@/src/js/langMan";
 
 
 export default {
-  name: "FormEmail",
+  name: "FormMobile",
   head:{
-    title:'کانکت زرین‌پال | تایید ایمیل'
+    title:'کلینیک اینسایت | ورو/ثبت نام'
   },
   components: {PreviewEmail, ButtonSimple, TextInput, Loaders },
   data() {
     return {
       fieldsFa:{
-        email:'ایمیل',
+        mobile:'شماره موبایل',
       },
       fields:{
-        email:'',
+        mobile:'',
       },
       loading: false,
     };
@@ -75,14 +64,17 @@ export default {
     this.$store.dispatch('layouts/setProfileMounted', true);
     const fields = this.fields;
     const userInf = this.$store.state.application.userInfo;
-    fields.email = userInf.email;
+
+    const $route = this.$route;
+    if($route.query.phone){
+      fields.mobile = $route.query.phone;
+    }
+
     if(this.$store.state.layouts.isWithoutRequest){
       this.$store.dispatch('layouts/setWithoutRequest',false);
     }
 
-    if(!this.isPreview('email')){
-      this.readyValidForm();
-    }
+    this.readyValidForm();
   },
   beforeDestroy() {
 
@@ -91,7 +83,7 @@ export default {
 
   },
   methods: {
-    saveEmail(e,{calbDone}){
+    goToOtp(e,{calbDone}){
       const vm = this;
       if(vm.loading)return;
 
@@ -99,7 +91,7 @@ export default {
         const fields = this.fields;
 
         const vars = {
-          email: langTools.convertToEnNum(fields.email),
+          mobile: langTools.convertToEnNum(fields.mobile),
         }
 
         vm.loading = true;
@@ -110,7 +102,7 @@ export default {
             if(resp){
               if(calbDone)calbDone(resp);
               await this.$store.dispatch('application/updateEmail');
-              this.goToNextLvl();
+              this.goToNextLvl(fields.mobile);
               // this.goProfile();
             }
           })
@@ -135,18 +127,14 @@ export default {
     goProfile(){
       this.$router.replace({path:`/profile/`});
     },
-    goToNextLvl(){
-      this.$router.push({path:`/verify-email/`,query:{step:2}});
-    },
-    cancelEmail(){
-      if(this.loading)return;
-      this.$router.replace({path:`/profile/`})
+    goToNextLvl(mobile){
+      this.$router.push({path:`/login-register/`,query:{step:2,phone:mobile}});
     },
     isValidSubmit(){
       this.readyValidForm();
-      const email = this.validators['email'];
+      const mobile = this.validators['mobile'];
 
-      const res1 = email.chkValidAndShow('فیلد ایمیل نمی‌تواند خالی باشد');
+      const res1 = mobile.chkValidAndShow('فیلد شماره موبایل نمی‌تواند خالی باشد');
       if(!res1){
         return false;
       }

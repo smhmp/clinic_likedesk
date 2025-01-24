@@ -1,0 +1,444 @@
+.ticketCamp {
+direction: rtl;
+
+  .elementor-screen-only, .screen-reader-text, .screen-reader-text span, .ui-helper-hidden-accessible {
+    position: absolute;
+    top: -10000em;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0
+  }
+
+
+
+
+  /*! elementor-icons - v5.31.0 - 20-08-2024 */
+  @font-face {
+    font-family: eicons;
+    src: url("");
+    src: url("") format("embedded-opentype"),url("~assets/imgs/ticket-campaign/eicons.woff2") format("woff2"),url("~assets/imgs/ticket-campaign/eicons.woff") format("woff"),url("~assets/imgs/ticket-campaign/eicons.ttf") format("truetype"),url("") format("svg");
+    font-weight: 400;
+    font-style: normal
+  }
+
+  [class*=" eicon-"],[class^=eicon] {
+    display: inline-block;
+    font-family: eicons;
+    font-size: inherit;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+  }
+
+  @keyframes a {
+    0% {
+      transform: rotate(0deg)
+    }
+
+    to {
+      transform: rotate(359deg)
+    }
+  }
+
+
+  .eicon-youtube:before {
+    content: "\e876"
+  }
+
+  .eicon-flip-box:before {
+    content: "\e877"
+  }
+
+  .eicon-settings:before {
+    content: "\e878"
+  }
+
+  .eicon-headphones:before {
+    content: "\e879"
+  }
+
+  .eicon-testimonial:before {
+    content: "\e87a"
+  }
+
+  .eicon-counter-circle:before {
+    content: "\e87b"
+  }
+
+  .eicon-person:before {
+    content: "\e87c"
+  }
+
+  .eicon-chevron-right:before {
+    content: "\e87d"
+  }
+
+  .eicon-chevron-left:before {
+    content: "\e87e"
+  }
+
+  .eicon-close:before {
+    content: "\e87f"
+  }
+
+  .eicon-file-download:before {
+    content: "\e880"
+  }
+
+  .eicon-save:before {
+    content: "\e881"
+  }
+
+  .eicon-zoom-in:before {
+    content: "\e882"
+  }
+
+  .eicon-shortcode:before {
+    content: "\e883"
+  }
+
+
+
+
+
+  /**
+   * Swiper 8.4.5
+   * Most modern mobile touch slider and framework with hardware accelerated transitions
+   * https://swiperjs.com
+   *
+   * Copyright 2014-2022 Vladimir Kharlampidi
+   *
+   * Released under the MIT License
+   *
+   * Released on: November 21, 2022
+   */
+  @font-face {
+    font-family: swiper-icons;
+    src: url("");
+    font-weight: 400;
+    font-style: normal
+  }
+
+  :root {
+    --swiper-theme-color: #007aff
+  }
+
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1
+  }
+
+  .swiper-vertical>.swiper-wrapper {
+    flex-direction: column
+  }
+
+  .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box
+  }
+
+  .swiper-android .swiper-slide,.swiper-wrapper {
+    transform: translate3d(0px,0,0)
+  }
+
+  .swiper-pointer-events {
+    touch-action: pan-y
+  }
+
+  .swiper-pointer-events.swiper-vertical {
+    touch-action: pan-x
+  }
+
+  .swiper-button-next,.swiper-rtl .swiper-button-prev {
+    right: 10px;
+    left: auto
+  }
+
+  .swiper-button-next:after,.swiper-rtl .swiper-button-prev:after {
+    content: 'next'
+  }
+
+  .swiper-button-lock {
+    display: none
+  }
+
+  .swiper-pagination {
+    position: absolute;
+    text-align: center;
+    transition: .3s opacity;
+    transform: translate3d(0,0,0);
+    z-index: 10
+  }
+
+  .swiper-pagination.swiper-pagination-hidden {
+    opacity: 0
+  }
+
+  .swiper-pagination-disabled>.swiper-pagination,.swiper-pagination.swiper-pagination-disabled {
+    display: none!important
+  }
+
+  .swiper-horizontal>.swiper-pagination-bullets,.swiper-pagination-bullets.swiper-pagination-horizontal,.swiper-pagination-custom,.swiper-pagination-fraction {
+    bottom: 10px;
+    left: 0;
+    width: 100%
+  }
+
+  .swiper-pagination-bullets-dynamic {
+    overflow: hidden;
+    font-size: 0
+  }
+
+  .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+    transform: scale(.33);
+    position: relative
+  }
+
+  .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active {
+    transform: scale(1)
+  }
+
+  .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main {
+    transform: scale(1)
+  }
+
+  .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev {
+    transform: scale(.66)
+  }
+
+  .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev {
+    transform: scale(.33)
+  }
+
+  .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next {
+    transform: scale(.66)
+  }
+
+  .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next {
+    transform: scale(.33)
+  }
+
+  .swiper-pagination-bullet {
+    width: var(--swiper-pagination-bullet-width,var(--swiper-pagination-bullet-size,8px));
+    height: var(--swiper-pagination-bullet-height,var(--swiper-pagination-bullet-size,8px));
+    display: inline-block;
+    border-radius: 50%;
+    background: var(--swiper-pagination-bullet-inactive-color,#000);
+    opacity: var(--swiper-pagination-bullet-inactive-opacity, .2)
+  }
+
+  button.swiper-pagination-bullet {
+    border: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none
+  }
+
+  .swiper-pagination-clickable .swiper-pagination-bullet {
+    cursor: pointer
+  }
+
+  .swiper-pagination-bullet:only-child {
+    display: none!important
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: var(--swiper-pagination-bullet-opacity, 1);
+    background: var(--swiper-pagination-color,var(--swiper-theme-color))
+  }
+
+  .swiper-pagination-vertical.swiper-pagination-bullets,.swiper-vertical>.swiper-pagination-bullets {
+    right: 10px;
+    top: 50%;
+    transform: translate3d(0px,-50%,0)
+  }
+
+
+
+
+
+
+  .elementor-element .swiper-container .elementor-swiper-button,.elementor-element .swiper-container~.elementor-swiper-button,.elementor-element .swiper .elementor-swiper-button,.elementor-element .swiper~.elementor-swiper-button,.elementor-lightbox .swiper-container .elementor-swiper-button,.elementor-lightbox .swiper-container~.elementor-swiper-button,.elementor-lightbox .swiper .elementor-swiper-button,.elementor-lightbox .swiper~.elementor-swiper-button {
+    position: absolute;
+    display: inline-flex;
+    z-index: 1;
+    cursor: pointer;
+    font-size: 25px;
+    color: hsla(0,0%,93.3%,.9);
+    top: 50%;
+    transform: translateY(-50%)
+  }
+
+  .elementor-element .swiper-container .elementor-swiper-button svg,.elementor-element .swiper-container~.elementor-swiper-button svg,.elementor-element .swiper .elementor-swiper-button svg,.elementor-element .swiper~.elementor-swiper-button svg,.elementor-lightbox .swiper-container .elementor-swiper-button svg,.elementor-lightbox .swiper-container~.elementor-swiper-button svg,.elementor-lightbox .swiper .elementor-swiper-button svg,.elementor-lightbox .swiper~.elementor-swiper-button svg {
+    fill: hsla(0,0%,93.3%,.9);
+    height: 1em;
+    width: 1em
+  }
+
+  .elementor-element.elementor-pagination-position-outside .swiper,.elementor-element.elementor-pagination-position-outside .swiper-container,.elementor-lightbox.elementor-pagination-position-outside .swiper,.elementor-lightbox.elementor-pagination-position-outside .swiper-container {
+    padding-bottom: 30px
+  }
+
+  .elementor-element.elementor-pagination-position-outside .swiper-container .elementor-swiper-button,.elementor-element.elementor-pagination-position-outside .swiper-container~.elementor-swiper-button,.elementor-element.elementor-pagination-position-outside .swiper .elementor-swiper-button,.elementor-element.elementor-pagination-position-outside .swiper~.elementor-swiper-button,.elementor-lightbox.elementor-pagination-position-outside .swiper-container .elementor-swiper-button,.elementor-lightbox.elementor-pagination-position-outside .swiper-container~.elementor-swiper-button,.elementor-lightbox.elementor-pagination-position-outside .swiper .elementor-swiper-button,.elementor-lightbox.elementor-pagination-position-outside .swiper~.elementor-swiper-button {
+    top: calc(50% - 30px / 2)
+  }
+
+  .elementor-element .elementor-swiper,.elementor-lightbox .elementor-swiper {
+    position: relative
+  }
+
+  .elementor-element .elementor-main-swiper,.elementor-lightbox .elementor-main-swiper {
+    position: static
+  }
+
+
+
+
+
+
+  .elementor-widget-reviews .elementor-testimonial__image img {
+    width: 36px;
+    height: 36px
+  }
+
+  .elementor-widget-reviews .elementor-testimonial__icon {
+    margin-inline-start:auto;font-size: 17px
+  }
+
+  .elementor-widget-reviews .elementor-testimonial__icon .fa+.fa {
+    margin-inline-start:.15em}
+
+  .elementor-widget-reviews .elementor-testimonial__icon.elementor-icon {
+    color: var(--e-testimonial-icon-color)
+  }
+
+  .elementor-widget-reviews .elementor-testimonial__icon.elementor-icon-android {
+    --e-testimonial-icon-color: #a4c639
+  }
+
+
+  .elementor-widget-reviews .elementor-testimonial__content {
+    padding-block-start:6px;padding-block-end:15px}
+
+  .elementor-widget-reviews .elementor-testimonial__content,.elementor-widget-reviews .elementor-testimonial__header {
+    padding-inline-start:15px;padding-inline-end:15px}
+
+  .elementor-widget-reviews.elementor-review--has-separator .elementor-testimonial__header {
+    border-block-end:1px solid #e1e8ed}
+
+  .swiper-pagination-bullets {
+    color: #fff;
+    cursor: default
+  }
+
+  .swiper-slide {
+    will-change: transform;
+    border-style: solid;
+    border-width: 0;
+    transition-duration: .5s;
+    transition-property: border,background,transform;
+    overflow: hidden
+  }
+
+  .swiper-slide:not(:hover) .e-overlay-animation-fade {
+    opacity: 0
+  }
+
+  .elementor-widget-reviews .elementor-main-swiper,.elementor-widget-testimonial-carousel .elementor-main-swiper {
+    width: 95%
+  }
+
+  .elementor-widget-reviews .swiper-wrapper,.elementor-widget-testimonial-carousel .swiper-wrapper {
+    display: flex;
+    align-items: stretch
+  }
+
+  .elementor-widget-reviews .swiper-slide,.elementor-widget-testimonial-carousel .swiper-slide {
+    height: auto
+  }
+
+  .elementor-widget-reviews.elementor-pagination-type-bullets .swiper,.elementor-widget-reviews.elementor-pagination-type-bullets .swiper-container,.elementor-widget-reviews.elementor-pagination-type-fraction .swiper,.elementor-widget-reviews.elementor-pagination-type-fraction .swiper-container,.elementor-widget-testimonial-carousel.elementor-pagination-type-bullets .swiper,.elementor-widget-testimonial-carousel.elementor-pagination-type-bullets .swiper-container,.elementor-widget-testimonial-carousel.elementor-pagination-type-fraction .swiper,.elementor-widget-testimonial-carousel.elementor-pagination-type-fraction .swiper-container {
+    padding-bottom: 40px
+  }
+
+  .elementor-widget-reviews .elementor-swiper-button-prev,.elementor-widget-reviews .swiper-container-rtl .elementor-swiper-button-next,.elementor-widget-reviews .swiper-rtl .elementor-swiper-button-next,.elementor-widget-testimonial-carousel .elementor-swiper-button-prev,.elementor-widget-testimonial-carousel .swiper-container-rtl .elementor-swiper-button-next,.elementor-widget-testimonial-carousel .swiper-rtl .elementor-swiper-button-next {
+    left: 0;
+    right: unset
+  }
+
+  .elementor-widget-reviews .elementor-swiper-button-next,.elementor-widget-reviews .swiper-container-rtl .elementor-swiper-button-prev,.elementor-widget-reviews .swiper-rtl .elementor-swiper-button-prev,.elementor-widget-testimonial-carousel .elementor-swiper-button-next,.elementor-widget-testimonial-carousel .swiper-container-rtl .elementor-swiper-button-prev,.elementor-widget-testimonial-carousel .swiper-rtl .elementor-swiper-button-prev {
+    right: 0;
+    left: unset
+  }
+
+
+
+
+
+
+  .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: -25px;
+  }
+
+  .zk-custom-slider-account .swiper-slide {
+    background-image: url("~assets/imgs/ticket-campaign/Subtract-1.png");
+    background-position: center center;
+    background-size: cover;
+    background-color: transparent !important;
+  }
+
+  .zk-account-title {
+    color: #000000;
+    font-size: 13px;
+  }
+
+  .zk-account-dis {
+    color: #8000FF;
+    font-size: 12px;
+  }
+
+  .elementor-testimonial {
+    display: flex;
+    align-items: center;
+    height: 200px;
+  }
+
+  .zk-custom-slider-account p {
+    margin-bottom: 5px;
+  }
+
+  .zk-custom-slider-account .elementor-testimonial__image img {
+    height: auto !important;
+  }
+
+  .zk-custom-slider-account .elementor-testimonial__content {
+    border-right: 1px solid #E6E6E6;
+  }
+
+  .zk-custom-slider-account .swiper-pagination-bullet-active {
+    width: 10px !important;
+    height: 10px !important
+  }
+
+
+}

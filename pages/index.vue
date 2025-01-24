@@ -6,7 +6,7 @@
 export default {
   name:'index',
   created() {
-    this.$router.push({path:`/profile`})
+    this.$router.push({path:`/`})
   },
   computed:{
 

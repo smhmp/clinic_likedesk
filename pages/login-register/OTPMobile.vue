@@ -1,6 +1,6 @@
 <template>
   <div class="otpEmail pgForm content">
-    <page-heading title="تایید ایمیل" hasReturn/>
+    <page-heading title="تایید شماره موبایل" hasReturn/>
     <div class="card">
       <div class="form">
         <div class="illustration-container">
@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="caption">
-          <span>کد ارسال شده به آدرس ایمیل </span><span class="ltr"> {{email}} </span><span> را وارد کنید.</span>
+          <span>کد ارسال شده به شماره موبایل </span><span class="ltr"> {{mobile}} </span><span> را وارد کنید.</span>
         </div>
         <form  class="otp-digits" action="#" name="otp">
           <div class="otp-field">
@@ -59,8 +59,8 @@
       </div>
       <div class="page-otp-controlls">
         <div class="actions dRtl">
-          <div class="text-button" @click="editEmail">
-            <div class="label">ویرایش آدرس ایمیل</div>
+          <div class="text-button" @click="editMobile">
+            <div class="label">ویرایش شماره موبایل</div>
           </div>
           <div class="divider">
             <div class="divider2"></div>
@@ -82,20 +82,20 @@ import {otpActs} from "@/src/js/otp/otpActs";
 import {otpMan} from "@/src/js/otp/otpMan";
 
 export default {
-  name: "OTPEmail",
+  name: "OTPMobile",
   head:{
-    title:'کانکت زرین‌پال | تایید ایمیل'
+    title:'کلینیک اینسایت | تایید ایمیل'
   },
-  components: {AHref, Loaders },
   data() {
     return {
-      email: '',
+      mobile: '',
       otp: '',
     };
   },
   async created() {
     const userInf = this.$store.state.application.userInfo;
-    this.email = userInf.email;
+    const $route = this.$route;
+    this.mobile = userInf.mobile || $route.query.phone;
     $zpl.currRouter = this.$router;
   },
   mounted() {
@@ -115,15 +115,17 @@ export default {
 
   },
   methods: {
-    editEmail(){
+    editMobile(){
       this.$store.dispatch('layouts/setWithoutRequest', true);
-      this.$router.go(-1);
+      // this.$router.go(-1);
+      this.$router.push({path:`/login-register/`,query:{phone:this.mobile}});
     },
   },
   watch:{
 
   },
-  mixins:[]
+  mixins:[],
+  components: {AHref, Loaders },
 };
 </script>
 

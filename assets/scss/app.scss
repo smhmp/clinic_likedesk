@@ -1,11 +1,177 @@
-:root {
-  --text-soft: #747481; //#404050 //#4c4c5d
-  --text-light-soft: #747481; //#404050
-  color-scheme: light only;
-  --sidebar-width: 250px;
-  --primary-new: #624ED6;
-  --primary-new-hover: #624ED6;
-  --primary-new-active: #624ED6;
+// Function to generate hover color
+@function get_color_hover($color) { // background-color: get_color_hover($primary-bg);
+  @return lighten($color, 10%); // Makes the color 10% lighter
+}
+
+// Function to generate active color
+@function get_color_active($color) {// background-color: get_color_active($primary-bg);
+  @return darken($color, 10%); // Makes the color 10% darker
+}
+
+// Function to generate hover or active color with adjustable percentage
+@function get_color_custom($color, $amount) { // background-color: get_color_custom($primary-bg, 10%); // Lighter for hover | background-color: get_color_custom($primary-bg, -10%); // Darker for active
+  @if $amount > 0 {
+    @return lighten($color, $amount);
+  } @else {
+    @return darken($color, abs($amount)); // Darken when amount is negative
+  }
+}
+
+// Function to get a variable from theme maps
+@function __get($key, $theme: $theme-1, $fallback-theme: $theme-1) {
+  @if map-has-key($theme, $key) {
+    @return map-get($theme, $key);
+  } @else {
+    @return map-get($fallback-theme, $key);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+// Theme 1: Based on your original colors
+$theme-1: (
+        primary-bg: #BE6231,
+        primary-txt: #fff9f3,
+        secondary-bg: #3E5239,
+        secondary-txt: #fff,
+        bg-body: linear-gradient(233deg, #ffeeda -4%, #ff873f7a 55%, #fde4cecc 21%),
+        sidebar-mobile-bg: linear-gradient(228deg, #FFEED6 0%, #f1ccb2 73%, #fde4ce 157%),
+        menu-bg-seled: #fff4ea,
+        menu-bg-unseled: null,
+        menu-txt: #616b48,
+        menu-icon-bg-unseled: #fde9d7,
+        menu-icon-stroke-unseled: #000,
+        menu-icon-bg-seled: #616b48,
+        menu-icon-stroke-seled: #fff9f3,
+        menu-arrowIcon-seled: #7B8563,
+        menu-arrowIcon-unseled: #101010,
+        menu-divider: #fde9d7,
+        section-bg: #fff9f3,
+        box-guid-bg: linear-gradient(-81.2deg, #f9f0e8 0%, #f7ebe0 100%),
+        box-guid-border: #f6e2d7,
+        box-act-border: #d9ddcc,
+        title_all: #323531,
+        caption_all: #3a4736,
+        btn_quickProfile_bg: #fff9f3,
+);
+$theme-1-2:(
+        bg-body: linear-gradient(233deg, #fff0df -16%, #e38c5782 71%, #e3c7af 99%),
+);
+$theme-1-3:(
+        bg-body: linear-gradient(233deg, #ffeeda -4%, #ff873f7a 56%, #fde4cecc 100%),
+);
+$theme-1-4:(
+        bg-body: linear-gradient(233deg, #ffffff 0%, #ffe9d6 50%, #ededed 100%),
+);
+$theme-1-5:(
+        bg-body: linear-gradient(233deg, #f7efe7 -4%, #f7efe7 55%, #f5e6dc 21%),
+);
+$theme-1-6:(
+        bg-body: #f7efe7,
+);
+
+// Theme Classes
+.theme-1 {
+  --primary-bg: #{__get(primary-bg)};
+  --primary-txt: #{__get(primary-txt)};
+  --secondary-bg: #{__get(secondary-bg)};
+  --secondary-txt: #{__get(secondary-txt)};
+  --bg-body: #{__get(bg-body)};
+  --menu-bg-seled: #{__get(menu-bg-seled)};
+  --menu-bg-unseled: #{__get(menu-bg-unseled)};
+  --menu-txt: #{__get(menu-txt)};
+  --menu-icon-stroke-unseled: #{__get(menu-icon-stroke-unseled)};
+  --menu-icon-bg-unseled: #{__get(menu-icon-bg-unseled)};
+  --menu-arrowIcon-seled: #{__get(menu-arrowIcon-seled)};
+  --menu-arrowIcon-unseled: #{__get(menu-arrowIcon-unseled)};
+  --section-bg: #{__get(section-bg)};
+  --box-guid-bg: #{__get(box-guid-bg)};
+  --box-guid-border: #{__get(box-guid-border)};
+  --box-act-border: #{__get(box-act-border)};
+  --menu-divider: #{__get(menu-divider)};
+  --title_all: #{__get(title_all)};
+  --caption_all: #{__get(caption_all)};
+  --btn_quickProfile_bg: #{__get(btn_quickProfile_bg)};
+  --sidebar-mobile-bg: #{__get(sidebar-mobile-bg)};
+  --menu-icon-bg-seled: #{__get(menu-icon-bg-seled)};
+  --menu-icon-stroke-seled: #{__get(menu-icon-stroke-seled)};
+
+  &.theme-1-2{
+    --bg-body: #{__get(bg-body,$theme-1-2)};
+  }
+
+  &.theme-1-3{
+    --bg-body: #{__get(bg-body,$theme-1-3)};
+  }
+
+  &.theme-1-4{
+    --bg-body: #{__get(bg-body,$theme-1-4)};
+  }
+
+  &.theme-1-5{
+    --bg-body: #{__get(bg-body,$theme-1-5)};
+  }
+
+  &.theme-1-6{
+    --bg-body: #{__get(bg-body,$theme-1-6)};
+  }
+}
+
+
+
+
+// Theme 2: Based on my suggested colors
+$theme-2: (
+        primary-bg: #BE6231,
+        secondary-bg: #3E5239,
+        bg-body: linear-gradient(233deg, #FFEED6 0%, #FFC490 50%, #FDE4CE 100%),
+        menu-bg-seled:#FDE9D7,
+        menu-txt: #616B48,
+        menu-icon-stroke-unseled: #6B6B6B,
+        menu-icon-bg-unseled: #fff9f3,
+        section-bg: #FFF9F3,
+        box-guid-bg: linear-gradient(-81.2deg, #F9F0E8 0%, #F7E6D9 100%),
+        box-guid-border: #D9DDCC,
+        menu-divider: #FDE9D7,
+        title_all: #323531,
+        caption_all: #3A4736,
+        sidebar-mobile-bg: linear-gradient(228deg, #FFEED6 0%, #F7CCB2 100%),
+);
+
+
+// Theme Classes
+.theme-2 {
+  --primary-bg: #{__get(primary-bg,$theme-2)};
+  --primary-txt: #{__get(primary-txt,$theme-2)};
+  --secondary-bg: #{__get(secondary-bg,$theme-2)};
+  --secondary-txt: #{__get(secondary-txt,$theme-2)};
+  --bg-body: #{__get(bg-body,$theme-2)};
+  --menu-bg-seled: #{__get(menu-bg-seled,$theme-2)};
+  --menu-bg-unseled: #{__get(menu-bg-unseled,$theme-2)};
+  --menu-txt: #{__get(menu-txt,$theme-2)};
+  --menu-icon-stroke-unseled: #{__get(menu-icon-stroke-unseled,$theme-2)};
+  --menu-icon-bg-unseled: #{__get(menu-icon-bg-unseled,$theme-2)};
+  --menu-arrowIcon-seled: #{__get(menu-arrowIcon-seled,$theme-2)};
+  --menu-arrowIcon-unseled: #{__get(menu-arrowIcon-unseled,$theme-2)};
+  --section-bg: #{__get(section-bg,$theme-2)};
+  --box-guid-bg: #{__get(box-guid-bg,$theme-2)};
+  --box-guid-border: #{__get(box-guid-border,$theme-2)};
+  --box-act-border: #{__get(box-act-border,$theme-2)};
+  --menu-divider: #{__get(menu-divider,$theme-2)};
+  --title_all: #{__get(title_all,$theme-2)};
+  --caption_all: #{__get(caption_all,$theme-2)};
+  --btn_quickProfile_bg: #{__get(btn_quickProfile_bg,$theme-2)};
+  --sidebar-mobile-bg: #{__get(sidebar-mobile-bg,$theme-2)};
+  --menu-icon-bg-seled: #{__get(menu-icon-bg-seled,$theme-2)};
+  --menu-icon-stroke-seled: #{__get(menu-icon-stroke-seled,$theme-2)};
 }
 
 @import './global/_config';
@@ -31,6 +197,7 @@
 @import './components/NavLink';
 @import './components/services';
 @import './components/MyUpload';
+//@import './components/ticket-campaign';
 
 @import './global/pages';
 @import './global/progress';

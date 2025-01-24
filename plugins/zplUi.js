@@ -233,7 +233,7 @@ export const $zplUi={
     }
   },
   animateMove({deadTime=0,untilNum,token={}},calbChange){
-    let start, previousTimeStamp;
+    let start, previousTimeStamp,count;
     let done = false;
     token.wheelOccured = false;
     function step(timeStamp) {
@@ -243,14 +243,18 @@ export const $zplUi={
       const elapsed = timeStamp - start;
 
       if (previousTimeStamp !== timeStamp) {
-        const count = calbChange(elapsed,untilNum)
-        if (count === untilNum) done = true;
+        count = calbChange({elapsed, untilNum, count,token})
+        if (count === untilNum || token.isDone) done = true;
       }
 
       if (!deadTime || elapsed < deadTime) {// Stop the animation after 2 seconds
         previousTimeStamp = timeStamp;
         if (!done && !token.wheelOccured) {
           window.requestAnimationFrame(step);
+        }
+        else if(token.callEndOccured){
+            token.endOccured = true;
+            calbChange({elapsed, untilNum, count,token})
         }
       }
     }
@@ -342,6 +346,21 @@ export const $zplUi={
   mkKeySens(subj=''){
     return new this.KeySens(subj)
   },
+  addStyle(id, href) {
+    let styleElement = document.getElementById(id);
+    if (!styleElement) {
+      styleElement = document.createElement('link');
+      styleElement.id = id;
+      styleElement.href = href;
+      document.body.appendChild(styleElement);
+    }
+  },
+  removeStyle(id) {
+    const styleElement = document.getElementById(id);
+    if (styleElement) {
+      styleElement.remove();
+    }
+  }
 }
 
 export default ({ app }, inject) => {

@@ -57,7 +57,9 @@ export default class SelectPro extends SmartObj{
     this.label = selectInput.querySelector('label');
     this.label.textContent = ttlLbl
     this.searchInput = selectWrapper.querySelector('.search');
-    this.searchInput.placeholder = `جستجوی ${ttlLbl}`
+    if(!configs.offSearch){
+        this.searchInput.placeholder = `جستجوی ${ttlLbl}`
+    }
 
     this.selInput = FieldObj.newField(fieldObj.fieldElm);
     const selInputText = selectWrapper.querySelector('.inpEnter') as HTMLInputElement
@@ -74,22 +76,24 @@ export default class SelectPro extends SmartObj{
 
     this.searchDataGenerator(dataOptions)
 
-    $zplUi.adev(this.searchInput,['keyup','keydown'], (e,evTyp) => {
-      if(evTyp === 'keyup'){
-        this.onSearch(e.target as HTMLInputElement);
-      }
-      else{
-        const kstr = zpl.getEvStrKey({evTyp, e})
-        if(kstr === 'arrowdown'||kstr === 'arrowup'){
-          zpl.prevUp(e)
-          this.doNexBefOption(e,kstr)
-        }
-      }
-    })
+      if(!configs.offSearch){
+          $zplUi.adev(this.searchInput,['keyup','keydown'], (e,evTyp) => {
+              if(evTyp === 'keyup'){
+                  this.onSearch(e.target as HTMLInputElement);
+              }
+              else{
+                  const kstr = zpl.getEvStrKey({evTyp, e})
+                  if(kstr === 'arrowdown'||kstr === 'arrowup'){
+                      zpl.prevUp(e)
+                      this.doNexBefOption(e,kstr)
+                  }
+              }
+          })
 
-    this.searchInput.addEventListener('focus', (e) => {
-      this.doFocus(e)
-    })
+          this.searchInput.addEventListener('focus', (e) => {
+              this.doFocus(e)
+          })
+      }
 
     /*this.searchInput.addEventListener('blur', (e) => {
       this.doblur(e)
@@ -129,7 +133,9 @@ export default class SelectPro extends SmartObj{
   clickField(){
     this.optionsWrapper.classList.remove('hidden')
     this.label.classList.add('hidden');
-    this.searchInput.focus()
+    if(!this.configs.offSearch){
+        this.searchInput.focus()
+    }
   }
 
   selectOpt(code){

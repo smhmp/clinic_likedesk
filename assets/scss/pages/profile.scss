@@ -7,6 +7,7 @@
   justify-content: flex-start;
   flex: 1;
   position: relative;
+  width: 100%;
 
   @media (max-width: 628px) {
     padding: 10px;
@@ -14,10 +15,10 @@
 
   .page-heading {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: row;
+    gap: 10px;
     align-items: flex-end;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-self: stretch;
     flex-shrink: 0;
     position: relative;
@@ -38,7 +39,7 @@
     position: relative;
   }
   .title {
-    color: var(--text-default, #2e2e38);
+    color: var(--title_all);
     text-align: right;
     font-family: "IranYekanX-DemiBold", sans-serif;
     font-size: 20px;
@@ -48,7 +49,7 @@
     flex: 1;
   }
   .caption {
-    color: var(--text-soft, #747481);
+    color: var(--caption_all);
     text-align: right;
     font-family: "IranYekanX-Medium", sans-serif;
     font-size: 14px;
@@ -58,7 +59,7 @@
     align-self: stretch;
   }
   .card {
-    background: var(--surface-default, #ffffff);
+    background: var(--section-bg);
     border-radius: 16px;
     padding: 24px;
     display: flex;
@@ -76,16 +77,7 @@
     }
   }
   .level-progress {
-    background: linear-gradient(
-                    -81.2deg,
-                    rgba(249, 249, 255, 1) 0%,
-                    rgba(251, 251, 255, 1) 100%
-    );
-    border-radius: 12px;
-    border-style: solid;
-    border-color: var(--surfaceprimary-default, #f1f4fe);
-    border-width: 1px;
-    padding: 24px;
+    padding: 36px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -95,6 +87,10 @@
     flex-shrink: 0;
     position: relative;
     padding-left: 14px;
+    overflow: auto;
+    max-width: 100%;
+    direction: rtl;
+    padding-bottom: 10px;
 
     &.loading{
 
@@ -109,7 +105,7 @@
     }
 
     @media (max-width: 628px) {
-      padding-right: 12px;
+      padding-right: 18px;
     }
 
     @media (max-width: 368px) {
@@ -157,7 +153,7 @@
   .card2 {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 6px;
     align-items: flex-end;
     justify-content: flex-start;
     flex: 1;
@@ -198,7 +194,7 @@
     font-weight: 400;
   }
   .caption2 {
-    color: var(--text-soft, #747481);
+    color: var(--caption_all);
     text-align: right;
     font-family: "-", sans-serif;
     font-size: 14px;
@@ -209,14 +205,14 @@
     direction: rtl;
   }
   .caption-2-span {
-    color: var(--text-soft, #747481);
+    color: var(--caption_all);
     font-family: "IranYekanX-Medium", sans-serif;
     font-size: 14px;
     line-height: 24px;
     font-weight: 500;
   }
   .caption-2-span2 {
-    color: var(--text-soft, #747481);
+    color: var(--caption_all);
     font-family: "IranYekanX-DemiBold", sans-serif;
     font-size: 14px;
     line-height: 24px;
@@ -225,7 +221,6 @@
   .lineProgresSection {
     align-self: stretch;
     flex-shrink: 0;
-    height: 72px;
     position: relative;
   }
 
@@ -291,13 +286,13 @@
     position: relative;
   }
   .group3 {
-    width: 48.61%;
-    height: 62.5%;
+    width: 100%;
+    height: 100%;
     position: absolute;
-    right: 25.7%;
-    left: 25.69%;
-    bottom: 18.75%;
-    top: 18.75%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
     overflow: visible;
   }
   .levelWait {
@@ -426,7 +421,7 @@
     direction: rtl;
   }
   .caption3 {
-    color: var(--text-soft, #747481);
+    color: var(--caption_all);
     text-align: right;
     font-family: "IranYekanX-Medium", sans-serif;
     font-size: 12px;
@@ -438,7 +433,7 @@
   .block {
     border-radius: 12px;
     border-style: solid;
-    border-color: var(--border-divider, #eeeef1);
+    border-color: var(--box-act-border);
     border-width: 1px;
     display: flex;
     flex-direction: column;
@@ -451,7 +446,7 @@
     overflow: hidden;
   }
   .heading3 {
-    padding: 24px 24px 16px 24px;
+    padding: 10px 24px 6px 24px;
     display: flex;
     flex-direction: row;
     gap: 16px;
@@ -471,7 +466,7 @@
     position: relative;
   }
   .title2 {
-    color: var(--text-default, #2e2e38);
+    color: var(--title_all);
     text-align: right;
     font-family: "IranYekanX-DemiBold", sans-serif;
     font-size: 16px;
@@ -481,7 +476,7 @@
     align-self: stretch;
   }
   .caption4 {
-    color: var(--text-soft, #747481);
+    color: var(--caption_all);
     text-align: right;
     font-family: "IranYekanX-Medium", sans-serif;
     font-size: 12px;
@@ -520,7 +515,7 @@
     }
 
     .vector {
-       top: -56px;
+       top: -50px;
        left: 0px;
     }
   }
@@ -816,14 +811,10 @@
 }
 .inline-message_profile {
   direction: rtl;
-  background: linear-gradient(
-                  -81.2deg,
-                  rgba(249, 249, 255, 1) 0%,
-                  rgba(251, 251, 255, 1) 100%
-  );
+  background: var(--box-guid-bg);
+  border-color: var(--box-guid-border);
   border-radius: 8px;
   border-style: solid;
-  border-color: var(--surfaceprimary-default, #f1f4fe);
   border-width: 1px;
   padding: 24px;
   display: flex;
@@ -862,7 +853,7 @@
     font-weight: 500;
   }
   .body-span2 {
-    color: var(--interactive-link, #0a33ff);
+    color: #611F11;
     font-family: "IranYekanX-Medium", sans-serif;
     font-size: 14px;
     line-height: 24px;
@@ -894,7 +885,22 @@
 }
 
 
+.cardBox{
+  background: var(--box-guid-bg);
+  border-color: var(--box-guid-border);
+  border-radius: 12px;
+  border-style: solid;
+  border-width: 1px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
 
-
-
-
+.cardTitle{
+  padding:12px;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  padding-bottom: 22px;
+  padding-right: 26px;
+}

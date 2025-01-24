@@ -10,12 +10,27 @@
             <div class="profile-fill">
               <img class="group2" src="@/assets/imgs/autohtml-all1/group1.svg" />
             </div>
-            <img :src="gravatar" class="iconGravatar">
+            <img v-if="Permissions.isLogedin()" :src="gravatar" class="iconGravatar">
           </div>
           <div class="tempFocusBox" v-if="showMenu1">
             <div class="div1 divA1" @click="onCloseMenu"></div>
             <div class="div2 drop-down-profile">
               <div class="divA2-1">
+                <div class="sub-menu pointer" @click="goingToEvents">
+                  <a class="logout">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M22 15.236V18C22 18.552 21.552 19 21 19H3C2.448 19 2 18.552 2 18V15.236C2 15.091 2.082 14.959 2.211 14.894V14.894C3.308 14.346 4 13.226 4 12V12C4 10.774 3.307 9.654 2.211 9.106V9.106C2.082 9.041 2 8.909 2 8.764V6C2 5.448 2.448 5 3 5H21C21.552 5 22 5.448 22 6V8.764C22 8.909 21.918 9.041 21.789 9.106L21.745 9.129C20.673 9.685 20 10.792 20 12V12C20 13.225 20.692 14.346 21.788 14.894H21.789C21.918 14.959 22 15.091 22 15.236Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M10 18L10 6" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="1.5 3"></path>
+                    </svg>
+                    <span class="logout">َشرکت در دورهمی</span>
+                  </a>
+                </div>
+                <div class="sub-menu pointer" @click="goingToProfile">
+                  <a class="logout">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" class="inline-block"><path d="M16.6666 16.6667V16.0417C16.6666 14.0857 15.0809 12.5 13.1249 12.5H6.87492C4.91891 12.5 3.33325 14.0857 3.33325 16.0417V16.6667" stroke="#000" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path> <ellipse cx="10.0001" cy="5.83333" rx="3.33333" ry="3.33333" stroke="#000" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></ellipse></svg>
+                    <span class="logout">پنل کاربری</span>
+                  </a>
+                </div>
                 <div class="sub-menu pointer" @click="goingToLogout">
                   <a class="logout">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,138 +50,14 @@
             </div>
           </div>
         </div>
-        <div class="flex items-center">
-          <a class="notifIcon" :href="notifUrl" target="_blank">
-            <svg v-if="hasNotif" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M7 17.2222H5C3.895 17.2222 3 16.3769 3 15.3333V5.88889C3 4.84528 3.895 4 5 4H19C20.105 4 21 4.84528 21 5.88889V15.3333C21 16.3769 20.105 17.2222 19 17.2222H12.875L8.665 20.7592C8.02 21.3013 7 20.8687 7 20.0537V17.2222Z" stroke="#393946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M7 8.5H17" stroke="#393946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M7 12.5H14" stroke="#393946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M7 17.2222H5C3.895 17.2222 3 16.3769 3 15.3333V5.88889C3 4.84528 3.895 4 5 4H19C20.105 4 21 4.84528 21 5.88889V15.3333C21 16.3769 20.105 17.2222 19 17.2222H12.875L8.665 20.7592C8.02 21.3013 7 20.8687 7 20.0537V17.2222Z" stroke="#393946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M7 8.5H17" stroke="#393946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M7 12.5H14" stroke="#393946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </a>
-          <div :class="['services-action',{didFocused:showMenu2}]" @mousedown="(e)=>{$zpl.prevEvery(e)}" @dblclick="(e)=>{$zpl.prevEvery(e)}" @click="onMenu2">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="5.5" cy="5.5" r="1.5" fill="#393946"/>
-              <circle cx="12" cy="5.5" r="1.5" fill="#393946"/>
-              <circle cx="18.5" cy="5.5" r="1.5" fill="#393946"/>
-              <circle cx="5.5" cy="12" r="1.5" fill="#393946"/>
-              <circle cx="12" cy="12" r="1.5" fill="#393946"/>
-              <circle cx="18.5" cy="12" r="1.5" fill="#393946"/>
-              <circle cx="5.5" cy="18.5" r="1.5" fill="#393946"/>
-              <circle cx="12" cy="18.5" r="1.5" fill="#393946"/>
-              <circle cx="18.5" cy="18.5" r="1.5" fill="#393946"/>
-            </svg>
-            <div class="tempFocusBox cube" v-if="showMenu2">
-              <div class="div1" @click="onCloseCube"></div>
-              <div class="div2">
-                <div ref="gridBoxRef" class="div2-1"  @click="(e)=>{$zpl.prevUp(e)}">
-                  <div class="services">
-                    <div class="header">
-                      <div class="title">خدمات زرین‌پال</div>
-                    </div>
-                    <div class="services-container">
-                      <div class="row">
-                        <a href="https://www.zarincrowd.com/" class="service-item" target="_blank">
-                          <img class="service-logos" src="@/assets/imgs/services/service-logos0.svg" />
-                          <div class="name">زرین‌کراد</div>
-                        </a>
-                        <a href="https://www.zarinpal.com/" class="service-item" target="_blank">
-                          <img class="service-logos2" src="@/assets/imgs/services/service-logos1.svg" />
-                          <div class="name">زرین‌پال</div>
-                        </a>
-                        <a href="/profile" class="service-item" target="_blank">
-                          <div class="avatar">
-                            <img class="image" :src="gravatar" />
-                          </div>
-                          <div class="name">کانکت</div>
-                        </a>
-                      </div>
-                      <div class="row">
-                        <a href="https://www.zarinbit.com/" class="service-item" target="_blank">
-                          <img class="service-logos3" src="@/assets/imgs/services/service-logos2.svg" />
-                          <div class="name">زرین‌بیت</div>
-                        </a>
-                        <a href="https://www.zarinplus.com/" class="service-item" target="_blank">
-                          <img class="service-logos4" src="@/assets/imgs/services/service-logos3.svg" />
-                          <div class="name">زرین‌پلاس</div>
-                        </a>
-                        <a href="https://neozarin.com/" class="service-item" target="_blank">
-                          <img class="service-logos5" src="@/assets/imgs/services/service-logos4.svg" />
-                          <div class="name">نئوزرین</div>
-                        </a>
-                      </div>
-                      <div class="row">
-                        <a href="https://www.zarindax.com/" class="service-item" target="_blank">
-                          <img class="service-logos6" src="@/assets/imgs/services/service-logos5.svg" />
-                          <div class="name">زرین‌دکس</div>
-                        </a>
-                        <a href="https://www.zarinexpress.com/" class="service-item" target="_blank">
-                          <img class="service-logos7" src="@/assets/imgs/services/service-logos6.svg" />
-                          <div class="name">زرین‌اکسپرس</div>
-                        </a>
-                        <a href="https://www.zarinlend.ir/" class="service-item" target="_blank">
-                          <img class="service-logos8" src="@/assets/imgs/services/service-logos7.svg" />
-                          <div class="name">زرین‌لند</div>
-                        </a>
-                      </div>
-                      <div class="row">
-                        <a href="https://www.donito.me/" class="service-item" target="_blank">
-                          <img class="service-logos9" src="@/assets/imgs/services/service-logos8.svg" />
-                          <div class="name">دونیتو</div>
-                        </a>
-                        <a href="https://ztech.ir/" class="service-item" target="_blank">
-                          <img class="service-logos10" src="@/assets/imgs/services/service-logos9.svg" />
-                          <div class="name">زی‌تک</div>
-                        </a>
-                        <a href="https://www.academyzarin.com/" class="service-item" target="_blank">
-                          <img class="service-logos11" src="@/assets/imgs/services/service-logos10.svg" />
-                          <div class="name">آکادمی‌زرین</div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="more-link">
-                      <a href="https://www.zarinpal.com/docs/" target="_blank" class="nav-link-item">
-                        <div class="lebel">مستندات فنی زرین‌پال</div>
-                        <div class="code-block">
-                          <img class="group" src="@/assets/imgs/services/group0.svg" />
-                        </div>
-                      </a>
-                      <a href="https://www.zarinpal.com/aboutus.html" target="_blank" class="nav-link-item">
-                        <div class="lebel">درباره زرین‌پال</div>
-                        <div class="information-square">
-                          <img class="group2" src="@/assets/imgs/services/group1.svg" />
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="service-badge">
-          <img
-            class="connect-logo"
-            src="@/assets/imgs/connect-logo.svg"
-          />
-        </div>
       </div>
       <div class="right">
-        <div class="zarin-pal-logo">
-          <div class="zarin-pal-logo2">
+        <div class="insight-clinic-logo" @click="goIndex">
+          <div class="bitTitle">کلینیک اینسایت</div>
+          <div class="insight-clinic-logo3">
             <img
-              class="zarin-pal-convert-type-farsi"
-              src="@/assets/imgs/autohtml-all1/zarin-pal-convert-type-farsi0.svg"
-            />
-          </div>
-          <div class="zarin-pal-logo3">
-            <img
-              class="zarin-pal-convert-colorful"
-              src="@/assets/imgs/autohtml-all1/zarin-pal-convert-colorful0.svg"
+              class="clinic"
+              src="@/assets/imgs/autohtml-all1/clinicInsight-logo-black.svg"
             />
           </div>
         </div>
@@ -194,13 +85,13 @@
             </div>
             <div class="body">
               نتیجه ارتقا سطح پس از بررسی به شما اطلاع‌رسانی خواهد شد. اکنون
-              می‌توانید به پنل کاربری زرین‌پال بازگردید.
+              می‌توانید به پنل کاربری اینسایت بازگردید.
             </div>
           </div>
           <ButtonSimple
             :onClkBtn="()=>{}" ButtonSimple
             isLoader="1"
-            val-btn="بازگشت به پنل کاربری زرین‌پال"
+            val-btn="بازگشت به پنل کاربری اینسایت"
             type="primary"
           />
           <ButtonSimple
@@ -217,6 +108,7 @@
 <script>
 import {lg} from "@/src/js/dbg";
 import ButtonSimple from "@/components/form/ButtonSimple.vue";
+import {Permissions} from "@/mixins/PermissionMixin";
 
 export default {
   name: "TopBar",
@@ -246,6 +138,9 @@ export default {
 
   },
   computed: {
+    Permissions() {
+      return Permissions
+    },
     notifUrl(){
       return $zpl.infAdr().panelZplBeta+'/panel/ticket'
     }
@@ -279,11 +174,20 @@ export default {
     goingToLogout(){
       this.goToLogout();
     },
+    goingToProfile(){
+      this.$router.replace({path:`/profile/`});
+    },
+    goingToEvents(){
+      this.$router.replace({path:`/events/`});
+    },
     goToLogout(){
       let url = ''
       url = $zpl.infAdr().rootAuth+'/logout';
       $zpl.redirectUrl(url)
-    }
+    },
+    goIndex(){
+      this.$router.replace({path:`/`});
+    },
   },
   watch:{
 

@@ -116,7 +116,7 @@ import TextAreaSimple from "@/components/form/TextAreaSimple.vue";
 export default {
   name: "FormPersonal",
   head:{
-    title:'کانکت زرین‌پال | پیگیری تراکنش'
+    title:'کلینیک اینسایت | پیگیری تراکنش'
   },
   components: {TextAreaSimple, MyUpload, TooltipPro, DatePickerInline, PreviewPersonal, ButtonSimple, EasyChkBox, TextInput, AHref, Loaders,RadioCard },
   data() {
@@ -161,7 +161,7 @@ export default {
   },
   computed: {
     caption(){
-      let str = 'جهت درخواست پیگیری تراکنش فرم زیر را تکمیل کنید. درخواست شما در قالب تیکت‌ برای پشتیبانی زرین‌پال ارسال خواهد شد و نتیجه از طریق پیامک و بخش‌ ';
+      let str = 'جهت درخواست پیگیری تراکنش فرم زیر را تکمیل کنید. درخواست شما در قالب تیکت‌ برای پشتیبانی اینسایت ارسال خواهد شد و نتیجه از طریق پیامک و بخش‌ ';
       str+=`<a class="outLink" href="${$zpl.infAdr().panelZplBeta+'/panel/ticket/'}" target="_blank">تیکت‌ها</a>`;
       str+=` به اطلاع شما خواهد رسید.`
       return str;
@@ -274,7 +274,7 @@ export default {
       EventBus.$emit("openModalPro", 'modalNotif',{
         mainTitle:'درخواست پیگیری تراکنش ارسال شد',
         descHtml(){
-          return  'نتیجه درخواست پس از بررسی کارشناسان امور مشتریان زرین‌پال، از طریق تیکت به اطلاع شما خواهد رسید.'
+          return  'نتیجه درخواست پس از بررسی کارشناسان امور مشتریان اینسایت، از طریق تیکت به اطلاع شما خواهد رسید.'
         },
         btnInf:[
           {

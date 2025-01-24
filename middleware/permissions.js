@@ -32,4 +32,9 @@ export default async ({ store, route, redirect }) => {
       redirect({ name: "profile___fa" })
     }
   }
+  else if(!Permissions.isLogedin()){
+    if (route.path !== '/') {
+      return redirect('/');
+    }
+  }
 };

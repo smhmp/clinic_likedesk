@@ -181,7 +181,7 @@
   position: relative;
 }
 .phone-number4 {
-  color: var(--text-soft, #747481);
+  color: var(--caption_all);
   text-align: right;
   font-family: "IranYekanX-Medium", sans-serif;
   font-size: 12px;
@@ -243,7 +243,7 @@
   position: relative;
 }
 .divider2 {
-  background: #e7e7e7;
+  background: var(--menu-divider);
   flex: 1;
   height: 1px;
   position: relative;

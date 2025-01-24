@@ -1,21 +1,20 @@
 <template>
-  <div :class="['layout-default',{notFound,subPage}]">
+  <div :class="['layout-default theme-1 theme-1-6',{notFound,subPage,'theme-1-4':$route.name === 'index___fa'}]">
     <div class="bg-img">
-      <div class="bg-img2" />
-      <img class="bg-img2" src="@/assets/imgs/autohtml-all1/bg-img1.png" />
     </div>
     <div class="layout profile-master" v-if="(!loading || me.id)">
       <TopBar :onClkMenu="onOpenedSidebar"/>
+      <ContainerLanding v-if="$route.name === 'index___fa'"/>
       <div :class="['container2',{withoutSidebar:!reqSidebar||!showSidebar,mediumScr:$store.state.layouts.mediumScr}]">
         <div v-if="!$store.state.layouts.isProfileMounted" class="" style="opacity: 0;display: flex;flex-direction: column;flex: 1;position: relative;background: #ededed;background-clip: border-box;border-radius: 20px;margin-top: 50px;">
           <div class="" style="padding: 24px;display: flex;flex-direction: column;flex-shrink: 0;position: relative;">
             <div class="" style="height: 500px;"></div>
           </div>
         </div>
-        <Nuxt/>
+        <Nuxt v-if="$route.name !== 'index___fa'"/>
 
         <MenuDrawer :openedSidebar="openedSidebar" :onClose="onCloseSidebar"/>
-        <Sidebar v-if="reqSidebar&showSidebar"/>
+        <Sidebar v-if="reqSidebar&showSidebar && $route.name !== 'index___fa'"/>
         <div v-if="openedSidebar" @click="onCloseSidebar" class="darkFilter sidebar"></div>
 
       </div>
@@ -41,11 +40,12 @@ import ModalPro from "@/components/modals/ModalPro.vue";
 import LevelMixin, {indxLevel} from "@/mixins/LevelMixin";
 import Sidebar from "@/components/SidebarCo.vue";
 import MenuDrawer from "@/components/MenuDrawerCo.vue";
+import ContainerLanding from "@/components/ContainerLanding.vue";
 import {$zplUi} from "@/plugins/zplUi";
 
 export default {
   name: "default",
-  components: {MenuDrawer, Sidebar, ModalPro, Icon, toast,ConfirmModal},
+  components: {MenuDrawer, Sidebar, ModalPro, Icon, toast,ConfirmModal,ContainerLanding},
   data() {
     return {
       notFound: false,
@@ -90,6 +90,9 @@ export default {
     EventBus.$off("openModalPro",this.openModalPro);
   },
   computed: {
+    isLanding(){
+      return true
+    },
     toastMessages() {
       return this.$store.state.application.toastMessage;
     },

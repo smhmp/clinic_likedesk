@@ -3,13 +3,19 @@ import {lg} from "@/src/js/dbg";
 export const Permissions = {
   isSuperVisor(){
     try{
-      return $zpl.storeMan.state.application.userInfo.access == 'supervisor';
+      return $zpl.storeMan.state.application.userInfo?.access == 'supervisor';
     }
     catch (e) {}
   },
   isAdmin(){
     try{
-      return $zpl.storeMan.state.application.userInfo.access == 'admin';
+      return $zpl.storeMan.state.application.userInfo?.access == 'admin';
+    }
+    catch (e) {}
+  },
+  isLogedin(){
+    try{
+      return $zpl.storeMan.state.application.userInfo?.first_name;
     }
     catch (e) {}
   },

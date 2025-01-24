@@ -195,7 +195,7 @@ const zplDev = {
         },3000)
       }
       else if(urlReq.indexOf('/stage')>-1){
-        msgToast+=`<a href="https://stg-my.zarinpal.name/api/v4/docs/graphiql/backOffice" target="_blank">Stg-Link</a>`;
+        msgToast+=`<a href="https://stg-my.insight-clinic.name/api/v4/docs/graphiql/backOffice" target="_blank">Stg-Link</a>`;
         window.setTimeout(()=>{
           cookie.setCookie('v4-access_token',cookie.myPrdToken2,365,'/');
           cookie.setCookie('v4-access_token',cookie.myPrdToken2,365,'/api/');
@@ -203,7 +203,7 @@ const zplDev = {
         },3000)
       }
       else{
-        msgToast+=`<a href="https://next.zarinpal.com/api/v4/docs/graphiql/backOffice" target="_blank">Prd-Link</a>`;
+        msgToast+=`<a href="https://next.insight-clinic.com/api/v4/docs/graphiql/backOffice" target="_blank">Prd-Link</a>`;
         window.setTimeout(()=>{
           cookie.setCookie('v4-access_token',cookie.myPrdToken2,365,'/');
           cookie.setCookie('v4-access_token',cookie.myPrdToken2,365,'/api/');

@@ -16,14 +16,6 @@
         <div class="account-details">
           <div class="full-name2">{{ nameFamily }}</div>
           <div class="info">
-            <div class="release-badge">
-              <img v-if="curLevel === 'NEW'" class="premium" src="@/assets/imgs/autohtml-all1/lvl_new.svg" />
-              <img v-else-if="curLevel === 'BLUE'||curLevel === 'BASIC'" class="premium" src="@/assets/imgs/autohtml-all1/lvl_blue.svg" />
-              <img v-else-if="curLevel === 'SILVER'" class="premium" src="@/assets/imgs/autohtml-all1/lvl_silver.svg" />
-              <img v-else-if="curLevel === 'GOLD'" class="premium" src="@/assets/imgs/autohtml-all1/lvl_gold.svg" />
-              <div class="alpha">ZP.{{zpId}}</div>
-            </div>
-            <div class="misc"></div>
             <div class="phone-number4">{{cell_number | persianNumbers}}</div>
           </div>
         </div>
@@ -33,31 +25,41 @@
       <div class="menu">
         <div class="menu-group">
           <NavLink
+            :onClick="goToEvents" NavLink
+            navLabel="دورهمی"
+            icon="RefererIcon"
+            inPage="1"
+            :selected="isActivePage('events')"
+          />
+        </div>
+        <div class="menu-group">
+          <NavLink
             :onClick="goToProfile" NavLink
-            navLabel="حساب کاربری زرین‌پال"
-            icon="PersonalIcon"
+            navLabel="پنل کاربری"
+            icon="PanelIcon"
             inPage="1"
             :selected="isActivePage('profile')"
           />
         </div>
-        <div class="divider">
+        <div class="divider" v-if="Permissions.isLogedin()">
           <div class="divider2"></div>
         </div>
         <div class="menu-group">
           <NavLink
+            v-if="Permissions.isLogedin()"
             :onClick="goTransactions" NavLink
-            navLabel="تراکنش‌های زرین‌پالی"
+            navLabel="صفحه فعالیت"
             icon="TrackingIcon"
             inPage="1"
             :selected="isActivePage('transactions')"
           />
           <NavLink
-            v-if="false"
-            :onClick="goTracking" NavLink
-            navLabel="پیگیری تراکنش"
+            v-if="Permissions.isLogedin()"
+            :onClick="goLoginRegister" NavLink
+            navLabel="ورود / ثبت نام"
             icon="TrackingIcon"
             inPage="1"
-            :selected="isActivePage('tracking')"
+            :selected="isActivePage('login-register')"
           />
         </div>
         <div class="divider">
@@ -65,21 +67,8 @@
         </div>
         <div class="menu-group">
           <NavLink
-            v-if="false"
-            :onClick="()=>{$zpl.openLink('https://www.zarinpal.com/tracking.html','_blank')}" NavLink
-            navLabel="پیگیری تراکنش"
-            icon="TransactionIcon"
-            outPage="1"
-          />
-          <NavLink
-            :onClick="()=>{$zpl.openLink($zpl.infAdr().panelZplBeta+'/panel','_blank')}" NavLink
-            navLabel="پنل پذیرندگان زرین‌پال"
-            icon="PanelIcon"
-            outPage="1"
-          />
-          <NavLink
             :onClick="()=>{$zpl.openLink($zpl.infAdr().panelZplOld+'/panel/referrer/','_blank')}" NavLink
-            navLabel="همکاری در فروش"
+            navLabel="ارتباط با ما"
             icon="RefererIcon"
             outPage="1"
           />
@@ -94,9 +83,15 @@ import {EventBus} from "@/plugins/event-bus";
 import UserMixin from "@/mixins/UserMixin";
 import NavLink from "@/components/pages/NavLink.vue";
 import LevelMixin from "@/mixins/LevelMixin";
+import {Permissions} from "@/mixins/PermissionMixin";
 
 export default {
   name: "Sidebar",
+  computed: {
+    Permissions() {
+      return Permissions
+    }
+  },
   props:{
     openedSidebar:{
       type: Boolean,
@@ -143,8 +138,16 @@ export default {
       this.$router.replace({path:`/transactions/`});
       this.doCloseSidebar && this.doCloseSidebar();
     },
+    goLoginRegister(){
+      this.$router.replace({path:`/login-register/`});
+      this.doCloseSidebar && this.doCloseSidebar();
+    },
     goToProfile(){
       this.$router.replace({path:`/profile/`});
+      this.doCloseSidebar && this.doCloseSidebar();
+    },
+    goToEvents(){
+      this.$router.replace({path:`/events/`});
       this.doCloseSidebar && this.doCloseSidebar();
     },
   },

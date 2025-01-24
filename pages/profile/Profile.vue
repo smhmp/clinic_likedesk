@@ -1,6 +1,6 @@
 <template>
   <div class="profilePg body">
-    <page-heading caption="مشاهده و مدیریت اطلاعات کاربری در زرین‌پال" title="حساب کاربری زرین‌پال"/>
+    <page-heading caption="مشاهده و مدیریت اطلاعات" title="پنل کاربری"/>
     <div class="card">
       <div v-if="isNotifBox && !hidenNotifBox" class="inline-message_profile">
         <div class="interface-essential-lamp-spark">
@@ -10,11 +10,13 @@
           <div class="body">
         <span>
           <span class="body-span">
-            پس از تکمیل اطلاعات حساب کاربری و ارتقا به سطح احراز هویت «نقره‌ای»
-            ‌می‌توانید به
+            برای شرکت در دورهمی
           </span>
-          <a :href="$zpl.infAdr().panelZplBeta+'/panel'" target="_blank" class="body-span2">پنل کاربری زرین‌پال</a>
-          <span class="body-span3">بازگردید.</span>
+          (<a @click="goToEvents" href="javascript:" class="body-span2">اینجا</a>)
+          <span class="body-span">
+             کلیک کنید.
+          </span>
+          (<a :href="$zpl.infAdr().panelZplBeta+'/panel'" target="_blank" class="body-span2">پشتیبانی</a>)
         </span>
           </div>
         </div>
@@ -26,59 +28,26 @@
           </svg>
         </a>
       </div>
-      <ProgressLevel/>
+
+
       <ActionGroup v-if="dataStatus"
         ref="grpBaseRef"
         ttl="اطلاعات پایه"
-        caption="اطلاعات حساب کاربری و احراز هویت"
       >
         <ActionItem frsChild
-          ttl="اطلاعات حساب کاربری"
+          ttl="اطلاعات شرکت در دورهمی"
           :statAct="statAct('personal')"
           :statActFa="statActFa('personal')"
-          midCaption="اطلاعات مربوط به حساب حقیقی یا حقوقی"
           :onAct="onActPersonal"
           :loadAct="loadingActPrsn"
-        />
-        <ActionItem
-          ttl="احراز هویت"
-          :statAct="statAct('kyc')"
-          :statActFa="statActFa('kyc')"
-          midCaption="تایید اطلاعات هویتی"
-          :onAct="onActKyc"
-          :noAct="isPreview('kyc') || isSilverOrMore(curLevel)"
-          :loadAct="loadingActKyc"
-        />
-      </ActionGroup>
-      <ActionGroup v-if="dataStatus"
-                   ref="grpLegalRef"
-                   ttl="اطلاعات تکمیلی"
-                   caption="ارسال مدرک و تکمیل حساب حقوقی"
-      >
-        <ActionItem frsChild
-            ttl="تکمیل حساب حقوقی"
-            :statAct="statAct('legal')"
-            :statActFa="statActFa('legal')"
-            midCaption="ارسال معرفی‌نامه رسمی"
-            :onAct="onActLegal"
-            :loadAct="loadingActLegal"
-            :noAct="isNotAllowLegal"
         />
       </ActionGroup>
       <ActionGroup
         ref="grpEmailRef"
         ttl="اطلاعات تماس"
-        caption="راه‌های ارتباطی و اطلاع‌رسانی شما در زرین‌پال"
+        caption="راه‌های ارتباطی و اطلاع‌رسانی کلینیک"
       >
-        <ActionItem preview frsChild :midCaption="cell_number | persianNumbers" ttl="شماره همراه" no-act="1"/>
-        <ActionItem
-          ttl="ایمیل"
-          :statAct="statAct('email')"
-          :statActFa="statActFa('email')"
-          :midCaption="emailAdr?emailAdr:'ثبت آدرس ایمیل'"
-          :onAct="onActEmail"
-          :loadAct="loadingActMail"
-        />
+        <ActionItem preview frsChild midCaption="0912....." ttl="شماره واتس اپ" no-act="1"/>
       </ActionGroup>
     </div>
 
@@ -93,16 +62,18 @@ import AHref from "@/components/global/AHref.vue";
 import {EventBus} from "@/plugins/event-bus";
 import ActionItem from "@/components/pages/ActionItem.vue";
 import ActionGroup from "@/components/pages/ActionGroup.vue";
-import ProgressLevel from "@/components/pages/ProgressLevel.vue";
+import ProgressLevelLike from "@/components/pages/ProgressLevelLike.vue";
 import LevelMixin from "@/mixins/LevelMixin";
 import StatMixin from "@/mixins/StatMixin";
+import TooltipPro from "@/components/form/TooltipPro.vue";
+import ButtonSimple from "@/components/form/ButtonSimple.vue";
 
 export default {
   name: "Profile",
   head:{
-    title:'زرین‌پال | اطلاعات کاربری'
+    title:'اینسایت | اطلاعات کاربری'
   },
-  components: {ProgressLevel, ActionGroup, ActionItem, AHref, Loaders },
+  components: {ButtonSimple, TooltipPro, ProgressLevelLike, ActionGroup, ActionItem, AHref, Loaders },
   data() {
     return {
       loadingActPrsn:false,
@@ -136,9 +107,12 @@ export default {
     },
     isClosableNotifBox(){
       return this.isSilverOrMore()
-    }
+    },
   },
   methods: {
+    goToEvents(){
+      this.$router.replace({path:`/events/`});
+    },
     closeNotifBox(){
       $zpl.setStorage('noNotifBox'+this.zpId,1);
       this.hidenNotifBox = true;
@@ -196,14 +170,14 @@ export default {
         }
         if(__||this.$store.state.application.userInfo?.additional_identification_info?.registration?.purpose === 'tracking'){
           EventBus.$emit("openModalPro", 'modalNotif',{
-            mainTitle:'به زرین‌پال خوش‌آمدید!',
+            mainTitle:'به اینسایت خوش‌آمدید!',
             descHtml(){
-              return  'در صورتی که به منظور پیگیری تراکنش به زرین‌پال مراجعه کرده‌اید، می‌توانید از بخش «پیگیری تراکنش»، اطلاعات تراکنش‌ مورد نظر خود را وارد کرده و نسبت به پیگیری اقدام نمایید.'
+              return  'در صورتی که به منظور پیگیری تراکنش به اینسایت مراجعه کرده‌اید، می‌توانید از بخش «پیگیری تراکنش»، اطلاعات تراکنش‌ مورد نظر خود را وارد کرده و نسبت به پیگیری اقدام نمایید.'
             },
             btnInf:[
               {
                 title:'انتقال به بخش پیگیری تراکنش',
-                link:'https://www.zarinpal.com/tracking.html',
+                link:'https://www.insight-clinic.com/tracking.html',
                 type:'primary'
               },
               {

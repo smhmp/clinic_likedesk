@@ -1,6 +1,6 @@
 <template>
   <div class="formPersonalPg pgForm content">
-    <page-heading caption="اطلاعات فردی شما در زرین‌پال" title="مشخصات فردی" backPath="/profile/"/>
+    <page-heading caption="اطلاعات فردی شما در اینسایت" title="مشخصات فردی" backPath="/profile/"/>
     <PreviewPersonal
       :fieldsFa="fieldsFa"
       :statAct="statAct('personal')"
@@ -58,7 +58,7 @@
           iName="ssn"
           :i-label="hasLegalEntity?'کد ملی صاحب امضا':'کد ملی'"
           ltr
-          caption="کد ملی حتما باید با شماره همراهی که با آن در زرین‌پال ثبت‌نام کرده‌اید مطابقت داشته‌ باشد."
+          caption="کد ملی حتما باید با شماره همراهی که با آن در اینسایت ثبت‌نام کرده‌اید مطابقت داشته‌ باشد."
           maxlength="10"
           dataRules="required,justNumber,max:10,ssn"
           v-model="fieldFiller('ssn').ssn"
@@ -120,7 +120,7 @@
             v-model="fields.tax_id"
             ltr
             dataTab="1"
-            :moreGui="{txt:'راهنمای دریافت کدرهگیری مالیاتی',href:'https://www.zarinpal.com/blog/%d9%85%d8%b1%d8%a7%d8%ad%d9%84-%d8%ab%d8%a8%d8%aa%e2%80%8c%d9%86%d8%a7%d9%85-%d8%a7%d9%84%da%a9%d8%aa%d8%b1%d9%88%d9%86%db%8c%da%a9%db%8c-%d8%af%d8%b1-%d9%86%d8%b8%d8%a7%d9%85-%d9%85%d8%a7%d9%84%db%8c/'}"
+            :moreGui="{txt:'راهنمای دریافت کدرهگیری مالیاتی',href:'https://www.insight-clinic.com/blog/%d9%85%d8%b1%d8%a7%d8%ad%d9%84-%d8%ab%d8%a8%d8%aa%e2%80%8c%d9%86%d8%a7%d9%85-%d8%a7%d9%84%da%a9%d8%aa%d8%b1%d9%88%d9%86%db%8c%da%a9%db%8c-%d8%af%d8%b1-%d9%86%d8%b8%d8%a7%d9%85-%d9%85%d8%a7%d9%84%db%8c/'}"
             autocomplete="on"
           />
           <TextInput
@@ -199,7 +199,7 @@ import {listCountries} from "@/src/js/personalData";
 export default {
   name: "FormPersonal",
   head:{
-    title:'کانکت زرین‌پال | مدارک حقوقی و اطلاعات کاربری'
+    title:'کلینیک اینسایت | مدارک حقوقی و اطلاعات کاربری'
   },
   components: {TooltipPro, DatePickerInline, PreviewPersonal, ButtonSimple, EasyChkBox, TextInput, AHref, Loaders,RadioCard },
   data() {

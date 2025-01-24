@@ -10,7 +10,7 @@ if(isProduct){
     reqApi:{prdUrl,demoUrl,stageUrl},
     directRoot(adr){
       let rootUrl = ''
-      if(adr.indexOf('.zarinpal.name')>-1){
+      if(adr.indexOf('.insight-clinic.name')>-1){
         rootUrl = stageUrl
       }
       else if(adr.indexOf('localhost')>-1){

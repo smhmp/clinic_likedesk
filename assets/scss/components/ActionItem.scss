@@ -24,7 +24,7 @@
 
   &.frsChild {
     border-style: solid;
-    border-color: rgb(246 246 246 / 68%);
+    border-color: var(--box-act-border);
     border-width: 1px 0px 0px 0px;
   }
 
@@ -159,7 +159,7 @@
   }
 
   .label3 {
-    color: var(--text-light-soft, #747481);
+    color: #3E5239;
     text-align: right;
     font-family: "IranYekanX-DemiBold", sans-serif;
     font-size: 14px;

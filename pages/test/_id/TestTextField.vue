@@ -133,7 +133,7 @@ export default {
       limit: "",
       limitNum: 5,
       num: "",
-      url: "https://zarinp.al/376218",
+      url: "https://insight-clinic.com/376218",
     };
   },
   async created() {
