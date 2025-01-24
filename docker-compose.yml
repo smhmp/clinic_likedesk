@@ -1,0 +1,29 @@
+services:
+  app_clinic:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app_clinic
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=development
+    #restart: unless-stopped
+    restart: no
+    working_dir: /app
+
+
+  nginx_clinic:
+    image: nginx:stable-alpine
+    container_name: nginx_clinic
+    ports:
+      - "8081:80"
+    volumes:
+      - ./dist:/var/www/html
+      - ./http/default.conf:/etc/nginx/conf.d/default.conf
+    restart: unless-stopped
+    depends_on:
+      - app_clinic

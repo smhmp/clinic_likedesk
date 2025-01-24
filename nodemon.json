@@ -1,0 +1,7 @@
+{
+  "watch": ["src", "components", "assets", "layouts", "middleware", "mixins", "pages", "plugins", "static", "store"],
+  "ext": "ts,js,vue,scss,html",
+  "exec": "yarn generate",
+  "ignore": ["node_modules", ".nuxt", ".git", "__exc", "__rem", ".idea", "http", ".dockerignore", ".gitignore", "README.md", "yarn.lock", "Dockerfile"],
+  "verbose": true
+}
