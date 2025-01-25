@@ -2,7 +2,7 @@
   <div class="profilePg body">
     <page-heading caption="مشاهده رویداد ها و فعالیتهای ثبت شده" title="فعالیتهای اینسایت" backPath="/profile/"/>
     <div class="ActInline card">
-      <div class="page-actions">
+      <div class="page-actions" v-if="!tempDisable">
         <div class="action">
           <div class="fluent-emoji-credit-card">
             <div class="warning2">
@@ -88,58 +88,59 @@
 
         <div v-if="isTrans" class="list listTrans">
           <div class="list-itemA">
-            <div class="illustration">
-              <div class="big-status">
-                <div class="transaction-local">
-                  <img class="group7" src="@/assets/imgs/transactions/list/group6.svg" />
-                </div>
-              </div>
-            </div>
-
             <div class="stack2">
-              <div class="title-and-detail">
-                <div class="title6">
-                  <div class="title7">۲۵,۴۰۰,۰۰۰</div>
-                  <div class="currency-badge">
-                    <img src="@/assets/imgs/transactions/list/rial-symbol0.svg" class="rial-symbol" />
-                  </div>
+              <div class="TicketOut">
+                <div class="headerT">
+                  <div class="titleT">تیکت دورهمی اینسایت</div>
+                  <div class="seat-number">شماره صندلی: 12</div>
                 </div>
-                <div class="details">
-                  <div class="data3">
-                    <img src="@/assets/imgs/transactions/list/bank-logo6.svg" class="bank-logo7" />
-                    <div class="detail-1"><div class="title9">5859 3547 5336 2442</div></div>
-                  </div>
-                  <div class="data2">
-                    <div class="mingcute-hashtag-fill">
-                      <img src="@/assets/imgs/transactions/list/group5.svg" class="group6" />
+
+                <div class="contentT">
+                  <div class="columnT">
+                    <div class="rowT">
+                      <span class="labelT">نوع:</span>
+                      <span class="valueT">معمولی</span>
                     </div>
-                    <div class="detail-4"><div class="title8">۳۵۲۶۷۵۳۴</div></div>
+                    <div class="rowT">
+                      <span class="labelT">نام و نام خانوادگی:</span>
+                      <span class="valueT">حامد موسوی</span>
+                    </div>
+                    <div class="rowT">
+                      <span class="labelT">شماره تیکت:</span>
+                      <span class="valueT">A323232</span>
+                    </div>
                   </div>
-                  <div class="data2">
-                    <img
-                      src="@/assets/imgs/transactions/list/ic-round-store0.svg"
-                      class="ic-round-store"
-                    />
-                    <div class="detail-4"><div class="title8">صدا استور</div></div>
-                  </div>
-                  <div class="data">
-                    <img
-                      src="@/assets/imgs/transactions/list/date-fill0.svg"
-                      class="date-fill"
-                    />
-                    <div class="detail-2"><div class="title8">۲۵ آبان، ۱۱:۳۵</div></div>
+                  <div class="columnT">
+                    <div class="rowT">
+                      <span class="labelT">کد رهگیری:</span>
+                      <span class="valueT">232323434</span>
+                    </div>
+                    <div class="rowT">
+                      <span class="labelT">تاریخ ثبت:</span>
+                      <span class="valueT">1403/11/24</span>
+                    </div>
+                    <div class="rowT">
+                      <span class="labelT">مبلغ:</span>
+                      <span class="valueT">800,000 تومان</span>
+                    </div>
                   </div>
                 </div>
+
+                <div class="footerT">
+                  <p><span class="labelT">تاریخ برگزاری دورهمی:</span> 1403/11/30</p>
+                  <p><span class="labelT">آدرس:</span> کافه شمرون ایران‌مال</p>
+                </div>
+                <div v-if="false" class="actions">
+                  <div class="contained-button2"><div class="label2">مشاهده جزئیات</div></div>
+                  <div class="link"><div class="label">پیگیری این تراکنش</div></div>
+                </div>
               </div>
-              <div class="actions">
-                <div class="contained-button2"><div class="label2">مشاهده جزئیات</div></div>
-                <div class="link"><div class="label">پیگیری این تراکنش</div></div>
-              </div>
+
             </div>
 
           </div>
         </div>
-        <div v-if="isTrans" class="pagination">
+        <div v-if="!tempDisable&&isTrans" class="pagination">
           <div class="contained-button3">
             <div class="angle-right">
               <img class="group15" src="@/assets/imgs/transactions/list/group14.svg" />
@@ -195,7 +196,8 @@ export default {
       loadingActBankCard:false,
       loadingActTracking:false,
       countEvents:1,
-      hasTrans:false,
+      hasTrans:true,
+      tempDisable:true,
     };
   },
   mounted() {

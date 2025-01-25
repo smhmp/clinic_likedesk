@@ -2,7 +2,7 @@
   <div class="profilePg body">
     <page-heading caption="مشاهده و مدیریت اطلاعات" title="پنل کاربری"/>
     <div class="card">
-      <div v-if="isNotifBox && !hidenNotifBox" class="inline-message_profile">
+      <div class="inline-message_profile">
         <div class="interface-essential-lamp-spark">
           <img class="group" src="@/assets/imgs/svg/warnInlMsg.svg" />
         </div>
@@ -30,14 +30,12 @@
       </div>
 
 
-      <ActionGroup v-if="dataStatus"
+      <ActionGroup
         ref="grpBaseRef"
         ttl="اطلاعات پایه"
       >
         <ActionItem frsChild
           ttl="اطلاعات شرکت در دورهمی"
-          :statAct="statAct('personal')"
-          :statActFa="statActFa('personal')"
           :onAct="onActPersonal"
           :loadAct="loadingActPrsn"
         />
@@ -47,7 +45,7 @@
         ttl="اطلاعات تماس"
         caption="راه‌های ارتباطی و اطلاع‌رسانی کلینیک"
       >
-        <ActionItem preview frsChild midCaption="0912....." ttl="شماره واتس اپ" no-act="1"/>
+        <ActionItem preview frsChild midCaption="" ttl="<a href='https://wa.me/qr/CTCOMKQ2KNDKO1' target='_blank'>🔗 واتساپ پشتیبانی 📱 ۰۹۳۵۶۲۹۸۳۶۶</a>" no-act="1"/>
       </ActionGroup>
     </div>
 

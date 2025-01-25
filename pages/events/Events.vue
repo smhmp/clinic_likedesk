@@ -2,7 +2,7 @@
   <div class="profilePg body">
     <page-heading caption="رزرو جایگاه دورهمی" title="شرکت در دورهمی" backPath="/profile/"/>
     <div class="card">
-      <div v-if="isNotifBox && !hidenNotifBox" class="inline-message_profile">
+      <div class="inline-message_profile">
         <div class="interface-essential-lamp-spark">
           <img class="group" src="@/assets/imgs/svg/warnInlMsg.svg" />
         </div>
@@ -10,7 +10,7 @@
           <div class="body">
         <span>
           <span class="body-span">
-            برای شرکت در دورهمی یکی از بلیط های زیر را انتخاب کنید و دکمه خرید تیکت را بزنید.
+            برای شرکت در دورهمی یکی از تیکت های زیر را انتخاب کرده، دکمه رزرو تیکت را بزنید.
           </span>
           (<a :href="$zpl.infAdr().panelZplBeta+'/panel'" target="_blank" class="body-span2">پشتیبانی</a>)
         </span>
@@ -42,7 +42,7 @@
           ttl="ارتباط با پشتیبانی"
           caption="در صورت نیاز به راهنمایی بیشتر میتونید با بخش پشتیبانی در واتساپ یا تلگرام در ارتباط باشید."
       >
-        <ActionItem preview frsChild midCaption="🔗 [واتساپ پشتیبانی](https://wa.me/qr/CTCOMKQ2KNDKO1) | 📱 ۰۹۳۵۶۲۹۸۳۶۶" ttl="شماره واتس اپ" no-act="1"/>
+        <ActionItem preview frsChild midCaption="" ttl="<a href='https://wa.me/qr/CTCOMKQ2KNDKO1' target='_blank'>🔗 واتساپ پشتیبانی 📱 ۰۹۳۵۶۲۹۸۳۶۶</a>" no-act="1"/>
       </ActionGroup>
     </div>
 

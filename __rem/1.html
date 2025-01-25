@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تیکت دورهمی اینسایت</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+
+        }
+
+        .ticketOut {
+            max-width: 21cm;
+            padding: 20px;
+            margin: 20px auto;
+            background: #fff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            max-width: 651px;
+            direction: rtl;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .header .title {
+            text-align: right;
+        }
+
+        .header .seat-number {
+            text-align: left;
+            font-size: 1em;
+            font-weight: normal;
+            color: #555;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .content .column {
+            width: 49%;
+            padding: 10px;
+            box-sizing: border-box;
+            gap: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .content .row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .value {
+            color: #333;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #555;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .content .column:first-child {
+            border-left: 1px solid rgba(0, 0, 0, .1);
+        }
+
+        @media screen and (max-width: 568px) {
+            .content .column:first-child {
+                border-left: none;
+            }
+
+            .ticket {
+                padding: 15px;
+            }
+
+            .header {
+                font-size: 1.2em;
+            }
+
+            .content .column {
+                width: 100%;
+                padding: 5px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .content .column:first-child {
+                border-left: none;
+            }
+
+            .ticket {
+                padding: 10px;
+            }
+
+            .header {
+                font-size: 1em;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .content .row {
+            //flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer {
+                font-size: 0.8em;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="ticketOut">
+    <div class="header">
+        <div class="title">تیکت دورهمی اینسایت</div>
+        <div class="seat-number">شماره صندلی: 12</div>
+    </div>
+
+    <div class="content">
+        <div class="column">
+            <div class="row">
+                <span class="label">نوع:</span>
+                <span class="value">معمولی</span>
+            </div>
+            <div class="row">
+                <span class="label">نام و نام خانوادگی:</span>
+                <span class="value">حامد موسوی</span>
+            </div>
+            <div class="row">
+                <span class="label">شماره تیکت:</span>
+                <span class="value">A323232</span>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row">
+                <span class="label">کد رهگیری:</span>
+                <span class="value">232323434</span>
+            </div>
+            <div class="row">
+                <span class="label">تاریخ ثبت:</span>
+                <span class="value">1403/11/24</span>
+            </div>
+            <div class="row">
+                <span class="label">مبلغ:</span>
+                <span class="value">800,000 تومان</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><span class="label">تاریخ برگزاری دورهمی:</span> 1403/11/30</p>
+        <p><span class="label">آدرس:</span> کافه شمرون ایران‌مال</p>
+    </div>
+</div>
+</body>
+</html>

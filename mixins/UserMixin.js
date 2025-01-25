@@ -78,6 +78,7 @@ let UserMixin = {
       return this.$store.state.application.userInfo.email
     },
       isLogedin() {
+          return true
           try{
               return this.$store.state.application.userInfo?.first_name;
           }

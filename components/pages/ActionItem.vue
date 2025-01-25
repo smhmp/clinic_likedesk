@@ -7,9 +7,9 @@
       </div>
       <div class="stack">
         <div class="stack2">
-          <div class="label3">{{ttl}}</div>
+          <div class="label3" v-html="ttl"></div>
           <div class="label3_divider"></div>
-          <div class="value2">{{midCaption}}</div>
+          <div class="value2" v-html="midCaption"></div>
         </div>
         <div :class="['label2Parent',{visibleStat:statActFa}]">
           <div :class="['label2','st_'+statAct]">{{statActFa}}</div>

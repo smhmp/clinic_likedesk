@@ -2,9 +2,7 @@
 
 const StatMixin = {
   computed:{
-    dataStatus(){
-      return this.$store.state.application.userInfo.data_status
-    }
+
   },
   methods:{
     isPreview(actSubj){

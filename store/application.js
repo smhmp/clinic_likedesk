@@ -6,48 +6,18 @@ import {lg, lgErr} from "@/src/js/dbg";
 import {GqlJSSdk} from "@/src/js/GqlJSSdk";
 import {GqlStore} from "@/src/js/GqlStore";
 import {testDataLevel} from "@/mixins/LevelMixin";
+import {$zpl} from "@/plugins/zpl";
 
 export const state = () => ({
   userInfo:{
     id:'',
     created_at:'',
-    ssn:'',
-    birthday:'',
+    age:'',
+    gender:'',
     cell_number:'',
-    level:'',
-    avatar:'',
-    full_name:'',
     first_name:'',
     last_name:'',
-    gender:'',
-    referral_id:'',
     email:'',
-    vip_level:'',
-    next_level:'',
-    next_level_step:'',
-    tax_id:'',
-    company_name:'',
-    company_rid:'',
-    company_registered_at:'',
-    data_status: {
-      kyc:'',
-      email:'',
-      personal:'',
-      legal:'',
-    },
-    additional_identification_info: {
-      passport: {
-        passport_number:'',
-        expire_date:'',
-        nationality:'',
-      },
-      registration: {
-        purpose:'',
-      }
-    },
-    personal_link: {
-      domain:'',
-    }
   },
   portal:{},
   switchList: [
@@ -132,15 +102,18 @@ export const actions = {
   },
   async getMe({ state, commit }) {
 
-    let respObj = await new GqlStore('Me',{querySchema:GetExistUser}
-    ).reqZplConnectPrj({
-      /*headers:{
-        withCredentials:true,
-        'Access-Control-Allow-Credentials':true
-      }*/
-    }).catch((respObj)=>{
-
+    const respObj = await $zpl.zplConnectPrj_v2.reqDirect({
+      baseUrl:'http://reservation-api.insight-clinic.com/api/event/otp/send',
+      args:{
+        "mobile": "09131566906"
+      },
+      configs:{
+        headers:{
+          Authorization:'Bearer aaaaacccccc'
+        }
+      }
     });
+
 
     if(!respObj){
         return
