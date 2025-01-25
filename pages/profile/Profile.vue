@@ -95,72 +95,15 @@ export default {
 
   },
   computed: {
-    isAfterBlueAndNoLegal(){
-      return this.isBlueOrMore(this.curLevel) && !UserMan.isLegal()
-    },
-    isNotAllowLegal(){
-      return this.isSilverOrMore(this.curLevel) && !this.isPreview('legal');
-    },
-    isNotifBox(){
-      const noNotifBox = $zpl.getStorage('noNotifBox'+this.zpId);
-      return !noNotifBox
-    },
-    isClosableNotifBox(){
-      return this.isSilverOrMore()
-    },
+
   },
   methods: {
     goToEvents(){
       this.$router.replace({path:`/events/`});
     },
-    closeNotifBox(){
-      $zpl.setStorage('noNotifBox'+this.zpId,1);
-      this.hidenNotifBox = true;
-    },
-    onActKyc(e){
-      const vm = this;
-      if(!this.isPreview('kyc') && !this.isSilverOrMore(this.curLevel)){
-        this.loadingActKyc = true;
-        this.goToKyc(e,{
-          calbFinal(){
-            vm.loadingActKyc = false;
-          }
-        });
-      }
-    },
     onActPersonal(){
       this.loadingActPrsn = true;
       this.$router.push({path:`/form-personal/`})
-    },
-    onActEmail(){
-      this.loadingActMail = true;
-      this.$router.push({path:`/verify-email/`,query:{step:1}})
-    },
-    onActLegal(){
-      if(!this.isBlueOrMore(this.curLevel)){
-        $zpl.toastMsg('قبل از تکمیل حساب حقوقی، اطلاعات حساب کاربری را تکمیل نمایید.',{delayTime:9000,justOnce:'isNotAllowLegal'})
-        return;
-      }
-      if(this.isNotAllowLegal){
-        if(UserMan.isLegal()){
-          if(this.isStatAct('legal','PROCESSING')){
-            $zpl.toastMsg('برای اصلاح و یا ارسال مجدد مدرک حقوقی به پشتیبانی تیکت بدهید.',{delayTime:7000,justOnce:'isLegal_PROCESSING_isNotAllowLegal'})
-          }
-          else{
-            $zpl.toastMsg('برای ارسال مدرک حقوقی به پشتیبانی تیکت بدهید.',{delayTime:7000,justOnce:'isLegal_REJECTED_isNotAllowLegal'})
-          }
-        }
-        else{
-          $zpl.toastMsg('حساب کاربری شما "حقوقی" نمی‌باشد.',{delayTime:7000,justOnce:'isNotAllowLegal'})
-        }
-        return;
-      }
-      if(this.isAfterBlueAndNoLegal){
-        $zpl.toastMsg('امکان تکمیل حساب حقوقی در سطح فعلی شما وجود ندارد. با پشتیبانی تماس بگیرید.',{delayTime:12000,justOnce:'isNotAllowLegal'})
-        return;
-      }
-      this.loadingActLegal = true;
-      this.$router.push({path:`/form-legal/`})
     },
     chkModalWelcome(){
       const __ = $zpl.isTest().__modalNotif__

@@ -10,7 +10,7 @@
             <div class="profile-fill">
               <img class="group2" src="@/assets/imgs/autohtml-all1/group1.svg" />
             </div>
-            <img v-if="Permissions.isLogedin()" :src="gravatar" class="iconGravatar">
+            <img v-if="isLogedin" :src="gravatar" class="iconGravatar">
           </div>
           <div class="tempFocusBox" v-if="showMenu1">
             <div class="div1 divA1" @click="onCloseMenu"></div>
@@ -25,13 +25,13 @@
                     <span class="logout">َشرکت در دورهمی</span>
                   </a>
                 </div>
-                <div class="sub-menu pointer" @click="goingToProfile">
+                <div v-if="isLogedin" class="sub-menu pointer" @click="goingToProfile">
                   <a class="logout">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" class="inline-block"><path d="M16.6666 16.6667V16.0417C16.6666 14.0857 15.0809 12.5 13.1249 12.5H6.87492C4.91891 12.5 3.33325 14.0857 3.33325 16.0417V16.6667" stroke="#000" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path> <ellipse cx="10.0001" cy="5.83333" rx="3.33333" ry="3.33333" stroke="#000" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></ellipse></svg>
                     <span class="logout">پنل کاربری</span>
                   </a>
                 </div>
-                <div class="sub-menu pointer" @click="goingToLogout">
+                <div v-if="isLogedin" class="sub-menu pointer" @click="goingToLogout">
                   <a class="logout">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M6.875 9.99992H17.1437" stroke="#0A33FF" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"/>
@@ -108,7 +108,7 @@
 <script>
 import {lg} from "@/src/js/dbg";
 import ButtonSimple from "@/components/form/ButtonSimple.vue";
-import {Permissions} from "@/mixins/PermissionMixin";
+import UserMixin from "@/mixins/UserMixin";
 
 export default {
   name: "TopBar",
@@ -138,12 +138,7 @@ export default {
 
   },
   computed: {
-    Permissions() {
-      return Permissions
-    },
-    notifUrl(){
-      return $zpl.infAdr().panelZplBeta+'/panel/ticket'
-    }
+
   },
   methods: {
     onMenu1(){
@@ -189,10 +184,7 @@ export default {
       this.$router.replace({path:`/`});
     },
   },
-  watch:{
-
-  },
-  mixins:[],
+  mixins:[UserMixin],
   components: {ButtonSimple},
 };
 </script>

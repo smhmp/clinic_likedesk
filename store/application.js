@@ -143,7 +143,7 @@ export const actions = {
     });
 
     if(!respObj){
-        throw '401'
+        return
     }
 
     const resp = respObj.getResp();

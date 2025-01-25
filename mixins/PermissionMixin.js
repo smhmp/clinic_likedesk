@@ -13,12 +13,6 @@ export const Permissions = {
     }
     catch (e) {}
   },
-  isLogedin(){
-    try{
-      return $zpl.storeMan.state.application.userInfo?.first_name;
-    }
-    catch (e) {}
-  },
 }
 
 let PermissionMixin = {

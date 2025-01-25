@@ -10,6 +10,7 @@
 import FormMobile from "@/pages/login-register/FormMobile.vue";
 import OTPMobile from "@/pages/login-register/OTPMobile.vue";
 import Register from "@/pages/login-register/Register.vue";
+import UserMixin from "@/mixins/UserMixin";
 
 export default {
   name:'VerifyMobileIndex',
@@ -22,6 +23,9 @@ export default {
     }
   },
   async created() {
+    if(this.isLogedin){
+      this.$router.replace({path:`/events/`})
+    }
     this.chkSteps()
   },
   methods:{
@@ -46,7 +50,8 @@ export default {
     '$route.query'(val){
       this.chkSteps()
     }
-  }
+  },
+  mixins:[UserMixin]
 }
 
 </script>

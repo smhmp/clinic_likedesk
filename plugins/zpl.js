@@ -365,7 +365,7 @@ export const $zpl={
       window.location.href = url
     }
   },
-  openLink(url,tagret=''){
+  openLink(url,tagret='_self'){
     window.open(url, tagret)
   },
   getCurrTime(){

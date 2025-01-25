@@ -1,4 +1,5 @@
 import {lg} from "@/src/js/dbg";
+import {Permissions} from "@/mixins/PermissionMixin";
 
 const colors = {
   VIP:'vip',
@@ -55,10 +56,7 @@ export const confFields = {
 
 export const UserMan = {
   isLegal(){
-    if($zpl.isTest().__global__isLegal__){
-      return false
-    }
-    return !!$zpl.storeMan.state.application.userInfo?.company_rid
+
   },
 }
 
@@ -76,12 +74,15 @@ let UserMixin = {
     nameFamily(){
       return this.$store.state.application.userInfo.full_name
     },
-    zpId(){
-      return this.$store.state.application.userInfo.id
-    },
     emailAdr(){
       return this.$store.state.application.userInfo.email
     },
+      isLogedin() {
+          try{
+              return this.$store.state.application.userInfo?.first_name;
+          }
+          catch (e) {}
+      }
   },
   methods:{
 

@@ -7,163 +7,58 @@
       :statActFa="statActFa('personal')"
       v-if="isPreview('personal')"
     />
-    <form v-else @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card',{loading}]">
+    <form @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card',{loading}]">
       <div class="form" style="gap: 24px;">
-        <RadioCard ref="radioCardRef" v-if="true" inpName="legalType" :infos="[
-          {defChecked:true,label:'شخص حقیقی هستم', uniqKey:'isPerson',guidance:'شخص حقیقی به فردی اطلاق می‌شود که دارای هویت مشخص و ویژگی‌های فردی مانند نام، نام خانوادگی، تاریخ تولد، کد ملی می‌باشد.',svgIcon:'radio/person-icon.svg'},
-          {label:'شخص حقوقی هستم', uniqKey:'isLegal',guidance:'شخص حقوقی به موسسات یا شرکت‌های ثبت‌شده‌ای گفته می‌شود که دارای مشخصاتی مانند تاریخ ثبت، شماره ثبت، کد ملی و کد اقتصادی هستند.',svgIcon:'radio/legal-icon.svg'},
-        ]"
-        :onChked="clkRadioLegal"
-        />
-
         <TextInput
-          iName="first_name"
-          :i-label="hasLegalEntity?'نام صاحب امضا':'نام'"
-          maxlength="255"
-          dataRules="required,justLetter:fa,min:2,max:255"
-          v-model="fields.first_name"
-          autocomplete="on"
-          dataTab="1"
-        />
-        <TextInput
-          iName="last_name"
-          :i-label="hasLegalEntity?'نام‌خانوادگی صاحب امضا':'نام‌خانوادگی'"
-          maxlength="255"
-          dataRules="required,justLetter:fa,min:3,max:255"
-          v-model="fields.last_name"
-          autocomplete="on"
-          dataTab="2"
-        />
-        <DatePickerInline
-          iName="birthday"
-          ref="birthDayRef"
-          dataRules="required"
-          title="تاریخ تولد"
-          dataTab="9"
-        />
-        <div class="check-box">
-          <EasyChkBox uniqKey="noIrani"
-                      label="اتباع غیر ایرانی هستم"
-                      :defChecked="chkNoIrani"
-                      v-model="chkNoIrani"
-                      :tooltip="{myWidth:'188px',myLeft:'20px'}"
-                      :tikError="tikError"
-                      :onTik="onTik"
-                      dataTab="4"
-          />
-<!--                      :guidance="`<pre style='text-align: center;color: #747481;font-family: IranYekanX-Medium, sans-serif;'>آیا شهروند کشور دیگر هستید؟</pre>`"-->
-        </div>
-        <TextInput
-          v-show="!nonIran"
-          iName="ssn"
-          :i-label="hasLegalEntity?'کد ملی صاحب امضا':'کد ملی'"
-          ltr
-          caption="کد ملی حتما باید با شماره همراهی که با آن در اینسایت ثبت‌نام کرده‌اید مطابقت داشته‌ باشد."
-          maxlength="10"
-          dataRules="required,justNumber,max:10,ssn"
-          v-model="fieldFiller('ssn').ssn"
-          autocomplete="on"
-          dataTab="3"
-        />
-        <div v-show="nonIran" class="w-full nonIranGrp2">
-          <TextInput
-            iName="pervasive_code"
-            i-label="شناسه فراگیر"
-            maxlength="12"
-            ltr
-            dataRules="required,justNumber,min:5,max:12"
-            v-model="fields.pervasive_code"
-            autocomplete="on"
-            dataTab="8"
-            :moreGui="{txt:'شناسه فراگیر اتباع خارجی یک کد ۱۲ رقمی است که به‌عنوان جایگزین شماره ملی برای اتباع خارجی مقیم ایران عمل می‌کند. این کد برای انجام امور اداری، اقتصادی و قانونی در ایران ضروری است.'}"
-          />
-        </div>
-        <div v-show="nonIran" ref="nonIranRef" class="w-full nonIranGrp1">
-          <!-- select -->
-          <input data-localize="ملیت" hidden name="nationality" id="nationality" data-list="" data-rules="required" data-tab="5">
-
-          <div data-sel="nationality" data-list=''></div>
-          <!-- Error -->
-          <div id="nationality-error" data-error="nationality" :class="['input-error',{hidden:!nationality_error}]">{{nationality_error}}</div>
-        </div>
-        <div v-show="nonIran" class="w-full nonIranGrp2">
-          <TextInput
-            iName="passport_number"
-            i-label="شماره پاسپورت"
-            maxlength="9"
-            ltr
-            dataRules="required,passport,min:5,max:9"
-            to-en-num
-            v-model="fields.passport_number"
-            autocomplete="on"
-            dataTab="6"
-          />
-        </div>
-        <div v-show="nonIran" class="w-full nonIranGrp2">
-          <DatePickerInline
-            iName="expire_date"
-            ref="expire_dateRef"
-            dataRules="required"
-            title="تاریخ انقضاء پاسپورت"
-            dataTab="7"
-          />
-        </div>
-      </div>
-      <div v-show="hasLegalEntity" class="w-full legalContainer">
-        <div class="form gap-24">
-          <div class="description">مشخصات شرکت</div>
-          <TextInput
-            iName="tax_id"
-            i-label="کد رهگیری مالیاتی"
+            iName="first_name"
+            :i-label="'نام'"
             maxlength="255"
-            dataRules="required,justNumber,length:10"
-            v-model="fields.tax_id"
-            ltr
+            dataRules="required,justLetter:fa,min:2,max:255"
+            v-model="fields.first_name"
+            autocomplete="on"
             dataTab="1"
-            :moreGui="{txt:'راهنمای دریافت کدرهگیری مالیاتی',href:'https://www.insight-clinic.com/blog/%d9%85%d8%b1%d8%a7%d8%ad%d9%84-%d8%ab%d8%a8%d8%aa%e2%80%8c%d9%86%d8%a7%d9%85-%d8%a7%d9%84%da%a9%d8%aa%d8%b1%d9%88%d9%86%db%8c%da%a9%db%8c-%d8%af%d8%b1-%d9%86%d8%b8%d8%a7%d9%85-%d9%85%d8%a7%d9%84%db%8c/'}"
+        />
+        <TextInput
+            iName="last_name"
+            :i-label="'نام‌خانوادگی'"
+            maxlength="255"
+            dataRules="required,justLetter:fa,min:3,max:255"
+            v-model="fields.last_name"
             autocomplete="on"
-          />
-          <TextInput
-            iName="company_name"
-            i-label="نام حقوقی"
-            dataRules="required,justLetter,min:3,max:70"
-            v-model="fields.company_name"
             dataTab="2"
-            autocomplete="on"
-          />
-          <TextInput
-            iName="company_rid"
-            i-label="شناسه ملی حقوقی"
-            dataRules="required,justNumber,length:11"
-            v-model="fields.company_rid"
-            dataTab="3"
+        />
+        <TextInput
+            iName="age"
+            :i-label="'سن'"
             ltr
+            maxlength="10"
+            dataRules="required,justNumber"
+            v-model="fieldFiller('age').age"
             autocomplete="on"
-            :more-gui="{txt:'شناسه ملی حقوقی یک کد یکتای ۱۱ رقمی است که پس از ثبت قانونی شرکت، برای هر شرکت یا سازمان صادر می‌شود.'}"
-          />
-          <DatePickerInline
-            v-once
-            iName="company_registered_at"
-            ref="regDateRef"
-            dataTab="4"
-            dataRules="required"
-            title="تاریخ ثبت"
-          />
-        </div>
+            dataTab="3"
+        />
+        <div ref="genderRef" class="w-full nonIranGrp1">
+          <!-- select -->
+          <input data-localize="جنسیت" hidden name="gender" id="gender" data-list="" data-rules="required" data-tab="5">
 
+          <div data-sel="gender" data-list=''></div>
+          <!-- Error -->
+          <div id="gender-error" data-error="gender" :class="['input-error',{hidden:!gender_error}]">{{gender_error}}</div>
+        </div>
+        <TextAreaSimple
+            iName="explain"
+            :i-label="'علت شرکت در دورهمی'"
+            v-model="fields.explain"
+            dataTab="4"
+        />
       </div>
       <div v-if="general_error" class="error_msg">{{general_error}}</div>
       <div class="button-group">
         <ButtonSimple
-          :onClkBtn="savePersonal" ButtonSimple
-          isLoader="1"
-          val-btn="ذخیره"
-          type="primary"
-        />
-        <ButtonSimple
-          :onClkBtn="cancelEdit" ButtonSimple
-          val-btn="انصراف"
-          type="secondary"
+            :onClkBtn="savePersonal" ButtonSimple
+            isLoader="1"
+            val-btn="تکمیل ثبت نام"
+            type="new"
         />
       </div>
     </form>
@@ -213,35 +108,17 @@ export default {
       fieldsFa:{
         first_name:'نام',
         last_name:'نام خانوادگی',
-        ssn:'کد ملی',
-        nationality:'ملیت',
-        passport_number:'پاسپورت',
-        expire_date:'تاریخ انقضاء پاسپورت',
-        pervasive_code:'شناسه فراگیر',
-        birthday:'تاریخ تولد',
-
-        tax_id:'کد رهگیری مالیاتی',
-        company_name:'نام حقوقی',
-        company_rid:'شناسه ملی حقوقی',
-        company_registered_at:'تاریخ ثبت',
+        age:'سن',
+        gender:'جنسیت',
+        explain:'علت شرکت در دورهمی',
       },
       fields:{
         first_name:'',
         last_name:'',
-        ssn:'',
-        nationality:'',
-        passport_number:'',
-        expire_date:'',
-        pervasive_code:'',
-        birthday:'',
-
-        tax_id:'',
-        company_name:'',
-        company_rid:'',
-        company_registered_at:'',
+        age:'',
+        gender:'',
+        explain:'',
       },
-      nonIran:false,
-      hasLegalEntity:false,
     };
   },
   async created() {

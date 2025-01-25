@@ -31,7 +31,7 @@
           autocomplete="on"
           dataTab="3"
         />
-        <div ref="nonIranRef" class="w-full nonIranGrp1">
+        <div ref="genderRef" class="w-full nonIranGrp1">
           <!-- select -->
           <input data-localize="جنسیت" hidden name="gender" id="gender" data-list="" data-rules="required" data-tab="5">
 
@@ -303,7 +303,7 @@ export default {
       }
     },
     onTik(val) {
-      this.$refs.nonIranRef.classList[val?'remove':'add']('hidden');
+      this.$refs.genderRef.classList[val?'remove':'add']('hidden');
       // this.$refs.birthDayRef.$el.classList[val?'add':'remove']('hidden');
       this.nonIran = val;
       if(this.aftTrySubmit){

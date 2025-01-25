@@ -32,29 +32,29 @@
             :selected="isActivePage('events')"
           />
         </div>
-        <div class="menu-group">
+        <div v-if="isLogedin" class="menu-group">
           <NavLink
             :onClick="goToProfile" NavLink
-            navLabel="پنل کاربری"
+            navLabel="اطلاعات کاربری"
             icon="PanelIcon"
             inPage="1"
             :selected="isActivePage('profile')"
           />
         </div>
-        <div class="divider" v-if="Permissions.isLogedin()">
+        <div class="divider" v-if="isLogedin">
           <div class="divider2"></div>
         </div>
         <div class="menu-group">
           <NavLink
-            v-if="Permissions.isLogedin()"
-            :onClick="goTransactions" NavLink
-            navLabel="صفحه فعالیت"
+            v-if="isLogedin"
+            :onClick="goEventsMan" NavLink
+            navLabel="فعالیت ها"
             icon="TrackingIcon"
             inPage="1"
-            :selected="isActivePage('transactions')"
+            :selected="isActivePage('events-man')"
           />
           <NavLink
-            v-if="Permissions.isLogedin()"
+            v-if="!isLogedin"
             :onClick="goLoginRegister" NavLink
             navLabel="ورود / ثبت نام"
             icon="TrackingIcon"
@@ -66,6 +66,12 @@
           <div class="divider2"></div>
         </div>
         <div class="menu-group">
+          <NavLink
+            :onClick="()=>{$zpl.openLink('/')}" NavLink
+            navLabel="معرفی دورهمی"
+            icon="RefererIcon"
+            outPage="1"
+          />
           <NavLink
             :onClick="()=>{$zpl.openLink($zpl.infAdr().panelZplOld+'/panel/referrer/','_blank')}" NavLink
             navLabel="ارتباط با ما"
@@ -83,14 +89,11 @@ import {EventBus} from "@/plugins/event-bus";
 import UserMixin from "@/mixins/UserMixin";
 import NavLink from "@/components/pages/NavLink.vue";
 import LevelMixin from "@/mixins/LevelMixin";
-import {Permissions} from "@/mixins/PermissionMixin";
 
 export default {
   name: "Sidebar",
   computed: {
-    Permissions() {
-      return Permissions
-    }
+
   },
   props:{
     openedSidebar:{
@@ -134,8 +137,8 @@ export default {
       this.$router.replace({path:`/form-tracking/`});
       this.doCloseSidebar && this.doCloseSidebar();
     },
-    goTransactions(){
-      this.$router.replace({path:`/transactions/`});
+    goEventsMan(){
+      this.$router.replace({path:`/events-man/`});
       this.doCloseSidebar && this.doCloseSidebar();
     },
     goLoginRegister(){

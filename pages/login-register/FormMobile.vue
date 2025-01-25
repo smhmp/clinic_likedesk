@@ -1,6 +1,6 @@
 <template>
   <div class="formEmail pgForm content">
-    <page-heading caption="لطفا شماره موبایل خود را وارد کرده کلید مرحله بعد را بزنید" title="ورود / ثبت نام"/>
+    <page-heading caption="برای شرکت در دورهمی لطفا شماره موبایل خود را وارد کرده کلید مرحله بعد را بزنید" title="ورود / ثبت نام"/>
     <form @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card',{loading}]">
       <div class="form">
         <TextInput
@@ -95,6 +95,7 @@ export default {
         }
 
         vm.loading = true;
+        this.goToNextLvl(fields.mobile);
         new GqlStore('PreferencesEdit',{querySchema:editEmail}
         ).reqZplConnectPrj({vars})
           .then(async (respObj)=>{

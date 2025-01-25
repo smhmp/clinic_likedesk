@@ -1,17 +1,17 @@
 <template>
   <div class="profilePg body">
-    <page-heading caption="مشاهده تراکنش‌های انجام شده از طریق درگاه پرداخت اینسایت" title="تراکنش‌های اینسایت" backPath="/profile/"/>
+    <page-heading caption="مشاهده رویداد ها و فعالیتهای ثبت شده" title="فعالیتهای اینسایت" backPath="/profile/"/>
     <div class="ActInline card">
       <div class="page-actions">
         <div class="action">
           <div class="fluent-emoji-credit-card">
             <div class="warning2">
-              <img class="group5" :src="`/svgs/transaction/${iconExistCard}`" />
+              <img class="group5" :src="`/svgs/events/${iconExistCard}`" />
             </div>
           </div>
           <div class="stack">
-            <div class="label">کارت‌های بانکی</div>
-            <div class="value">{{countCard}} کارت ثبت شده</div>
+            <div class="label">رویدادها</div>
+            <div class="value">{{countEvents}} رویداد در انتظار برگزاری</div>
           </div>
           <div class="angle-left">
             <img class="group4" src="@/assets/imgs/transactions/group3.svg" />
@@ -24,8 +24,8 @@
             </div>
           </div>
           <div class="stack">
-            <div class="label">پیگیری تراکنش</div>
-            <div class="value">ارسال تیکت به پشتیبانی</div>
+            <div class="label">پیگیری رویداد برگزار شده</div>
+            <div class="value">ارسال پیغام به پشتیبانی</div>
           </div>
           <div class="angle-left">
             <img class="group" src="@/assets/imgs/transactions/group0.svg" />
@@ -35,13 +35,12 @@
       <div class="section">
         <div class="heading">
           <div class="content">
-            <div class="title">تاریخچه تراکنش‌ها</div>
+            <div class="title">تیکت های خریداری شده</div>
             <div class="caption">
-              تراکنش‌هایی که با کارت‌های بانکی شخصی از درگاه پرداخت اینسایت انجام
-              داده‌اید.
+              تیکت هایی که برای شرکت در دورهمی و یا رویداد های اینسایت خریداری شده.
             </div>
           </div>
-          <div v-if="hasTrans" class="srch-contained-button">
+          <div v-if="isTrans" class="srch-contained-button">
             <div class="search">
               <img class="group5" src="@/assets/imgs/transactions/srchbtn.svg">
             </div>
@@ -49,44 +48,45 @@
         </div>
 
 
-        <div v-if="!countCard" class="list-empty">
+        <div v-if="!hasTrans && countEvents" class="list-empty">
           <div class="error">
             <div class="card-add">
               <img class="group6" src="@/assets/imgs/transactions/group5.svg" />
             </div>
           </div>
           <div class="content2">
-            <div class="title2">کارت‌های بانکی خود را اضافه کنید</div>
+            <div class="title2">از صفحه دورهمی تیکت مورد نظر خود را انتخاب و خریداری نمایید</div>
             <div class="caption2">
-              به منظور مشاهده تراکنش‌های انجام شده از درگاه پرداخت اینسایت نیاز است
-              که کارت‌‌های بانکی خود را اضافه کنید.
+              به منظور مشاهده تیکت های خریداری شده، لطفا از طریق صفحه
+              <a href="javascript:">دورهمی</a>
+              تیکت مورد نظر خود را انتخاب کنید
             </div>
           </div>
-          <div class="contained-button">
-            <div class="label2">افزودن کارت بانکی</div>
+          <div class="contained-button cursor-pointer" @click="goToEvents">
+            <div class="label2">خریداری تیکت دورهمی</div>
             <img class="plus" src="@/assets/imgs/transactions/plus0.svg" />
           </div>
         </div>
-        <div v-else-if="!hasTrans" class="list-empty">
+        <div v-else-if="!countEvents" class="list-empty">
           <div class="error">
             <div class="card-add">
               <img class="group6" src="@/assets/imgs/transactions/srchicon.svg" />
             </div>
           </div>
           <div class="content2">
-            <div class="title2">تراکنشی یافت نشد</div>
+            <div class="title2">در حال حاضر رویدادی برای برگزاری موجود نمی باشد</div>
             <div class="caption2">
-              تراکنشی در بستر اینسایت با کارت‌های ثبت شده شما یافت نشد. می‌توانید سایر‌ کارت‌های بانکی خود را اضافه کنید.
+صمیمانه از پیگیری شما سپاسگذارم
             </div>
           </div>
           <div class="contained-button">
-            <div class="label2">افزودن کارت بانکی</div>
+            <div class="label2">مشاهده صفحه دورهمی</div>
             <img class="plus" src="@/assets/imgs/transactions/plus0.svg" />
           </div>
         </div>
 
 
-        <div v-if="hasTrans" class="list listTrans">
+        <div v-if="isTrans" class="list listTrans">
           <div class="list-itemA">
             <div class="illustration">
               <div class="big-status">
@@ -139,7 +139,7 @@
 
           </div>
         </div>
-        <div v-if="hasTrans" class="pagination">
+        <div v-if="isTrans" class="pagination">
           <div class="contained-button3">
             <div class="angle-right">
               <img class="group15" src="@/assets/imgs/transactions/list/group14.svg" />
@@ -185,7 +185,7 @@ import LevelMixin from "@/mixins/LevelMixin";
 import StatMixin from "@/mixins/StatMixin";
 
 export default {
-  name: "Transactions",
+  name: "EventsMan",
   head:{
     title:'اینسایت | تراکنش‌های اینسایت'
   },
@@ -194,8 +194,8 @@ export default {
     return {
       loadingActBankCard:false,
       loadingActTracking:false,
-      countCard:2,
-      hasTrans:true,
+      countEvents:1,
+      hasTrans:false,
     };
   },
   mounted() {
@@ -204,13 +204,20 @@ export default {
 
   },
   computed: {
+    isTrans(){
+      return this.countEvents && this.hasTrans
+    },
     iconExistCard(){
-      return this.countCard > 1 ? 'multicard.svg' : this.countCard > 0  ? 'onecard.svg' : 'emptyCard.svg';
+      return this.countEvents > 1 ? 'multicard.svg' : this.countEvents > 0  ? 'onecard.svg' : 'emptyCard.svg';
     }
   },
   methods: {
     goTracking(){
       this.$router.push({path:`/form-tracking/`});
+      this.doCloseSidebar && this.doCloseSidebar();
+    },
+    goToEvents(){
+      this.$router.replace({path:`/events/`});
       this.doCloseSidebar && this.doCloseSidebar();
     },
   },

@@ -1,9 +1,7 @@
 <template>
   <div class="ContainerLanding">
     <div class="slideLand">
-      <div class="slidePosition">
-        <div class="sections section-intro"><div class="tint-intro-bg"></div></div>
-      </div>
+      <div class="sections section-intro"><div class="tint-intro-bg"></div></div>
     </div>
     <div class="bodyLanding">
       <!---->
@@ -33,53 +31,58 @@
         </div>
       </div>
       <!---->
-    </div>
-    <div class="formPersonalPg ManualKyc pgForm content">
-      <div @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card','FormLegal',{loading}]">
-        <div class="w-full kycContainer">
+      <div class="content dorehamiSec formPersonalPg">
+        <div @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card','FormLegal',{loading}]">
+          <div class="w-full dorehamiContainer">
 
-          <div class="document" style="height: 560px; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 24px; display: inline-flex">
+            <div class="document" style="height: 560px; flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 24px; display: inline-flex">
+              <div class="Description" style="align-self: stretch; text-align: right; color: #2E2E38; font-size: 16px; font-family: IRANYekanX; font-weight: 600; line-height: 24px; word-wrap: break-word">
+                اطلاعات بیشتر دورهمی
+              </div>
+              <div class="Description" style="align-self: stretch; text-align: right">
+                <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 500; line-height: 24px; word-wrap: break-word">زمان:</span>
+                <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word">تاریخ فلان</span>
+              </div>
+            </div>
             <div class="Description" style="align-self: stretch; text-align: right; color: #2E2E38; font-size: 16px; font-family: IRANYekanX; font-weight: 600; line-height: 24px; word-wrap: break-word">
-              اطلاعات بیشتر دورهمی
+              نحوه ثبت نام
             </div>
             <div class="Description" style="align-self: stretch; text-align: right">
-              <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 500; line-height: 24px; word-wrap: break-word">زمان:</span>
-              <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word">تاریخ فلان</span>
-            </div>
-            </div>
-            <div class="Description" style="align-self: stretch; text-align: right; color: #2E2E38; font-size: 16px; font-family: IRANYekanX; font-weight: 600; line-height: 24px; word-wrap: break-word">
-نحوه ثبت نام
-            </div>
-          <div class="Description" style="align-self: stretch; text-align: right">
-            <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word">نحوه ثبت نام بسیار ساده طراحی شده، ابتدا به صفحه </span>
-            <span style="color: #0A33FF; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word"><a href="https://cdn.insight-clinic.com/files/auth.pdf" target="_blank">ثبت نام</a></span>
-            <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word">
+              <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word">نحوه ثبت نام بسیار ساده طراحی شده، ابتدا به صفحه </span>
+              <span style="color: #0A33FF; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word"><a href="https://cdn.insight-clinic.com/files/auth.pdf" target="_blank">ثبت نام</a></span>
+              <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word">
 وارد می شوید. سپش شماره موبایل خود را وارد کرده سپس کد ارسال شده از طریق پیامک را وارد میکنید و در نهایت اطلاعات اولیه خود را وارد می کنید تا ما بتونیم با شما ارتباط بگیریم
               </span>
 
-            <div class="uploadSection">
-              <div class="drop-zone asParentBtn" :class="{}">
+              <div class="uploadSection">
+                <div class="drop-zone asParentBtn" :class="{}">
 
+                </div>
               </div>
             </div>
+
+
+            <div class="divider"></div>
+
+
+            <div class="guide">
+              <div class="videoEvent">
+                <img alt="home" loading="lazy" class="cursor-pointer" src="https://tests.insight-clinic.com/img/landing/player-icon.svg">
+              </div>
+              <video class="">
+                <source src="https://tests.insight-clinic.com/video/INTRO.mp4" type="video/mp4">
+              </video>
+            </div>
+
           </div>
-
-
-          <div class="divider"></div>
-
-
-          <div class="guide">
-            <div class="rounded-lg w-[300px] rounded-lg h-[300px] md:w-[600px]  md:h-[600px] lg:w-[1500px] lg:h-[382px] flex items-center justify-center relative bg-white p-5"><img alt="home" loading="lazy" width="100" height="100" decoding="async" data-nimg="1" class="object-contain  cursor-pointer absolute top-[33%] right-[35%] md:top-[41%] md:right-[39%]" src="https://tests.insight-clinic.com/img/landing/player-icon.svg" style="color: transparent;"><video class="rounded-lg w-[300px] h-[300px] md:w-[600px] md:h-[600px] lg:w-[1600px] lg:h-[400px]" __idm_id__="17948673"><source src="https://tests.insight-clinic.com/video/INTRO.mp4" type="video/mp4"></video></div>
+          <div class="button-group">
+            <ButtonSimple
+              :onClkBtn="goingToEvents" ButtonSimple
+              isLoader="1"
+              val-btn="شرکت در دورهمی"
+              type="new"
+            />
           </div>
-
-        </div>
-        <div class="button-group">
-          <ButtonSimple
-            :onClkBtn="goingToEvents" ButtonSimple
-            isLoader="1"
-            val-btn="شرکت در دورهمی"
-            type="new"
-          />
         </div>
       </div>
     </div>
@@ -116,7 +119,7 @@ export default {
   },
   methods: {
     goingToEvents(){
-      this.$router.replace({path:`/events/`});
+      this.$router.push({path:`/events/`});
     },
   },
   watch:{
@@ -126,6 +129,33 @@ export default {
   components: {ButtonSimple},
 };
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -155,8 +185,8 @@ export default {
     align-self: stretch;
     flex-shrink: 0;
     position: relative;
-    width: 100%;
     height: 340px;
+    overflow: hidden;
 
     .slidePosition {
       display: flex;
@@ -171,29 +201,33 @@ export default {
         position: relative;
       }
 
-      .section-intro {
-        background: url(~/assets/imgs/landing/bg.jpg) no-repeat center center;
-        background-size: cover;
-        height: 666px;
-        width: 100%;
 
-        .tint-intro-bg {
-          position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          z-index: 0;
-          background-color: rgb(137 137 82 / 40%);
-          text-align: center;
-        }
+    }
+
+    .section-intro {
+      background: url(~/assets/imgs/landing/bg.jpg) no-repeat center center;
+      background-size: cover;
+      height: 666px;
+      top: 0px;
+      position: relative;
+      width: 100%;
+
+      .tint-intro-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+        background-color: rgb(137 137 82 / 40%);
+        text-align: center;
       }
     }
   }
 
   .bodyLanding {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 0px;
     justify-content: center;
     flex-shrink: 0;
@@ -346,6 +380,91 @@ export default {
     }
 
 
+
+
+
+
+
+
+
+    .dorehamiContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      direction: rtl;
+    }
+
+    .dorehamiSec {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    .dorehamiSec * {
+      box-sizing: border-box;
+    }
+
+    .dorehamiSec .document {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-end;
+      justify-content: flex-start;
+      flex: 1;
+      position: relative;
+    }
+
+    .dorehamiSec .divider {
+      margin-top: 0;
+      border-style: solid;
+      border-color: #eeeef1;
+      border-color: #eeeef1;
+      border-color: var(--border-divider, #eeeef1);
+      border-width: 0 1px 0 0;
+      align-self: stretch;
+      flex-shrink: 0;
+      width: 2px;
+      position: relative;
+      transform-origin: 0;
+      transform: none;
+      height: 100%;
+    }
+
+    .dorehamiSec .guide {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      position: relative;
+    }
+
+    .dorehamiSec .card {
+      border-radius: 4px;
+      margin-top: 22px;
+    }
+
+    .videoEvent {
+      display: flex;
+      justify-content: center;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      z-index: 99999;
+      align-items: center;
+    }
+
+    .videoEvent img {
+      width: 100px;
+      height: 100px;
+      display: block;
+    }
   }
 }
 
