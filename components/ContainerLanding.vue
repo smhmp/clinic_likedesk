@@ -11,8 +11,8 @@
             <!---->
             <div class="heading3">
               <div class="content">
-                <div class="title2">شرکت در دورهمی</div>
-                <div class="caption4">برای شرکت در دورهمی روی دکمه زیر کلیک کنید</div>
+                <div class="title2">دورهمی اینسایت - نشستی برای اینکه خودمونی و بدون فیلتر از روابط بگیم</div>
+                <div class="caption4">برای شرکت و رزور جایگاه روی دکمه زیر کلیک کنید</div>
               </div>
             </div>
             <div class="ActionItem noAct frsChild preview">
@@ -21,7 +21,7 @@
                   <ButtonSimple
                     :onClkBtn="goingToEvents" ButtonSimple
                     isLoader="1"
-                    val-btn="شرکت در دورهمی"
+                    val-btn="ثبت نام در دورهمی"
                     type="new"
                   />
                 </div>
@@ -39,25 +39,30 @@
               <div class="Description" style="align-self: stretch; text-align: right; color: #2E2E38; font-size: 16px; font-family: IRANYekanX; font-weight: 600; line-height: 24px; word-wrap: break-word">
                 اطلاعات بیشتر دورهمی
               </div>
-              <div class="Description" style="align-self: stretch; text-align: right">
-                <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 500; line-height: 24px; word-wrap: break-word">زمان:</span>
-                <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word">تاریخ فلان</span>
+              <div class="whatsAppPost">
+                <div class="container">
+                  <div class="event-details">
+                    <p><span class="highlight">تاریخ:</span> ۱۵ بهمن</p>
+                    <p><span class="highlight">ساعت:</span> ۸ تا ۱۱ شب</p>
+                    <p><span class="highlight">محل برگزاری:</span> کافه شمرون ایران‌مال</p>
+                  </div>
+
+                  <h2>تو این دورهمی ویژه:</h2>
+                  <ul>
+                    <li>🔸 سخنرانی در خصوص رابطه به همراه پرسش و پاسخ</li>
+                    <li>🔸 شبکه‌سازی و تعامل</li>
+                    <li>🔸 میزگرد با مشارکت شما</li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div class="Description" style="align-self: stretch; text-align: right; color: #2E2E38; font-size: 16px; font-family: IRANYekanX; font-weight: 600; line-height: 24px; word-wrap: break-word">
-              نحوه ثبت نام
+
             </div>
             <div class="Description" style="align-self: stretch; text-align: right">
-              <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word">نحوه ثبت نام بسیار ساده طراحی شده، ابتدا به صفحه </span>
-              <span style="color: #0A33FF; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word"><a href="https://cdn.insight-clinic.com/files/auth.pdf" target="_blank">ثبت نام</a></span>
-              <span style="color: #2E2E38; font-size: 14px; font-family: IRANYekanX; font-weight: 400; line-height: 24px; word-wrap: break-word">
-وارد می شوید. سپش شماره موبایل خود را وارد کرده سپس کد ارسال شده از طریق پیامک را وارد میکنید و در نهایت اطلاعات اولیه خود را وارد می کنید تا ما بتونیم با شما ارتباط بگیریم
-              </span>
-
-              <div class="uploadSection">
-                <div class="drop-zone asParentBtn" :class="{}">
-
-                </div>
+              <div class="insight-message">
+                <p>همونطور که می‌دونی، روابط همیشه چالش‌های خاص خودشون رو دارن. شاید بارها فکر کردی که چرا دوباره توی همون چرخه اشتباه افتادی؟ چرا همیشه از تعارضات توی روابط رنج می‌کشی و هیچ وقت نتونستی درک درست و واقعی از طرف مقابلت پیدا کنی؟ یا اصلاً چرا یک رابطه سالم نمی‌تونه همیشه سالم بمونه؟</p>
+                <p>حالا تصور کن، در یک شب متفاوت، توی <strong>کافه شمرون ایران‌مال</strong>، در کنار بهترین درمانگرهای اینسایت و <strong>دکتر پارسا</strong>، می‌تونی جواب‌های سوالاتت رو پیدا کنی! 🌿</p>
               </div>
             </div>
 
@@ -79,7 +84,7 @@
             <ButtonSimple
               :onClkBtn="goingToEvents" ButtonSimple
               isLoader="1"
-              val-btn="شرکت در دورهمی"
+              val-btn="ثبت نام در دورهمی"
               type="new"
             />
           </div>
@@ -205,7 +210,7 @@ export default {
     }
 
     .section-intro {
-      background: url(~/assets/imgs/landing/bg.jpg) no-repeat center center;
+      background: url(~/assets/imgs/landing/dorehami1.jpg) no-repeat center center;
       background-size: cover;
       height: 666px;
       top: 0px;
@@ -221,6 +226,7 @@ export default {
         z-index: 0;
         background-color: rgb(137 137 82 / 40%);
         text-align: center;
+        opacity: 0.5;
       }
     }
   }
@@ -390,7 +396,7 @@ export default {
     .dorehamiContainer {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 0px;
       direction: rtl;
     }
 
@@ -464,6 +470,88 @@ export default {
       width: 100px;
       height: 100px;
       display: block;
+    }
+
+
+
+
+
+
+    .whatsAppPost {
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      direction: rtl;
+      width: 100%;
+      padding: 0 30px;
+
+      .container {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+      }
+
+      .event-details {
+        margin-bottom: 20px;
+      }
+
+      .event-details p {
+        margin: 10px 0;
+      }
+
+      .highlight {
+        color: #e74c3c;
+        font-weight: bold;
+      }
+
+      ul {
+        list-style-type: disc;
+        margin: 20px 0;
+        padding-left: 20px;
+      }
+
+      ul li {
+        margin-bottom: 10px;
+        list-style: none;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.9em;
+        color: #888;
+      }
+    }
+
+    .insight-message {
+      margin: 16px 0;
+      padding: 15px;
+      background-color: #eafaf1;
+      border-left: 5px solid #27ae60;
+      border-radius: 5px;
+      line-height: 1.8;
+    }
+
+    .insight-message p {
+      margin: 10px 0;
+    }
+
+    .insight-message strong {
+      color: #27ae60;
     }
   }
 }

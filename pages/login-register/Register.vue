@@ -41,9 +41,16 @@
         </div>
         <TextAreaSimple
           iName="explain"
-          :i-label="'علت شرکت در دورهمی'"
+          :i-label="'علت شرکت در دورهمی (اختیاری)'"
           v-model="fields.explain"
           dataTab="4"
+        />
+        <TextAreaSimple
+          iName="questPlan"
+          :i-label="'طرح سوال (اختیاری)'"
+          v-model="fields.questPlan"
+          dataTab="4"
+          caption="در این قسمت میتونید 5 سوال برامون ارسال کنید تا در میزگرد دورهمی بهش پاسخ داده بشه."
         />
       </div>
       <div v-if="general_error" class="error_msg">{{general_error}}</div>
@@ -105,6 +112,7 @@ export default {
         age:'سن',
         gender:'جنسیت',
         explain:'علت شرکت در دورهمی',
+        questPlan:'طرح سوال',
       },
       fields:{
         first_name:'',
@@ -112,6 +120,7 @@ export default {
         age:'',
         gender:'',
         explain:'',
+        questPlan:'',
       },
     };
   },

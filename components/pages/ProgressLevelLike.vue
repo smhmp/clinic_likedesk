@@ -29,14 +29,14 @@
                   </span>
             </div>
           </div>
-          <div class="caption3">{{captionTxt}}</div>
+          <div class="caption3">{{descTicket}}</div>
         </div>
       </div>
       <div class="action">
         <ButtonSimple
           :onClkBtn="goToPay" ButtonSimple
           isLoader="1"
-          :val-btn="`خرید تیکت ${this.nextTicket}`"
+          :val-btn="`رزرو تیکت ${this.nextTicket}`"
           :type="'new'"
         />
       </div>
@@ -70,7 +70,8 @@ export default {
       nextLevel:'',
       curLevelFa:'',
       nextLevelFa:'',
-      nextTicket:'VIP',
+      nextTicket:'',
+      descTicket:'',
     };
   },
   created() {
@@ -83,6 +84,7 @@ export default {
     this.broking = false;
     this.apiChkLevel();
     const levelProgressRef = this.$refs.levelProgressRef;
+    this.clkRadioLegal('asVIP');
     window.setTimeout(()=>{
       /*this.$zplUi.animateMove({untilNum:-1 * levelProgressRef.offsetWidth,token:{callEndOccured:true}},({count=-1,token})=>{
         if(token.endOccured){
@@ -106,21 +108,21 @@ export default {
 
   },
   computed: {
-    captionTxt(){
-      return 'با خرید این تیکت شما عضو افتخاری ما خواهید بود'
-    },
   },
   methods: {
     goToPay(){},
     clkRadioLegal(uniqKey){
       if(uniqKey === 'asNormal'){
         this.nextTicket = 'معمولی';
+        this.descTicket = 'جایگاه شما در سالن بیرونی‌ هست و از طریق ویدیو پروژکتور برنامه رو دنبال می‌کنید، اما برای شبکه‌سازی همه در کنار هم هستیم.';
       }
       else if(uniqKey === 'asVIP'){
         this.nextTicket = 'VIP';
+        this.descTicket = 'شما در چند ردیف بعد از ردیف‌های ابتدایی قرار دارید و دید خوبی به برنامه خواهید داشت.';
       }
       else if(uniqKey === 'asCIP'){
         this.nextTicket = 'CIP';
+        this.descTicket = 'جایگاه شما در ردیف‌های ابتدایی و نزدیک‌ترین نقطه به برنامه خواهد بود.';
       }
     },
 

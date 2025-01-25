@@ -25,7 +25,7 @@
           </div>
           <div class="stack">
             <div class="label">پیگیری رویداد برگزار شده</div>
-            <div class="value">ارسال پیغام به پشتیبانی</div>
+            <div class="value">ارسال پیام به پشتیبانی</div>
           </div>
           <div class="angle-left">
             <img class="group" src="@/assets/imgs/transactions/group0.svg" />

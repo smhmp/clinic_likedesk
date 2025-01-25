@@ -1,6 +1,6 @@
 <template>
   <div class="profilePg body">
-    <page-heading caption="مشاهده و مدیریت رویدادهای اینسایت" title="شرکت در دورهمی" backPath="/profile/"/>
+    <page-heading caption="رزرو جایگاه دورهمی" title="شرکت در دورهمی" backPath="/profile/"/>
     <div class="card">
       <div v-if="isNotifBox && !hidenNotifBox" class="inline-message_profile">
         <div class="interface-essential-lamp-spark">
@@ -28,8 +28,8 @@
       <div class="ManualKyc">
         <div class="guide">
           <div class="links">
-            <a class="contained-button2 asBtn" href="https://www.aparat.com/v/j18748j" target="_blank">
-              <div class="labelGui">پیام تصویری خانوم دکتر تینا پارسامند</div>
+            <a class="contained-button2 asBtn" href="/" target="_blank">
+              <div class="labelGui">مشاهده اطلاعات و جزئیات دورهمی</div>
               <div class="interface-essential-play-loading">
                 <img class="group2" src="@/assets/imgs/manualkyc/group1.svg" />
               </div>
@@ -39,10 +39,10 @@
       </div>
       <ActionGroup
           ref="grpEmailRef"
-          ttl="تماس با ما"
-          caption="راه‌های ارتباطی و اطلاع‌رسانی کلینیک"
+          ttl="ارتباط با پشتیبانی"
+          caption="در صورت نیاز به راهنمایی بیشتر میتونید با بخش پشتیبانی در واتساپ یا تلگرام در ارتباط باشید."
       >
-        <ActionItem preview frsChild midCaption="0912....." ttl="شماره واتس اپ" no-act="1"/>
+        <ActionItem preview frsChild midCaption="🔗 [واتساپ پشتیبانی](https://wa.me/qr/CTCOMKQ2KNDKO1) | 📱 ۰۹۳۵۶۲۹۸۳۶۶" ttl="شماره واتس اپ" no-act="1"/>
       </ActionGroup>
     </div>
 

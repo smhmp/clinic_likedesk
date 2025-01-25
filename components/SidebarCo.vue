@@ -74,7 +74,7 @@
           />
           <NavLink
             :onClick="()=>{$zpl.openLink($zpl.infAdr().panelZplOld+'/panel/referrer/','_blank')}" NavLink
-            navLabel="ارتباط با ما"
+            navLabel="پشتیبانی  دورهمی"
             icon="RefererIcon"
             outPage="1"
           />

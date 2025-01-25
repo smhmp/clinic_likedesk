@@ -6,7 +6,7 @@
       <TopBar :onClkMenu="onOpenedSidebar"/>
       <ContainerLanding v-if="$route.name === 'index___fa'"/>
       <div :class="['container2',{withoutSidebar:!reqSidebar||!showSidebar,mediumScr:$store.state.layouts.mediumScr}]">
-        <div v-if="!$store.state.layouts.isProfileMounted" class="" style="opacity: 0;display: flex;flex-direction: column;flex: 1;position: relative;background: #ededed;background-clip: border-box;border-radius: 20px;margin-top: 50px;">
+        <div v-if="$route.name !== 'index___fa' && !$store.state.layouts.isProfileMounted" class="" style="opacity: 0;display: flex;flex-direction: column;flex: 1;position: relative;background: #ededed;background-clip: border-box;border-radius: 20px;margin-top: 50px;">
           <div class="" style="padding: 24px;display: flex;flex-direction: column;flex-shrink: 0;position: relative;">
             <div class="" style="height: 500px;"></div>
           </div>
