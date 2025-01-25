@@ -114,7 +114,7 @@ export default {
     clkRadioLegal(uniqKey){
       if(uniqKey === 'asNormal'){
         this.nextTicket = 'معمولی';
-        this.descTicket = 'جایگاه شما در سالن بیرونی‌ هست و از طریق ویدیو پروژکتور برنامه رو دنبال می‌کنید، اما برای شبکه‌سازی همه در کنار هم هستیم.';
+        this.descTicket = 'جایگاه شما در سالن شماره 2 هست و از طریق ویدیو پروژکتور برنامه رو دنبال می‌کنید، اما برای شبکه‌سازی همه در کنار هم هستیم.';
       }
       else if(uniqKey === 'asVIP'){
         this.nextTicket = 'VIP';

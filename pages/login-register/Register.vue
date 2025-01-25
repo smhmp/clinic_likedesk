@@ -47,7 +47,7 @@
         />
         <TextAreaSimple
           iName="questPlan"
-          :i-label="'طرح سوال (اختیاری)'"
+          :i-label="'طرح سوال برای میزگرد(اختیاری)'"
           v-model="fields.questPlan"
           dataTab="4"
           caption="در این قسمت میتونید 5 سوال برامون ارسال کنید تا در میزگرد دورهمی بهش پاسخ داده بشه."
@@ -160,7 +160,9 @@ export default {
 
         const genderObj = new SelectPro(dataField,fieldGender,'جنسیت',{
           listOpts:[{"code": "female", "text": "خانوم"},
-            {"code": "male", "text": "آقا"},], //other
+            {"code": "male", "text": "آقا"},
+            {"code": "other", "text": "سایر"},
+          ], //other
           onClick:'.select-input',
           onSelect(val){
             vm.fields.gender = val;
