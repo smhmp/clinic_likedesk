@@ -10,7 +10,7 @@
           <div class="body">
             <span>
               <span v-if="isPurchasedEvent" class="body-span">
-                شما یک تیکت با موفقیت خریداری کرده اید، و از قسمت <a href="javascript:" @click="goEventsMan" class="body-span2 cursor-pointer">(فعالیتها)</a> قابل مشاهده است. به زودی خرید چند تایی تیکت فعال خواهد شد
+                شما یک تیکت با موفقیت خریداری کرده اید، و از قسمت <a href="javascript:" @click="goEventsMan" class="body-span2 cursor-pointer">(تیکت‌های من)</a> قابل مشاهده است. به زودی خرید چند تایی تیکت فعال خواهد شد
               </span>
               <span v-else class="body-span">
                 برای شرکت در دورهمی یکی از تیکت های زیر را انتخاب کرده، دکمه رزرو تیکت را بزنید.
@@ -80,7 +80,7 @@ export default {
     this.$store.dispatch('layouts/setProfileMounted', true);
 
     const $route = this.$route;
-    if($route.query.resultPay == 'failed'){
+    if($route.query.resultPay === 'failed'){
       EventBus.$emit("openModalPro", 'modalNotif',{
         mainTitle:'خرید شما موفقیت آمیز نبود',
         descHtml(){

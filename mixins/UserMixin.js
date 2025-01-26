@@ -91,9 +91,10 @@ let UserMixin = {
         return this.isLogedin && this.$store.state.application.eventTickets?.length && !this.$store.state.application.userInfo?.name;
       },
       isPurchasedEvent(){
-        // $zpl.isTest()
-        return false
-          return this.$store.state.application.eventTickets?.length
+        if($zpl.isTest().__alwaysPayTicket__){
+            return false
+        }
+        return this.$store.state.application.eventTickets?.length
       }
   },
   methods:{

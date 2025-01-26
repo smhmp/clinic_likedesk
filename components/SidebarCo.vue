@@ -48,7 +48,7 @@
           <NavLink
             v-if="isLogedin"
             :onClick="goEventsMan" NavLink
-            navLabel="فعالیت ها"
+            navLabel=" تیکت‌های من"
             icon="TrackingIcon"
             inPage="1"
             :selected="isActivePage('events-man')"
@@ -73,7 +73,7 @@
             outPage="1"
           />
           <NavLink
-            :onClick="()=>{$zpl.openLink($zpl.infAdr().panelZplOld+'/panel/referrer/','_blank')}" NavLink
+            :onClick="()=>{$zpl.openLink('https://wa.me/qr/CTCOMKQ2KNDKO1','_blank')}" NavLink
             navLabel="پشتیبانی  دورهمی"
             icon="RefererIcon"
             outPage="1"

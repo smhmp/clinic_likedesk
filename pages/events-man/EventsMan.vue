@@ -1,6 +1,6 @@
 <template>
   <div class="profilePg body">
-    <page-heading caption="مشاهده رویداد ها و فعالیتهای ثبت شده" title="فعالیتهای اینسایت" backPath="/profile/"/>
+    <page-heading caption="مشاهده تیکت ها و فعالیتهای ثبت شده" title="تیکت‌های من" backPath="/profile/"/>
     <div class="ActInline card">
       <div class="page-actions" v-if="!tempDisable">
         <div class="action">
@@ -92,43 +92,43 @@
               <div class="TicketOut">
                 <div class="headerT">
                   <div class="titleT">تیکت دورهمی اینسایت</div>
-                  <div class="seat-number">شماره صندلی: 12</div>
+                  <div class="seat-number">{{ `شماره صندلی: ${tickChairNum()}` }}</div>
                 </div>
 
                 <div class="contentT">
                   <div class="columnT">
                     <div class="rowT">
                       <span class="labelT">نوع:</span>
-                      <span class="valueT">معمولی</span>
+                      <span class="valueT">{{tickType()}}</span>
                     </div>
                     <div class="rowT">
                       <span class="labelT">نام و نام خانوادگی:</span>
-                      <span class="valueT">حامد موسوی</span>
+                      <span class="valueT">{{tickNamFamil()}}</span>
                     </div>
                     <div class="rowT">
                       <span class="labelT">شماره تیکت:</span>
-                      <span class="valueT">A323232</span>
+                      <span class="valueT">{{tickTicketNum()}}</span>
                     </div>
                   </div>
                   <div class="columnT">
                     <div class="rowT">
                       <span class="labelT">کد رهگیری:</span>
-                      <span class="valueT">232323434</span>
+                      <span class="valueT">{{tickRahgiri()}}</span>
                     </div>
                     <div class="rowT">
                       <span class="labelT">تاریخ ثبت:</span>
-                      <span class="valueT">1403/11/24</span>
+                      <span class="valueT">{{tickDate()}}</span>
                     </div>
                     <div class="rowT">
                       <span class="labelT">مبلغ:</span>
-                      <span class="valueT">800,000 تومان</span>
+                      <span class="valueT">{{tickPrice()}}</span>
                     </div>
                   </div>
                 </div>
 
                 <div class="footerT">
-                  <p><span class="labelT">تاریخ برگزاری دورهمی:</span> 1403/11/30</p>
-                  <p><span class="labelT">آدرس:</span> کافه شمرون ایران‌مال</p>
+                  <p><span class="labelT">تاریخ برگزاری دورهمی:</span> ۱۵ بهمن</p>
+                  <p><span class="labelT">آدرس:</span> تهران، اتوبان شهید همت(غرب)، اتوبان شهید خرازی، ایران‌مال، طبقه G3، نبش کتابخانه، مجموعه فود پلازا، میدان اصلی</p>
                 </div>
                 <div v-if="false" class="actions">
                   <div class="contained-button2"><div class="label2">مشاهده جزئیات</div></div>
@@ -188,7 +188,7 @@ import StatMixin from "@/mixins/StatMixin";
 export default {
   name: "EventsMan",
   head:{
-    title:'اینسایت | تراکنش‌های اینسایت'
+    title:'اینسایت | تیکت های اینسایت'
   },
   components: {ActionInlineGroup, ActionInlineItem, AHref, Loaders },
   data() {
@@ -235,6 +235,27 @@ export default {
     }
   },
   methods: {
+    tickChairNum(){
+      return 12
+    },
+    tickType(){
+      return 'normal'
+    },
+    tickNamFamil(){
+      return 'حامد موسوی'
+    },
+    tickTicketNum(){
+      return 11111
+    },
+    tickRahgiri(){
+      return 11111
+    },
+    tickDate(){
+      return '1403/11/24'
+    },
+    tickPrice(){
+      return '800,000 تومان'
+    },
     goTracking(){
       this.$router.push({path:`/form-tracking/`});
       this.doCloseSidebar && this.doCloseSidebar();
