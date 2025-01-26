@@ -8,7 +8,7 @@ export const otpActs={
   timeCounter:0,
   start(){
     this.elementParE = document.querySelector('.resend-otp');
-    this.resendOtpCode();
+    // this.resendOtpCode();
   },
   startTimer(){
     let secondsLeft = this.defaultTime,minLeft=0,secStr='';

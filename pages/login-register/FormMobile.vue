@@ -97,7 +97,6 @@ export default {
 
         vm.loading = true;
 
-
         $zpl.zplConnectPrj_v2.reqDirect({
           baseUrl:'https://reservation-api.insight-clinic.com/api/event/otp/send',
           args:vars,

@@ -110,6 +110,7 @@ export default {
         mobile: langTools.convertToEnNum(vm.mobile),
       }
 
+
       $zpl.zplConnectPrj_v2.reqDirect({
         baseUrl:'https://reservation-api.insight-clinic.com/api/event/otp/send',
         args:vars,

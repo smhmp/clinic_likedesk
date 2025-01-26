@@ -10,7 +10,10 @@
           <div class="body">
             <span>
               <span v-if="isPurchasedEvent" class="body-span">
-                شما یک تیکت با موفقیت خریداری کرده اید، و از قسمت <a href="javascript:" @click="goEventsMan" class="body-span2 cursor-pointer">(تیکت‌های من)</a> قابل مشاهده است. به زودی خرید چند تایی تیکت فعال خواهد شد
+                شما یک تیکت با موفقیت خریداری کرده اید، و از قسمت <a href="javascript:" @click="goEventsMan" class="body-span2 cursor-pointer">(تیکت‌های من)</a> قابل مشاهده است.
+              </span>
+              <span v-if="isPurchasedEvent" class="body-span">
+                درصورت تمایل به خرید تیکت بیشتر، لطفا با شماره تماس فرد شرکت کننده وارد شوید و تیکت خود را ثبت کنید
               </span>
               <span v-else class="body-span">
                 برای شرکت در دورهمی یکی از تیکت های زیر را انتخاب کرده، دکمه رزرو تیکت را بزنید.

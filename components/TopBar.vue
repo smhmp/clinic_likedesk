@@ -10,7 +10,8 @@
             <div class="profile-fill">
               <img class="group2" src="@/assets/imgs/autohtml-all1/group1.svg" />
             </div>
-            <img v-if="isLogedin" :src="gravatar||'@/assets/imgs/autohtml-all1/group1.svg'" class="iconGravatar">
+            <img v-if="isLogedin&&gravatar" :src="gravatar" class="iconGravatar">
+            <img v-else src="@/assets/imgs/autohtml-all1/group1.svg" class="iconGravatar">
           </div>
           <div class="tempFocusBox" v-if="showMenu1">
             <div class="div1 divA1" @click="onCloseMenu"></div>

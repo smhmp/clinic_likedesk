@@ -91,7 +91,7 @@ const zplDev = {
       const dbg = {
           __curLevel__:1,
           __isPreview__:1,
-          __alwaysPayTicket__:1,
+          __alwaysPayTicket__:0,
           __No_modal__:0,
         __global__isLegal__:1,
         __modal__step2Legal__:0,
