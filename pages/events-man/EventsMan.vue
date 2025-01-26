@@ -196,7 +196,6 @@ export default {
       loadingActBankCard:false,
       loadingActTracking:false,
       countEvents:1,
-      hasTrans:true,
       tempDisable:true,
     };
   },
@@ -227,6 +226,9 @@ export default {
     },1000)
   },
   computed: {
+    hasTrans(){
+      return this.$store.state.application.eventTickets
+    },
     isTrans(){
       return this.countEvents && this.hasTrans
     },
@@ -236,25 +238,33 @@ export default {
   },
   methods: {
     tickChairNum(){
-      return 12
+      const inf = this.$store.state.application.eventTickets
+      const info = JSON.parse(inf[0]['info']);
+      return info['ticketNo']
     },
     tickType(){
-      return 'normal'
+      const inf = this.$store.state.application.eventTickets
+      return inf[0]['type']
     },
     tickNamFamil(){
-      return 'حامد موسوی'
+      return this.nameFamily
     },
     tickTicketNum(){
-      return 11111
+      const inf = this.$store.state.application.eventTickets
+      const info = JSON.parse(inf[0]['info']);
+      return info['ticketNo']
     },
     tickRahgiri(){
-      return 11111
+      const inf = this.$store.state.application.eventTickets
+      return inf[0]['ref']
     },
     tickDate(){
-      return '1403/11/24'
+      const inf = this.$store.state.application.eventTickets
+      return inf[0]['order_at']
     },
     tickPrice(){
-      return '800,000 تومان'
+      const inf = this.$store.state.application.eventTickets
+      return inf[0]['price']+'تومان'
     },
     goTracking(){
       this.$router.push({path:`/form-tracking/`});

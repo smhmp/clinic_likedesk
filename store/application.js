@@ -10,6 +10,7 @@ import {$zpl} from "@/plugins/zpl";
 
 export const state = () => ({
     eventTickets:null,
+    capacityTickets:null,
   userInfo:{
     id:'',
     age:'',
@@ -138,6 +139,38 @@ export const actions = {
             if(resp){
                 commit("fillData", {
                     stateName: "eventTickets",
+                    data: resp.data.data.tickets
+                });
+            }
+        })
+        .catch((respObj)=>{
+            /**
+             * @var respObj
+             * @type RespObj
+             */
+            const msg = respObj.getErrMsg();
+            if(msg){
+                $zpl.toastError(msg);
+            }
+            else{
+                $zpl.toastError('خطای نامشخصی رخ داد، لطفا اطلاعات وارد شده را بررسی کنید و مجددا تلاش نمایید.');
+            }
+        })
+    },
+    async capacity({ state, commit }){
+      if(state.capacityTickets?.length){
+          return
+      }
+        $zpl.zplConnectPrj_v2.reqDirect({
+            baseUrl:'https://reservation-api.insight-clinic.com/api/event/ticket/capacity',
+            configs:{
+                get:1
+            },
+        }).then(async (respObj)=>{
+            const resp = respObj.getResp();
+            if(resp){
+                commit("fillData", {
+                    stateName: "capacityTickets",
                     data: resp.data.data.tickets
                 });
             }

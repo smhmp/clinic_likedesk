@@ -3,22 +3,12 @@ import {$zplUi} from "@/plugins/zplUi";
 
 export const otpActs={
   elementParE:null,
-  defaultTime:600,
+  defaultTime:90,
   secondsLeft:0,
   timeCounter:0,
   start(){
     this.elementParE = document.querySelector('.resend-otp');
     this.resendOtpCode();
-  },
-  reqOtpToEmail({calbDone,calbFinal}){
-    new GqlJSSdk('SendVerifyEmail',{type:'mutation'}).reqZplConnectPrj()
-      .then((respObj)=>{
-
-      }).catch((respObj)=>{
-        respObj.showErr();
-    }).finally(()=>{
-        calbFinal();
-    });
   },
   startTimer(){
     let secondsLeft = this.defaultTime,minLeft=0,secStr='';

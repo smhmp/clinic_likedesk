@@ -4,7 +4,7 @@
       <img class="vector" src="@/assets/imgs/autohtml-all1/vector0.svg" />
     </div>
     <div ref="levelProgressRef" :class="['level-progress',{loading,loadData}]">
-      <div v-if="endEvent" class="eventEnd">
+      <div v-if="endEvent||iEndEvent" class="eventEnd">
         <div class="message">
           <p>از اینکه برای <span class="highlight">رشد خودتون</span> وقت می‌گذارید، خیلی خوشحالیم!</p>
 
@@ -15,16 +15,11 @@
           <p class="footer">در کنار شماییم، با آرزوی بهترین‌ها🌱</p>
         </div>
       </div>
-      <RadioCard v-else noResponsive="1" ref="radioCardRef" inpName="legalType" :infos="[
-          {label:'تیکت معمولی', uniqKey:'asNormal',guidance:'قیمت: 800,000 تومان',svgIcon:'radio/ticket.svg'},
-          {defChecked:true,label:'تیکت VIP', uniqKey:'asVIP',guidance:'قیمت: 1000,000 تومان',svgIcon:'radio/ticket.svg'},
-          {label:'تیکت CIP', uniqKey:'asCIP',guidance:'قیمت: 1,200,000 تومان',svgIcon:'radio/ticket.svg'},
-          {label:''},
-        ]"
+      <RadioCard v-else-if="$store.state.application.capacityTickets" noResponsive="1" ref="radioCardRef" inpName="legalType" :infos="RadioInfo"
                  :onChked="clkRadioLegal"
       />
     </div>
-    <div v-if="!endEvent" class="cardTitle">
+    <div v-if="!endEvent||iEndEvent" class="cardTitle">
       <div :class="['progressSection']">
         <div class="card2">
           <div class="heading2 hidden">
@@ -63,6 +58,7 @@ import {$zplUi} from "@/plugins/zplUi";
 import {lg} from "@/src/js/dbg";
 import StatMixin from "@/mixins/StatMixin";
 import {$zpl} from "@/plugins/zpl";
+import UserMixin from "@/mixins/UserMixin";
 
 
 
@@ -87,6 +83,7 @@ export default {
       nextTicket:'',
       ticketType:'',
       descTicket:'',
+      iEndEvent:false,
     };
   },
   created() {
@@ -97,7 +94,7 @@ export default {
   },
   mounted() {
     this.broking = false;
-    this.apiChkLevel();
+    // this.apiChkLevel();
     const levelProgressRef = this.$refs.levelProgressRef;
     this.clkRadioLegal('asVIP');
     window.setTimeout(()=>{
@@ -123,6 +120,21 @@ export default {
 
   },
   computed: {
+    RadioInfo(){
+      const isNormal = this.isCountTicket('normal');
+      const isVip = this.isCountTicket('vip');
+      const isCip = this.isCountTicket('cip');
+      if(!isNormal&&!isVip&&!isCip){
+        this.iEndEvent = true;
+        return [];
+      }
+      return [
+        {label:isNormal&&'تیکت معمولی', uniqKey:'asNormal',guidance:'قیمت: 800,000 تومان',svgIcon:'radio/ticket.svg'},
+        {defChecked:true,label:isVip&&'تیکت VIP', uniqKey:'asVIP',guidance:'قیمت: 1000,000 تومان',svgIcon:'radio/ticket.svg'},
+        {label:isCip&&'تیکت CIP', uniqKey:'asCIP',guidance:'قیمت: 1,200,000 تومان',svgIcon:'radio/ticket.svg'},
+        {label:''},
+      ]
+    }
   },
   methods: {
     goToPay(e,{calbDone}){
@@ -179,7 +191,7 @@ export default {
 
     }
   },
-  mixins:[LevelMixin,StatMixin],
+  mixins:[LevelMixin,StatMixin,UserMixin],
   components: {ButtonSimple, TooltipPro},
 };
 </script>

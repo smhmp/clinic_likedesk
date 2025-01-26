@@ -82,6 +82,7 @@ import {otpActs} from "@/src/js/otp/otpActs";
 import {otpMan} from "@/src/js/otp/otpMan";
 import {langTools} from "@/src/js/langMan";
 import {$zpl} from "@/plugins/zpl";
+import {GqlJSSdk} from "@/src/js/GqlJSSdk";
 
 export default {
   name: "OTPMobile",
@@ -103,6 +104,24 @@ export default {
   mounted() {
     const vm = this;
     this.$store.dispatch('layouts/setProfileMounted', true);
+
+    otpActs.reqOtpToEmail=function ({calbDone,calbFinal}){
+      const vars = {
+        mobile: langTools.convertToEnNum(vm.mobile),
+      }
+
+      $zpl.zplConnectPrj_v2.reqDirect({
+        baseUrl:'https://reservation-api.insight-clinic.com/api/event/otp/send',
+        args:vars,
+      }).then(async (respObj)=>{
+
+      })
+      .catch((respObj)=>{
+        respObj.showErr();
+      }).finally(()=>{
+        calbFinal();
+      });
+    };
 
     otpFlow.requestOtp = function (otpCode,from=''){
       if(otpMan.goingSend){

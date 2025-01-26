@@ -66,7 +66,7 @@ let UserMixin = {
       confFields:confFields
     }
   },
-  computed:{
+    computed:{
     ...UserMan,
     cell_number(){
       return this.$store.state.application.userInfo?.mobile||''
@@ -95,10 +95,18 @@ let UserMixin = {
             return false
         }
         return this.$store.state.application.eventTickets?.length
-      }
+      },
   },
   methods:{
-
+      isCountTicket(type){
+          const capacityTickets = this.$store.state.application.capacityTickets;
+          const res = capacityTickets.filter((itm)=>{
+              return itm['type']==type;
+          })
+          const cap = res[0]['capacity']
+          console.log('isCountTicket / cap',cap)
+          return cap;
+      }
   }
 }
 export default UserMixin;
