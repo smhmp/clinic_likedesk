@@ -139,15 +139,6 @@ export default {
     //http://event.insight-clinic.com/login-register/?step=3&result=success&ref_id=64533831201&order_id=37
 
     this.$store.dispatch('layouts/setProfileMounted', true);
-    if(!this.isPreview('personal')){
-      const genderObj = this.readyGender();
-
-      const userInf = this.$store.state.application.userInfo;
-
-      this.readyValidForm({
-        calbReset:this.calbReset
-      });
-    }
   },
   computed: {
 
