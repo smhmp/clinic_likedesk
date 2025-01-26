@@ -71,11 +71,8 @@
 
 
             <div class="guide">
-              <div class="videoEvent">
-                <img alt="home" loading="lazy" class="cursor-pointer" src="https://tests.insight-clinic.com/img/landing/player-icon.svg">
-              </div>
-              <video class="">
-                <source src="https://tests.insight-clinic.com/video/INTRO.mp4" type="video/mp4">
+              <video controls width="450" class="">
+                <source src="https://reservation-api.insight-clinic.com/api/file/meeting-borderless.mp4" type="video/mp4">
               </video>
             </div>
 
