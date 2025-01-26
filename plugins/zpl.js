@@ -113,51 +113,51 @@ export const $zpl={
     let rootAuth = '';
     let rootAdr = '';
     if(host.indexOf('.insight-clinic.name')>-1){
-      panelZplBeta = 'https://stg-my.insight-clinic.name';
-      panelZplOld = 'https://staging.insight-clinic.com';
+      panelZplBeta = 'https://event.insight-clinic.com';
+      panelZplOld = 'https://event.insight-clinic.com';
       rootApi = configInf.reqApi.stageUrl;
-      rootAuth = 'https://connect-stg.insight-clinic.name';
+      rootAuth = 'https://reservation-api.insight-clinic.com/api/event';
       rootAdr = rootAuth;
     }
     else if(host.indexOf('localhost')>-1){
       const switchSlug = $zpl.getSwitcherSlug();
       switch (switchSlug) {
         case '/demo':
-          panelZplBeta = 'https://shell.hamrah.in';
-          panelZplOld = 'https://v4-demo.hamrah.in';
+          panelZplBeta = 'https://event.insight-clinic.com';
+          panelZplOld = 'https://event.insight-clinic.com';
           rootApi = configInf.reqApi.demoUrl;
-          rootAuth = 'https://connect-demo.hamrah.in';
+          rootAuth = 'https://reservation-api.insight-clinic.com/api/event';
           break
         case '/stage':
-          panelZplBeta = 'https://stg-my.insight-clinic.name';
-          panelZplOld = 'https://staging.insight-clinic.com';
+          panelZplBeta = 'https://event.insight-clinic.com';
+          panelZplOld = 'https://event.insight-clinic.com';
           rootApi = configInf.reqApi.stageUrl;
-          rootAuth = 'https://connect-stg.insight-clinic.name';
+          rootAuth = 'https://reservation-api.insight-clinic.com/api/event';
           break
         default:
-          panelZplBeta = 'https://beta.insight-clinic.com';
-          panelZplOld = 'https://next.insight-clinic.com';
+          panelZplBeta = 'https://event.insight-clinic.com';
+          panelZplOld = 'https://event.insight-clinic.com';
           rootApi = configInf.reqApi.prdUrl;
-          rootAuth = 'https://connect.insight-clinic.com';
+          rootAuth = 'https://reservation-api.insight-clinic.com/api/event';
           break
       }
     }
     else if(host.indexOf('.hamrah.in')>-1){
-      panelZplBeta = 'https://shell.hamrah.in';
-      panelZplOld = 'https://v4-demo.hamrah.in';
+      panelZplBeta = 'https://event.insight-clinic.com';
+      panelZplOld = 'https://event.insight-clinic.com';
       rootApi = configInf.reqApi.demoUrl;
-      rootAuth = 'https://connect-demo.hamrah.in';
+      rootAuth = 'https://reservation-api.insight-clinic.com/api/event';
       rootAdr = rootAuth;
     }
     else{
-      panelZplBeta = 'https://beta.insight-clinic.com';
-      panelZplOld = 'https://next.insight-clinic.com';
+      panelZplBeta = 'https://event.insight-clinic.com';
+      panelZplOld = 'https://event.insight-clinic.com';
       rootApi = configInf.reqApi.prdUrl;
-      rootAuth = 'https://connect.insight-clinic.com';
+      rootAuth = 'https://event.insight-clinic.com';
       rootAdr = rootAuth;
     }
 
-    const adrAuth = `${rootAuth}/login?client_id=2`;
+    const adrAuth = `${rootAuth}/`;
 
     return {rootAdr:rootAdr,rootAuth:rootAuth,adrAuth:adrAuth,rootApi:rootApi,panelZplOld:panelZplOld,panelZplBeta:panelZplBeta}
   },
@@ -195,7 +195,7 @@ export const $zpl={
     this.storeMan.dispatch("application/alert", obj);
   },
   chkResp(resp){
-    if('asDbg' in resp){// resp['asDbg'] = '1'|'0'
+    if(resp && 'asDbg' in resp){// resp['asDbg'] = '1'|'0'
       this.isDbgUser(resp['asDbg'])
     }
   },

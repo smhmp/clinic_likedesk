@@ -80,53 +80,32 @@ export const otpFlow = {
       otpControlls.classList.remove('loading');
     }
   },
-  requestOtp(otpCode,from='') {
-    if(otpMan.goingSend){
-      return
-    }
-    otpMan.goingSend = true;
-    otpFlow.loadingB('start');
 
-
-    if(otpCode.length!=6){
-      return
-    }
-
-    otpCode = langTools.convertToEnNum(otpCode);
-
-    this.sendOtpCode(otpCode,{
-      calbDone(){
-        $zpl.toastMsg('ایمیل شما با موفقیت تایید شد')
-        $zpl.currRouter.replace({path:`/profile/`});
-        $zpl.currRouter = null;
-      },
-      calbFinal(){
-        otpMan.goingSend = false;
-        otpFlow.loadingB('end');
-      },
-      calbError(){
-        otpFlow.otpErr('on');
-      }
-    });
-  },
-  sendOtpCode(otp_code,{calbDone,calbFinal,calbError}){
+  sendOtpCode(otp_code,{calbDone,calbFinal,calbError,mobile}){
     otpActs.loadingA('start');
-    new GqlJSSdk('VerifyEmail',{args:{otp_code:otp_code},type:'mutation'}).reqZplConnectPrj()
-      .then((respObj)=>{
+      $zpl.zplConnectPrj_v2.reqDirect({
+          baseUrl:'https://reservation-api.insight-clinic.com/api/event/otp/verify',
+          args:{
+              otp:otp_code,
+              mobile:mobile
+          },
+      }).then((respObj)=>{
           const resp = respObj.getResp();
-        if(resp){
-          calbDone && calbDone();
-        }
-        else{
+          if(resp){
+              calbDone && calbDone(resp);
+          }
+          else{
+              calbError && calbError();
+          }
+      })
+      .catch((respObj)=>{
+          respObj.showErr();
           calbError && calbError();
-        }
-      }).catch((respObj)=>{
-        respObj.showErr();
-      calbError && calbError();
-    }).finally(()=>{
-      otpActs.loadingA('end');
-        calbFinal && calbFinal();
-    });
+      }).finally(()=>{
+          otpActs.loadingA('end');
+          calbFinal && calbFinal();
+      });
+
   },
   makeEvents(){
     const fastTyping = {

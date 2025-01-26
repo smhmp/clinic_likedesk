@@ -1,6 +1,7 @@
 <template>
   <div class="formPersonalPg pgForm content">
-    <page-heading caption="برای شرکت در دورهمی لطفا ورودی های زیر را پر کرده و ثبت نام خود را تکمیل نمایید" title="تکمیل ثبت نام"/>
+    <page-heading v-if="$route.query.result == 'success'" caption="برای شرکت در دورهمی و ثبت نهایی تیکت  لطفا ورودی های زیر را پر کرده و ثبت نام خود را تکمیل نمایید" title="تکمیل ثبت نام"/>
+    <page-heading v-else caption="شما می توانید اطلاعات خود را ویرایش کنید" title="ویرایش اطلاعات"/>
     <form @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card',{loading}]">
       <div class="form" style="gap: 24px;">
         <TextInput
@@ -91,6 +92,7 @@ import TooltipPro from "@/components/form/TooltipPro.vue";
 import RadioCard from "@/components/RadioCard.vue";
 import {listCountries} from "@/src/js/personalData";
 import TextAreaSimple from "@/components/form/TextAreaSimple.vue";
+import {$zpl} from "@/plugins/zpl";
 
 
 export default {
@@ -101,7 +103,6 @@ export default {
   components: {TextAreaSimple, TooltipPro, DatePickerInline, PreviewPersonal, ButtonSimple, EasyChkBox, TextInput, AHref, Loaders,RadioCard },
   data() {
     return {
-      tikError:false,
       aftTrySubmit:false,
       loading:false,
       gender_error:'',
@@ -128,10 +129,9 @@ export default {
     EventBus.$on("finalValidate", (befOtherChk,tokenValid,success)=>{
       if(!befOtherChk){
         this.aftTrySubmit = true;
-        this.chkValidateTik(tokenValid);
       }
       else{
-        // this.tikError = false;
+
       }
     });
   },
@@ -228,110 +228,48 @@ export default {
       if(this.isValidSubmit({calbReset:this.calbReset})){
         this.general_error = '';
         const fields = this.fields;
-        let bd= fields.birthday;
-        bd = bd.split('/')
-        bd = moment.jConvert.toGregorian(bd[0]*1,bd[1]*1,bd[2]*1);
 
         const vars = {
-          first_name: fields.first_name,
-          last_name: fields.last_name,
-          is_foreign: this.nonIran,
+          name: fields.first_name,
+          family: fields.last_name,
+          gender: fields.gender,
+          description: fields.explain,
+          questions: fields.questPlan,
         }
 
-        if(this.nonIran){
-          vars.passport_number = langTools.convertToEnNum(fields.passport_number);
-          vars.gender = fields.gender;
 
-          let bdEx= fields.expire_date;
-          bdEx = bdEx.split('/')
-          bdEx = {
-            gy:bdEx[0],
-            gm:bdEx[1],
-            gd:bdEx[2],
-          };
-          vars.passport_expire_date= `${bdEx['gy']}-${bdEx['gm']}-${bdEx['gd']}`;
-
-          vars.foreign_pervasive_code = langTools.convertToEnNum(fields.pervasive_code);
-        }
-        else{
-          vars.ssn = langTools.convertToEnNum(fields.ssn);
-        }
-        vars.birthday= `${bd['gy']}-${bd['gm']}-${bd['gd']}`;
-
-
-        if(this.hasLegalEntity){
-          let bd= fields.company_registered_at;
-          bd = bd.split('/')
-          bd = moment.jConvert.toGregorian(bd[0]*1,bd[1]*1,bd[2]*1);
-
-          $zpl.mergeObj.call(vars,{
-            tax_id: langTools.convertToEnNum(fields.tax_id),
-            company_name: langTools.convertToEnNum(fields.company_name),
-            company_rid: langTools.convertToEnNum(fields.company_rid),
-            company_registered_at: `${bd['gy']}-${bd['gm']}-${bd['gd']}`,
-          })
-        }
+          vars.age = langTools.convertToEnNum(fields.age);
 
 
         vm.loading = true;
-        new GqlStore('PreferencesEdit',{querySchema:editPersonal}
-        ).reqZplConnectPrj({vars})
-        .then((respObj)=>{
+
+
+        $zpl.zplConnectPrj_v2.reqDirect({
+          baseUrl:'https://reservation-api.insight-clinic.com/api/event/user/update_user',
+          args:vars,
+        }).then(async (respObj)=>{
+          if(calbDone)calbDone();
           const resp = respObj.getResp();
           if(resp){
-            window.setTimeout(()=>{
-              if($zpl.isTest().__FormPersonal__emit__doneForm__){
-                EventBus.$emit("doneForm",'FormPersonal');
-              }
-              if(calbDone)calbDone(resp);
-              vm.goProfile();
-              vm.loading = false;
-            },4000)
+            if(calbDone)calbDone(resp);
+            vm.goProfile();
+            vm.loading = false;
           }
         })
         .catch((respObj)=>{
-          vm.loading = false;
+          /**
+           * @var respObj
+           * @type RespObj
+           */
+          vm.loadingGoPay = false;
           const msg = respObj.getErrMsg();
           if(msg){
-            vm.general_error = msg;
+            $zpl.toastError(msg);
           }
           else{
-            vm.general_error = 'خطای نامشخصی رخ داد، لطفا اطلاعات وارد شده را بررسی کنید و مجددا تلاش نمایید.'
+            $zpl.toastError('خطای نامشخصی رخ داد، لطفا اطلاعات وارد شده را بررسی کنید و مجددا تلاش نمایید.');
           }
         })
-      }
-    },
-    chkValidateTik(tokenValid){
-      let validTik = true; //felan optional hast pas validation chk hamishe true hast
-      if(!validTik){
-        this.tikError = true;
-        if(tokenValid){
-          tokenValid.success = false;
-        }
-      }
-      else{
-        this.tikError = false;
-      }
-    },
-    onTik(val) {
-      this.$refs.genderRef.classList[val?'remove':'add']('hidden');
-      // this.$refs.birthDayRef.$el.classList[val?'add':'remove']('hidden');
-      this.nonIran = val;
-      if(this.aftTrySubmit){
-        if(val){
-          this.tikError = !val;
-        }
-        else{
-          this.chkValidateTik();
-        }
-      }
-    },
-    goNextStep(){
-      if(this.hasLegalEntity){
-        this.$router.replace({path:`/form-legal/`});
-      }
-      else{
-        this.goProfile()
       }
     },
   },

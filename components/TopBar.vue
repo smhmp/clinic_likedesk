@@ -176,8 +176,9 @@ export default {
       this.$router.replace({path:`/events/`});
     },
     goToLogout(){
+      $zpl.setStorage('AuthorizationKey','')
       let url = ''
-      url = $zpl.infAdr().rootAuth+'/logout';
+      url = $zpl.infAdr().rootAdr+'/';
       $zpl.redirectUrl(url)
     },
     goIndex(){

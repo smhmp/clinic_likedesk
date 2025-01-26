@@ -11,13 +11,13 @@ import {$zpl} from "@/plugins/zpl";
 export const state = () => ({
   userInfo:{
     id:'',
-    created_at:'',
     age:'',
     gender:'',
-    cell_number:'',
-    first_name:'',
-    last_name:'',
+      mobile:'',
+      name:'',
+      family:'',
     email:'',
+      questions:'',
   },
   portal:{},
   switchList: [
@@ -103,30 +103,24 @@ export const actions = {
   async getMe({ state, commit }) {
 
     const respObj = await $zpl.zplConnectPrj_v2.reqDirect({
-      baseUrl:'http://reservation-api.insight-clinic.com/api/event/otp/send',
-      args:{
-        "mobile": "09131566906"
-      },
+      baseUrl:'https://reservation-api.insight-clinic.com/api/event/user/get_user',
       configs:{
-        headers:{
-          Authorization:'Bearer aaaaacccccc'
-        }
+        get:1,
       }
     });
 
-
-    if(!respObj){
-        return
+    const resp = respObj.getResp();
+    if(!resp?.data?.user){
+      return
     }
 
-    const resp = respObj.getResp();
     if($zpl.isTest().__testData_legal__){
       $zpl.isTest().__testData_legal__(resp,'getMe')
     }
 
     commit("fillData", {
       stateName: "userInfo",
-      data: resp
+      data: resp.data.user
     });
   },
 

@@ -143,6 +143,11 @@ export class DirectRequest_v2{
           configs = {...this.configs};
           configs.headers = {...configs.headers,...headers}
       }
+      if(!configs.headers){
+          configs.headers={};
+      }
+
+      configs.headers.Authorization=$zpl.getStorage('AuthorizationKey')||'Nothing';
 
       /*lg('gqlQuery/isDevelopment/reqSchema',{
         configs:configs,
@@ -156,10 +161,28 @@ export class DirectRequest_v2{
 
           respObj.setRespServer(true);
 
-          resp = await this.axios.post(baseUrl+queryStr,args,configs);
-      }
+          let reqType = 'post';
+          if(configs['get']){
+            reqType = 'get';
+          }
 
-      respObj.setResp(resp);
+          try{
+              if(reqType==='get'){
+                  resp = await this.axios.get(baseUrl+queryStr,configs);
+              }
+              else{
+                  resp = await this.axios.post(baseUrl+queryStr,args,configs);
+              }
+
+            respObj.setResp(resp);
+          }
+          catch (e) {
+            respObj.setError(e)
+          }
+      }
+      else{
+        respObj.setResp(resp);
+      }
 
       $zpl.setAftReq(resp,queryKey,respObj.respServer)
 

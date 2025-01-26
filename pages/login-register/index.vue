@@ -23,8 +23,12 @@ export default {
     }
   },
   async created() {
-    if(this.isLogedin){
+    const $route = this.$route;
+    if(this.isLogedin && $route.query.step != 3){
       this.$router.replace({path:`/events/`})
+    }
+    else if($route.query.result == 'failed'&& $route.query.step == 3){
+      this.$router.replace({path:`/events/`,query:{resultPay:'failed'}})
     }
     this.chkSteps()
   },

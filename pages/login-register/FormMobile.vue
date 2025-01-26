@@ -37,6 +37,7 @@ import {EventBus} from "@/plugins/event-bus";
 import PreviewEmail from "@/components/pages/PreviewEmail.vue";
 import StatMixin from "@/mixins/StatMixin";
 import {langTools} from "@/src/js/langMan";
+import {$zpl} from "@/plugins/zpl";
 
 
 
@@ -95,33 +96,34 @@ export default {
         }
 
         vm.loading = true;
-        this.goToNextLvl(fields.mobile);
-        new GqlStore('PreferencesEdit',{querySchema:editEmail}
-        ).reqZplConnectPrj({vars})
-          .then(async (respObj)=>{
-            const resp = respObj.getResp();
-            if(resp){
-              if(calbDone)calbDone(resp);
-              await this.$store.dispatch('application/updateEmail');
-              this.goToNextLvl(fields.mobile);
-              // this.goProfile();
-            }
-          })
-          .catch((respObj)=>{
-            /**
-             * @var respObj
-             * @type RespObj
-             */
-            vm.loading = false;
-            const msg = respObj.getErrMsg();
-            const emailVal = this.validators['email'];
-            if(msg){
-              emailVal.setErrMsg(msg);
-            }
-            else{
-              emailVal.setErrMsg('خطای نامشخصی رخ داد، لطفا اطلاعات وارد شده را بررسی کنید و مجددا تلاش نمایید.');
-            }
-          })
+
+
+        $zpl.zplConnectPrj_v2.reqDirect({
+          baseUrl:'https://reservation-api.insight-clinic.com/api/event/otp/send',
+          args:vars,
+        }).then(async (respObj)=>{
+          const resp = respObj.getResp();
+          if(resp){
+            if(calbDone)calbDone(resp);
+            this.goToNextLvl(fields.mobile);
+          }
+        })
+        .catch((respObj)=>{
+          /**
+           * @var respObj
+           * @type RespObj
+           */
+          vm.loading = false;
+          const msg = respObj.getErrMsg();
+          const mobileVal = this.validators['mobile'];
+          if(msg){
+            mobileVal.setErrMsg(msg);
+          }
+          else{
+            mobileVal.setErrMsg('خطای نامشخصی رخ داد، لطفا اطلاعات وارد شده را بررسی کنید و مجددا تلاش نمایید.');
+          }
+        })
+
       }
 
     },

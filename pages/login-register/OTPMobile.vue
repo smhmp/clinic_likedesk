@@ -80,6 +80,8 @@ import {otpFlow} from "@/src/js/otp/otpFlow";
 import {crdMan} from "@/src/js/otp/crdMan";
 import {otpActs} from "@/src/js/otp/otpActs";
 import {otpMan} from "@/src/js/otp/otpMan";
+import {langTools} from "@/src/js/langMan";
+import {$zpl} from "@/plugins/zpl";
 
 export default {
   name: "OTPMobile",
@@ -99,11 +101,45 @@ export default {
     $zpl.currRouter = this.$router;
   },
   mounted() {
+    const vm = this;
     this.$store.dispatch('layouts/setProfileMounted', true);
+
+    otpFlow.requestOtp = function (otpCode,from=''){
+      if(otpMan.goingSend){
+        return
+      }
+      otpMan.goingSend = true;
+      otpFlow.loadingB('start');
+
+
+      if(otpCode.length!=6){
+        return
+      }
+
+      otpCode = langTools.convertToEnNum(otpCode);
+
+      this.sendOtpCode(otpCode,{
+        mobile:langTools.convertToEnNum(vm.mobile),
+        calbDone(resp){
+          $zpl.toastMsg('با موفقیت وارد شدید')
+          $zpl.setStorage('AuthorizationKey','Bearer '+resp.data['token'])
+          $zpl.currRouter.replace({path:`/events/`});
+          $zpl.currRouter = null;
+        },
+        calbFinal(){
+          otpMan.goingSend = false;
+          otpFlow.loadingB('end');
+        },
+        calbError(){
+          otpFlow.otpErr('on');
+        }
+      })
+    };
 
     otpFlow.start();
     crdMan.ready_OTPCredential();
     otpFlow.domLoaded();
+
     otpActs.start(this);
   },
   beforeDestroy() {

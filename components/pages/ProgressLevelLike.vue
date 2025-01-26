@@ -7,7 +7,7 @@
       <RadioCard noResponsive="1" ref="radioCardRef" v-if="true" inpName="legalType" :infos="[
           {label:'تیکت معمولی', uniqKey:'asNormal',guidance:'قیمت: 800,000 تومان',svgIcon:'radio/ticket.svg'},
           {defChecked:true,label:'تیکت VIP', uniqKey:'asVIP',guidance:'قیمت: 1000,000 تومان',svgIcon:'radio/ticket.svg'},
-          {label:'تیکت CIP', uniqKey:'asCIP',guidance:'قیمت: 1200,000 تومان',svgIcon:'radio/ticket.svg'},
+          {label:'تیکت CIP', uniqKey:'asCIP',guidance:'قیمت: 1,200,000 تومان',svgIcon:'radio/ticket.svg'},
           {label:''},
         ]"
                  :onChked="clkRadioLegal"
@@ -51,6 +51,7 @@ import ButtonSimple from "@/components/form/ButtonSimple.vue";
 import {$zplUi} from "@/plugins/zplUi";
 import {lg} from "@/src/js/dbg";
 import StatMixin from "@/mixins/StatMixin";
+import {$zpl} from "@/plugins/zpl";
 
 
 
@@ -65,12 +66,14 @@ export default {
       loading:false,
       prgLevel: '',
       neerGold:false,
+      loadingGoPay:false,
       isFocused:true,
       repoPrgLvl:null,
       nextLevel:'',
       curLevelFa:'',
       nextLevelFa:'',
       nextTicket:'',
+      ticketType:'',
       descTicket:'',
     };
   },
@@ -110,17 +113,49 @@ export default {
   computed: {
   },
   methods: {
-    goToPay(){},
+    goToPay(e,{calbDone}){
+      const vm = this;
+      vm.loadingGoPay = true;
+      $zpl.zplConnectPrj_v2.reqDirect({
+        baseUrl:'https://reservation-api.insight-clinic.com/api/event/payment/request',
+        args:{
+          ticket_type:this.ticketType
+        },
+      }).then(async (respObj)=>{
+        if(calbDone)calbDone();
+        const resp = respObj.getResp();
+        if(resp){
+          $zpl.redirectUrl(resp.data['payment_url'])
+        }
+      })
+      .catch((respObj)=>{
+        /**
+         * @var respObj
+         * @type RespObj
+         */
+        vm.loadingGoPay = false;
+        const msg = respObj.getErrMsg();
+        if(msg){
+          $zpl.toastError(msg);
+        }
+        else{
+          $zpl.toastError('خطای نامشخصی رخ داد، لطفا اطلاعات وارد شده را بررسی کنید و مجددا تلاش نمایید.');
+        }
+      })
+    },
     clkRadioLegal(uniqKey){
       if(uniqKey === 'asNormal'){
+        this.ticketType = 'normal';
         this.nextTicket = 'معمولی';
         this.descTicket = 'جایگاه شما در سالن شماره 2 هست و از طریق ویدیو پروژکتور برنامه رو دنبال می‌کنید، اما برای شبکه‌سازی همه در کنار هم هستیم.';
       }
       else if(uniqKey === 'asVIP'){
+        this.ticketType = 'vip';
         this.nextTicket = 'VIP';
         this.descTicket = 'شما در چند ردیف بعد از ردیف‌های ابتدایی قرار دارید و دید خوبی به برنامه خواهید داشت.';
       }
       else if(uniqKey === 'asCIP'){
+        this.ticketType = 'cip';
         this.nextTicket = 'CIP';
         this.descTicket = 'جایگاه شما در ردیف‌های ابتدایی و نزدیک‌ترین نقطه به برنامه خواهد بود.';
       }

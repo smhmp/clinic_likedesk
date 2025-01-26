@@ -12,17 +12,10 @@
           <span class="body-span">
             برای شرکت در دورهمی یکی از تیکت های زیر را انتخاب کرده، دکمه رزرو تیکت را بزنید.
           </span>
-          (<a :href="$zpl.infAdr().panelZplBeta+'/panel'" target="_blank" class="body-span2">پشتیبانی</a>)
+          (<a href="https://wa.me/qr/CTCOMKQ2KNDKO1" target="_blank" class="body-span2">پشتیبانی</a>)
         </span>
           </div>
         </div>
-        <a v-if="isClosableNotifBox" href="javascript:" @click="closeNotifBox">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 6L18 18" stroke="#393946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M18 6L6 18L18 6Z" fill="#393946"></path>
-            <path d="M18 6L6 18" stroke="#393946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </a>
       </div>
       <ProgressLevelLike/>
       <div class="ManualKyc">
@@ -82,7 +75,22 @@ export default {
   mounted() {
     this.$store.dispatch('layouts/setProfileMounted', true);
 
-    this.chkModalWelcome();
+    const $route = this.$route;
+    if($route.query.resultPay == 'failed'){
+      EventBus.$emit("openModalPro", 'modalNotif',{
+        mainTitle:'خرید شما موفقیت آمیز نبود',
+        descHtml(){
+          return  'لطفا مجددا تلاش نمایید.'
+        },
+        btnInf:[
+          {
+            title:'متوجه شدم',
+            doClose:true,
+            type:'secondary'
+          }
+        ]
+      });
+    }
   },
   created() {
 
@@ -94,34 +102,7 @@ export default {
 
   },
   methods: {
-    chkModalWelcome(){
-      const __ = $zpl.isTest().__modalNotif__
-      if(__||!$zpl.getStorage('showModal_purpose_tracking'+this.zpId)){
-        if(!__){
-          $zpl.setStorage('showModal_purpose_tracking'+this.zpId,1)
-        }
-        if(__||this.$store.state.application.userInfo?.additional_identification_info?.registration?.purpose === 'tracking'){
-          EventBus.$emit("openModalPro", 'modalNotif',{
-            mainTitle:'به اینسایت خوش‌آمدید!',
-            descHtml(){
-              return  'در صورتی که به منظور پیگیری تراکنش به اینسایت مراجعه کرده‌اید، می‌توانید از بخش «پیگیری تراکنش»، اطلاعات تراکنش‌ مورد نظر خود را وارد کرده و نسبت به پیگیری اقدام نمایید.'
-            },
-            btnInf:[
-              {
-                title:'انتقال به بخش پیگیری تراکنش',
-                link:'https://www.insight-clinic.com/tracking.html',
-                type:'primary'
-              },
-              {
-                title:'متوجه شدم',
-                doClose:true,
-                type:'secondary'
-              }
-            ]
-          });
-        }
-      }
-    }
+
   },
   mixins:[UserMixin,LevelMixin,StatMixin]
 };

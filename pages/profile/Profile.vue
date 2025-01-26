@@ -16,17 +16,10 @@
           <span class="body-span">
              کلیک کنید.
           </span>
-          (<a :href="$zpl.infAdr().panelZplBeta+'/panel'" target="_blank" class="body-span2">پشتیبانی</a>)
+          (<a href="https://wa.me/qr/CTCOMKQ2KNDKO1" target="_blank" class="body-span2">پشتیبانی</a>)
         </span>
           </div>
         </div>
-        <a v-if="isClosableNotifBox" href="javascript:" @click="closeNotifBox">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 6L18 18" stroke="#393946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M18 6L6 18L18 6Z" fill="#393946"></path>
-            <path d="M18 6L6 18" stroke="#393946" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </a>
       </div>
 
 
@@ -101,7 +94,7 @@ export default {
     },
     onActPersonal(){
       this.loadingActPrsn = true;
-      this.$router.push({path:`/form-personal/`})
+      this.$router.push({path:`/login-register/`,query:{step:3,forEdit:1}})
     },
     chkModalWelcome(){
       const __ = $zpl.isTest().__modalNotif__
