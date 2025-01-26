@@ -1,6 +1,6 @@
 <template>
   <div class="formPersonalPg pgForm content">
-    <page-heading v-if="$route.query.result == 'success'" caption="برای شرکت در دورهمی و ثبت نهایی تیکت  لطفا ورودی های زیر را پر کرده و ثبت نام خود را تکمیل نمایید" title="تکمیل ثبت نام"/>
+    <page-heading v-if="$route.query.result == 'success'||$route.query.Status == 'OK'" caption="برای شرکت در دورهمی و ثبت نهایی تیکت  لطفا ورودی های زیر را پر کرده و ثبت نام خود را تکمیل نمایید" title="تکمیل ثبت نام"/>
     <page-heading v-else caption="شما می توانید اطلاعات خود را ویرایش کنید" title="ویرایش اطلاعات"/>
     <form @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card',{loading}]">
       <div class="form" style="gap: 24px;">
@@ -252,7 +252,7 @@ export default {
           const resp = respObj.getResp();
           if(resp){
             if(calbDone)calbDone(resp);
-            vm.goProfile();
+            this.goEventsMan();
             vm.loading = false;
           }
         })
@@ -271,6 +271,9 @@ export default {
           }
         })
       }
+    },
+    goEventsMan(){
+      this.$router.replace({path:`/events-man/`});
     },
   },
   mixins:[ValidationMixin,StatMixin]

@@ -1,10 +1,21 @@
 <template>
-  <div class="cardBox">
+  <div :class="['cardBox',{loading:loadingGoPay}]">
     <div class="conStars">
       <img class="vector" src="@/assets/imgs/autohtml-all1/vector0.svg" />
     </div>
     <div ref="levelProgressRef" :class="['level-progress',{loading,loadData}]">
-      <RadioCard noResponsive="1" ref="radioCardRef" v-if="true" inpName="legalType" :infos="[
+      <div v-if="endEvent" class="eventEnd">
+        <div class="message">
+          <p>از اینکه برای <span class="highlight">رشد خودتون</span> وقت می‌گذارید، خیلی خوشحالیم!</p>
+
+          <p>این ایونت <span class="highlight">15 بهمن ماه </span> <span class="highlightRed">ظرفیتش تکمیل شد</span>  ولی قطعا در آینده نزدیک در کنار شما خواهیم بود.</p>
+
+          <p>از همراهی شما سپاسگزاریم و امیدواریم در ایونت‌های آینده میزبان خوبی برای حضور ارزشمند شما باشیم.</p>
+
+          <p class="footer">در کنار شماییم، با آرزوی بهترین‌ها🌱</p>
+        </div>
+      </div>
+      <RadioCard v-else noResponsive="1" ref="radioCardRef" inpName="legalType" :infos="[
           {label:'تیکت معمولی', uniqKey:'asNormal',guidance:'قیمت: 800,000 تومان',svgIcon:'radio/ticket.svg'},
           {defChecked:true,label:'تیکت VIP', uniqKey:'asVIP',guidance:'قیمت: 1000,000 تومان',svgIcon:'radio/ticket.svg'},
           {label:'تیکت CIP', uniqKey:'asCIP',guidance:'قیمت: 1,200,000 تومان',svgIcon:'radio/ticket.svg'},
@@ -13,7 +24,7 @@
                  :onChked="clkRadioLegal"
       />
     </div>
-    <div class="cardTitle">
+    <div v-if="!endEvent" class="cardTitle">
       <div :class="['progressSection']">
         <div class="card2">
           <div class="heading2 hidden">
@@ -59,6 +70,7 @@ export default {
   name: "ProgressLevelLike",
   props:{
     stateLevel:'',
+    endEvent:false,
   },
   data() {
     return {

@@ -9,6 +9,7 @@ import {testDataLevel} from "@/mixins/LevelMixin";
 import {$zpl} from "@/plugins/zpl";
 
 export const state = () => ({
+    eventTickets:null,
   userInfo:{
     id:'',
     age:'',
@@ -123,6 +124,38 @@ export const actions = {
       data: resp.data.user
     });
   },
+    async chkTickets({ state, commit }){
+      if(state.eventTickets?.length){
+          return
+      }
+        $zpl.zplConnectPrj_v2.reqDirect({
+            baseUrl:'https://reservation-api.insight-clinic.com/api/event/tickets',
+            configs:{
+                get:1
+            },
+        }).then(async (respObj)=>{
+            const resp = respObj.getResp();
+            if(resp){
+                commit("fillData", {
+                    stateName: "eventTickets",
+                    data: resp.data.data.tickets
+                });
+            }
+        })
+        .catch((respObj)=>{
+            /**
+             * @var respObj
+             * @type RespObj
+             */
+            const msg = respObj.getErrMsg();
+            if(msg){
+                $zpl.toastError(msg);
+            }
+            else{
+                $zpl.toastError('خطای نامشخصی رخ داد، لطفا اطلاعات وارد شده را بررسی کنید و مجددا تلاش نمایید.');
+            }
+        })
+    },
 
   alert({state,commit},{type,message='',html='',translator=null,delayTime=5000,justOnce='',ltr=false}){
     if(justOnce){

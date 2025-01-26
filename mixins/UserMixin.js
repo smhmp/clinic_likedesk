@@ -69,19 +69,31 @@ let UserMixin = {
   computed:{
     ...UserMan,
     cell_number(){
-      return this.$store.state.application.userInfo.cell_number
+      return this.$store.state.application.userInfo?.mobile||''
     },
     nameFamily(){
-      return this.$store.state.application.userInfo.full_name
+        const user = this.$store.state.application.userInfo;
+        if(!user?.name){
+            return ''
+        }
+      return user?.name+' '+user?.family
     },
     emailAdr(){
       return this.$store.state.application.userInfo.email
     },
       isLogedin() {
           try{
-              return this.$store.state.application.userInfo?.mobile;
+              return !!this.$store.state.application.userInfo?.mobile;
           }
           catch (e) {}
+      },
+      isMustComplete(){
+        return this.isLogedin && this.$store.state.application.eventTickets?.length && !this.$store.state.application.userInfo?.name;
+      },
+      isPurchasedEvent(){
+        // $zpl.isTest()
+        return false
+          return this.$store.state.application.eventTickets?.length
       }
   },
   methods:{

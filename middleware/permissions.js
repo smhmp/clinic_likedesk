@@ -9,6 +9,7 @@ export default async ({ store, route, redirect }) => {
 
   if(!store.state.layouts.isWithoutRequest){
     await store.dispatch("application/getMe");
+    await store.dispatch("application/chkTickets");
   }
 
   MyConfig.onInitial()

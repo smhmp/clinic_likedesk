@@ -1,23 +1,26 @@
 <template>
-  <div class="profilePg body">
+  <div class="Events profilePg body">
     <page-heading caption="رزرو جایگاه دورهمی" title="شرکت در دورهمی" backPath="/profile/"/>
     <div class="card">
-      <div class="inline-message_profile">
+      <div v-if="!endEvent" class="inline-message_profile">
         <div class="interface-essential-lamp-spark">
           <img class="group" src="@/assets/imgs/svg/warnInlMsg.svg" />
         </div>
         <div class="content">
           <div class="body">
-        <span>
-          <span class="body-span">
-            برای شرکت در دورهمی یکی از تیکت های زیر را انتخاب کرده، دکمه رزرو تیکت را بزنید.
-          </span>
-          (<a href="https://wa.me/qr/CTCOMKQ2KNDKO1" target="_blank" class="body-span2">پشتیبانی</a>)
-        </span>
+            <span>
+              <span v-if="isPurchasedEvent" class="body-span">
+                شما یک تیکت با موفقیت خریداری کرده اید، و از قسمت <a href="javascript:" @click="goEventsMan" class="body-span2 cursor-pointer">(فعالیتها)</a> قابل مشاهده است. به زودی خرید چند تایی تیکت فعال خواهد شد
+              </span>
+              <span v-else class="body-span">
+                برای شرکت در دورهمی یکی از تیکت های زیر را انتخاب کرده، دکمه رزرو تیکت را بزنید.
+              </span>
+              (<a href="https://wa.me/qr/CTCOMKQ2KNDKO1" target="_blank" class="body-span2">پشتیبانی</a>)
+            </span>
           </div>
         </div>
       </div>
-      <ProgressLevelLike/>
+      <ProgressLevelLike v-if="!isPurchasedEvent" :endEvent="endEvent"/>
       <div class="ManualKyc">
         <div class="guide">
           <div class="links">
@@ -65,6 +68,7 @@ export default {
   components: {ButtonSimple, TooltipPro, ProgressLevelLike, ActionGroup, ActionItem, AHref, Loaders },
   data() {
     return {
+      endEvent:false,
       loadingActPrsn:false,
       loadingActKyc:false,
       loadingActLegal:false,
@@ -102,7 +106,9 @@ export default {
 
   },
   methods: {
-
+    goEventsMan(){
+      this.$router.replace({path:`/events-man/`});
+    },
   },
   mixins:[UserMixin,LevelMixin,StatMixin]
 };

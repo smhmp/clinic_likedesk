@@ -42,9 +42,9 @@
               <div class="whatsAppPost">
                 <div class="container">
                   <div class="event-details">
-                    <p><span class="highlight">تاریخ:</span> ۱۵ بهمن</p>
-                    <p><span class="highlight">ساعت:</span> ۸ تا ۱۱ شب</p>
-                    <p><span class="highlight">محل برگزاری:</span> کافه شمرون ایران‌مال</p>
+                    <p><span class="highlightRed">تاریخ:</span> ۱۵ بهمن</p>
+                    <p><span class="highlightRed">ساعت:</span> ۸ تا ۱۱ شب</p>
+                    <p><span class="highlightRed">محل برگزاری:</span> کافه شمرون ایران‌مال</p>
                   </div>
 
                   <h2>تو این دورهمی ویژه:</h2>

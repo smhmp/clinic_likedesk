@@ -1,0 +1,31 @@
+.Events{
+  .eventEnd{
+    .message {
+      direction: rtl;
+    }
+
+    .message h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .message p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .highlight {
+      color: #27ae60;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 20px;
+    }
+  }
+}

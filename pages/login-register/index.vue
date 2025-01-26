@@ -24,10 +24,10 @@ export default {
   },
   async created() {
     const $route = this.$route;
-    if(this.isLogedin && $route.query.step != 3){
+    if(this.isLogedin && $route.query.step != 3 && !$route.query.Authority){
       this.$router.replace({path:`/events/`})
     }
-    else if($route.query.result == 'failed'&& $route.query.step == 3){
+    else if(($route.query.result == 'failed'||$route.query.Status == 'NOK')&& ($route.query.step == 3||$route.query.Authority)){
       this.$router.replace({path:`/events/`,query:{resultPay:'failed'}})
     }
     this.chkSteps()

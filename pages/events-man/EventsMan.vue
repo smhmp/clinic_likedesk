@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="section">
+      <div v-if="!isMustComplete" class="section">
         <div class="heading">
           <div class="content">
             <div class="title">تیکت های خریداری شده</div>
@@ -200,10 +200,31 @@ export default {
       tempDisable:true,
     };
   },
+  created() {
+
+  },
   mounted() {
     this.$store.dispatch('layouts/setProfileMounted', true);
 
-
+    window.setTimeout(()=>{
+      if(this.isMustComplete){
+        EventBus.$emit("openModalPro", 'modalNotif',{
+          mainTitle:'لطفا فرم اطلاعات اولیه را پر کنید',
+          descHtml(){
+            return  'برای مشاهده تیکت ابتدا نیاز هست که فرم اولیه را تکمیل کنید.'
+          },
+          btnInf:[
+            {
+              title:'تکمیل اطلاعات',
+              doClick(vm){
+                vm.$router.replace({path:`/login-register/`,query:{step:3,forEdit:1}});
+              },
+              type:'primary'
+            },
+          ]
+        });
+      }
+    },1000)
   },
   computed: {
     isTrans(){
