@@ -230,7 +230,7 @@ export default {
   },
   computed: {
     hasTrans(){
-      return this.$store.state.application.eventTickets
+      return this.$store.state.application.eventTickets?.length;
     },
     isTrans(){
       return this.countEvents && this.hasTrans
