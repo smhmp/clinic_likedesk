@@ -98,13 +98,16 @@ export default {
         vm.loading = true;
 
         $zpl.zplConnectPrj_v2.reqDirect({
-          baseUrl:'https://reservation-api.insight-clinic.com/api/event/otp/send',
+          baseUrl:'https://reservation-api.insight-clinic.com/api/event/login',
           args:vars,
         }).then(async (respObj)=>{
           const resp = respObj.getResp();
           if(resp){
             if(calbDone)calbDone(resp);
-            this.goToNextLvl(fields.mobile);
+            // this.goToNextLvl(fields.mobile);
+            $zpl.toastMsg('با موفقیت وارد شدید')
+            $zpl.setStorage('AuthorizationKey','Bearer '+resp.data['token'])
+            vm.$router.replace({path:`/events/`});
           }
         })
         .catch((respObj)=>{
