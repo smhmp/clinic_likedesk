@@ -42,6 +42,8 @@ $theme-1: (
         primary-txt: #fff9f3,
         secondary-bg: #3E5239,
         secondary-txt: #fff,
+        new-bg: #fff9f3,
+        new-txt: #000000,
         bg-body: linear-gradient(233deg, #ffeeda -4%, #ff873f7a 55%, #fde4cecc 21%),
         sidebar-mobile-bg: linear-gradient(228deg, #FFEED6 0%, #f1ccb2 73%, #fde4ce 157%),
         menu-bg-seled: #fff4ea,
@@ -83,7 +85,9 @@ $theme-1-6:(
   --primary-bg: #{__get(primary-bg)};
   --primary-txt: #{__get(primary-txt)};
   --secondary-bg: #{__get(secondary-bg)};
+  --new-bg: #{__get(new-bg)};
   --secondary-txt: #{__get(secondary-txt)};
+  --new-txt: #{__get(new-txt)};
   --bg-body: #{__get(bg-body)};
   --menu-bg-seled: #{__get(menu-bg-seled)};
   --menu-bg-unseled: #{__get(menu-bg-unseled)};
@@ -152,7 +156,9 @@ $theme-2: (
   --primary-bg: #{__get(primary-bg,$theme-2)};
   --primary-txt: #{__get(primary-txt,$theme-2)};
   --secondary-bg: #{__get(secondary-bg,$theme-2)};
+  --new-bg: #{__get(new-bg,$theme-2)};
   --secondary-txt: #{__get(secondary-txt,$theme-2)};
+  --new-txt: #{__get(new-txt,$theme-2)};
   --bg-body: #{__get(bg-body,$theme-2)};
   --menu-bg-seled: #{__get(menu-bg-seled,$theme-2)};
   --menu-bg-unseled: #{__get(menu-bg-unseled,$theme-2)};

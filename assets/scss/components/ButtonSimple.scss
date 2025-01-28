@@ -49,17 +49,17 @@
 
 
   &.new{
-    background: var(--secondary-bg);
+    background: var(--new-bg);
 
     &:hover{
-      background: var(--secondary-bg);
+      background: var(--new-bg);
     }
     &:active{
-      background: var(--secondary-bg);
+      background: var(--new-bg);
     }
 
     .labelBtn{
-      color: var(--secondary-txt);
+      color: var(--new-txt);
     }
   }
 

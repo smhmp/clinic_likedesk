@@ -43,7 +43,7 @@
           :onClkBtn="goToPay" ButtonSimple
           isLoader="1"
           :val-btn="`رزرو تیکت ${this.nextTicket}`"
-          :type="'new'"
+          :type="'secondary'"
         />
       </div>
     </div>
@@ -138,7 +138,29 @@ export default {
   },
   methods: {
     goToPay(e,{calbDone}){
-      const vm = this;
+      EventBus.$emit("openModalPro", 'modalNotif',{
+        mainTitle:'جهت خرید لطفا با بخش پشتیبان ارتباط بگیرید',
+        descHtml(){
+          return  'برای خرید با بخش پشتیبانی در واتساپ یا تلگرام ارتباط باشید.'
+        },
+        btnInf:[
+          {
+            title:'ارتباط با واتساپ',
+            doClick(vm){
+              $zpl.openLink('https://wa.me/qr/CTCOMKQ2KNDKO1','_blank')
+            },
+            type:'primary'
+          },
+          {
+            title:'متوجه شدم',
+            doClose:true,
+            type:'new'
+          }
+        ]
+      });
+
+
+      /*const vm = this;
       vm.loadingGoPay = true;
       $zpl.zplConnectPrj_v2.reqDirect({
         baseUrl:'https://reservation-api.insight-clinic.com/api/event/payment/request',
@@ -153,10 +175,10 @@ export default {
         }
       })
       .catch((respObj)=>{
-        /**
+        /!**
          * @var respObj
          * @type RespObj
-         */
+         *!/
         vm.loadingGoPay = false;
         const msg = respObj.getErrMsg();
         if(msg){
@@ -165,7 +187,7 @@ export default {
         else{
           $zpl.toastError('خطای نامشخصی رخ داد، لطفا اطلاعات وارد شده را بررسی کنید و مجددا تلاش نمایید.');
         }
-      })
+      })*/
     },
     clkRadioLegal(uniqKey){
       if(uniqKey === 'asNormal'){
