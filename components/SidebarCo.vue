@@ -44,7 +44,7 @@
         <div class="divider" v-if="isLogedin">
           <div class="divider2"></div>
         </div>
-        <div class="menu-group">
+        <div v-if="false" class="menu-group">
           <NavLink
             v-if="isLogedin"
             :onClick="goEventsMan" NavLink
@@ -62,7 +62,7 @@
             :selected="isActivePage('login-register')"
           />
         </div>
-        <div class="divider">
+        <div v-if="false" class="divider">
           <div class="divider2"></div>
         </div>
         <div class="menu-group">
