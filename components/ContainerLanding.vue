@@ -22,7 +22,7 @@
                     :onClkBtn="goingToEvents" ButtonSimple
                     isLoader="1"
                     val-btn="ثبت نام در دورهمی"
-                    type="new"
+                    type="secondary"
                   />
                 </div>
               </div></div>
@@ -83,7 +83,7 @@
               :onClkBtn="goingToEvents" ButtonSimple
               isLoader="1"
               val-btn="ثبت نام در دورهمی"
-              type="new"
+              type="secondary"
             />
           </div>
         </div>
