@@ -44,7 +44,14 @@
         <div class="divider" v-if="isLogedin">
           <div class="divider2"></div>
         </div>
-        <div v-if="false" class="menu-group">
+        <div v-if="$zpl.isLocal()" class="menu-group">
+          <NavLink
+            :onClick="goTestMan" NavLink
+            navLabel="تست ریکوئستها"
+            icon="TrackingIcon"
+            inPage="1"
+            :selected="isActivePage('_test-req_')"
+          />
           <NavLink
             v-if="isLogedin"
             :onClick="goEventsMan" NavLink
@@ -62,7 +69,7 @@
             :selected="isActivePage('login-register')"
           />
         </div>
-        <div v-if="false" class="divider">
+        <div v-if="$zpl.isLocal()" class="divider">
           <div class="divider2"></div>
         </div>
         <div class="menu-group">
@@ -139,6 +146,10 @@ export default {
     },
     goEventsMan(){
       this.$router.replace({path:`/events-man/`});
+      this.doCloseSidebar && this.doCloseSidebar();
+    },
+    goTestMan(){
+      this.$router.replace({path:`/_test-req_/`});
       this.doCloseSidebar && this.doCloseSidebar();
     },
     goLoginRegister(){

@@ -2,7 +2,7 @@ const isProduct = process.env.NODE_ENV === 'production';
 const isDevelop = process.env.NODE_ENV === 'development';
 
 const prdUrl = 'https://event.insight-clinic.com';
-const demoUrl = 'http://event-clinic.wobo';
+const demoUrl = 'http://event_clinic.wobo';
 const stageUrl = 'https://connect-stg.zarinpal.name';
 let configInf;
 if(isProduct){
