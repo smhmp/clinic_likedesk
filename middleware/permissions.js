@@ -8,7 +8,7 @@ export default async ({ store, route, redirect }) => {
   store.$zpl.onInitial(store)
 
   if(!store.state.layouts.isWithoutRequest){
-    if(route.path === '/'){
+    if(route.path === '/'|| route.path === '/events/'){
         store.dispatch("application/getMe");
     }
     else{

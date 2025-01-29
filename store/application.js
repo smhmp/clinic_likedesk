@@ -10,7 +10,7 @@ import {$zpl} from "@/plugins/zpl";
 
 export const state = () => ({
     eventTickets:null,
-    eventTicketsLoading:null,
+    eventTicketsLoading:false,
     capacityTickets:null,
     capacityTicketsLoading:false,
   userInfo:{
