@@ -1,7 +1,7 @@
 <template>
   <div>
     <Events v-if="isLogedin"/>
-    <JustLoading/>
+    <JustLoading v-else/>
   </div>
 </template>
 
