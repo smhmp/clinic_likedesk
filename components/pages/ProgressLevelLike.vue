@@ -129,16 +129,16 @@ export default {
         return [];
       }
       return [
-        {label:isNormal&&'تیکت معمولی', uniqKey:'asNormal',guidance:'قیمت: 800,000 تومان',svgIcon:'radio/ticket.svg'},
-        {defChecked:true,label:isVip&&'تیکت VIP', uniqKey:'asVIP',guidance:'قیمت: 1000,000 تومان',svgIcon:'radio/ticket.svg'},
-        {label:isCip&&'تیکت CIP', uniqKey:'asCIP',guidance:'قیمت: 1,200,000 تومان',svgIcon:'radio/ticket.svg'},
+        {defChecked:true,label:isNormal&&'تیکت معمولی', uniqKey:'asNormal',guidance:'قیمت: 800,000 تومان',svgIcon:'radio/ticket.svg'},
+        // {defChecked:true,label:isVip&&'تیکت VIP', uniqKey:'asVIP',guidance:'قیمت: 1000,000 تومان',svgIcon:'radio/ticket.svg'},
+        // {label:isCip&&'تیکت CIP', uniqKey:'asCIP',guidance:'قیمت: 1,200,000 تومان',svgIcon:'radio/ticket.svg'},
         {label:''},
       ]
     }
   },
   methods: {
     goToPay(e,{calbDone}){
-      EventBus.$emit("openModalPro", 'modalNotif',{
+      /*EventBus.$emit("openModalPro", 'modalNotif',{
         mainTitle:'جهت خرید لطفا با بخش پشتیبان ارتباط بگیرید',
         descHtml(){
           return  'برای خرید با بخش پشتیبانی در واتساپ یا تلگرام ارتباط باشید.'
@@ -157,10 +157,10 @@ export default {
             type:'new'
           }
         ]
-      });
+      });*/
 
 
-      /*const vm = this;
+      const vm = this;
       vm.loadingGoPay = true;
       $zpl.zplConnectPrj_v2.reqDirect({
         baseUrl:'https://reservation-api.insight-clinic.com/api/event/payment/request',
@@ -175,10 +175,10 @@ export default {
         }
       })
       .catch((respObj)=>{
-        /!**
+        /**
          * @var respObj
          * @type RespObj
-         *!/
+         */
         vm.loadingGoPay = false;
         const msg = respObj.getErrMsg();
         if(msg){
@@ -187,7 +187,7 @@ export default {
         else{
           $zpl.toastError('خطای نامشخصی رخ داد، لطفا اطلاعات وارد شده را بررسی کنید و مجددا تلاش نمایید.');
         }
-      })*/
+      })
     },
     clkRadioLegal(uniqKey){
       if(uniqKey === 'asNormal'){

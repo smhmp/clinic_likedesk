@@ -44,8 +44,9 @@
         <div class="divider" v-if="isLogedin">
           <div class="divider2"></div>
         </div>
-        <div v-if="$zpl.isLocal()" class="menu-group">
+        <div class="menu-group">
           <NavLink
+            v-if="$zpl.isLocal()"
             :onClick="goTestMan" NavLink
             navLabel="تست ریکوئستها"
             icon="TrackingIcon"
@@ -69,7 +70,7 @@
             :selected="isActivePage('login-register')"
           />
         </div>
-        <div v-if="$zpl.isLocal()" class="divider">
+        <div class="divider">
           <div class="divider2"></div>
         </div>
         <div class="menu-group">
