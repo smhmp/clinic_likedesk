@@ -43,6 +43,12 @@ let globalMutations = {
       arrState.freeIndx++;
     }
   },
+  activeMyLoading(state,prop) {
+    state[prop] = true;
+  },
+  deActiveMyLoading(state,prop) {
+    state[prop] = false;
+  },
   activeLoading(state) {
     state.globalLoading = true;
   },

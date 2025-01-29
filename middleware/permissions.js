@@ -8,9 +8,14 @@ export default async ({ store, route, redirect }) => {
   store.$zpl.onInitial(store)
 
   if(!store.state.layouts.isWithoutRequest){
-    await store.dispatch("application/getMe");
-    await store.dispatch("application/chkTickets");
-    await store.dispatch("application/capacity");
+    if(route.path === '/'){
+        store.dispatch("application/getMe");
+    }
+    else{
+        await store.dispatch("application/getMe");
+    }
+    store.dispatch("application/chkTickets");
+    store.dispatch("application/capacity");
   }
 
   MyConfig.onInitial()

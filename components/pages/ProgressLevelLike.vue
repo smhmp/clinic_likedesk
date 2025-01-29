@@ -15,6 +15,7 @@
           <p class="footer">در کنار شماییم، با آرزوی بهترین‌ها🌱</p>
         </div>
       </div>
+      <SVG_LoadingLines v-else-if="$store.state.application.capacityTicketsLoading"/>
       <RadioCard v-else-if="$store.state.application.capacityTickets" noResponsive="1" ref="radioCardRef" inpName="legalType" :infos="RadioInfo"
                  :onChked="clkRadioLegal"
       />
@@ -59,6 +60,7 @@ import {lg} from "@/src/js/dbg";
 import StatMixin from "@/mixins/StatMixin";
 import {$zpl} from "@/plugins/zpl";
 import UserMixin from "@/mixins/UserMixin";
+import SVG_LoadingLines from "@/components/global/Icon/svgs/SVG_LoadingLines.vue";
 
 
 
@@ -214,6 +216,6 @@ export default {
     }
   },
   mixins:[LevelMixin,StatMixin,UserMixin],
-  components: {ButtonSimple, TooltipPro},
+  components: {SVG_LoadingLines, ButtonSimple, TooltipPro},
 };
 </script>

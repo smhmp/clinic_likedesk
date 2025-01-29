@@ -10,7 +10,9 @@ import {$zpl} from "@/plugins/zpl";
 
 export const state = () => ({
     eventTickets:null,
+    eventTicketsLoading:null,
     capacityTickets:null,
+    capacityTicketsLoading:false,
   userInfo:{
     id:'',
     age:'',
@@ -129,12 +131,14 @@ export const actions = {
       if(state.eventTickets?.length){
           return
       }
+      commit('activeMyLoading','eventTicketsLoading')
         $zpl.zplConnectPrj_v2.reqDirect({
             baseUrl:'https://reservation-api.insight-clinic.com/api/event/tickets',
             configs:{
                 get:1
             },
         }).then(async (respObj)=>{
+          commit('deActiveMyLoading','eventTicketsLoading')
             const resp = respObj.getResp();
             if(resp){
                 commit("fillData", {
@@ -161,12 +165,14 @@ export const actions = {
       if(state.capacityTickets?.length){
           return
       }
+      commit('activeMyLoading','capacityTicketsLoading');
         $zpl.zplConnectPrj_v2.reqDirect({
             baseUrl:'https://reservation-api.insight-clinic.com/api/event/ticket/capacity',
             configs:{
                 get:1
             },
         }).then(async (respObj)=>{
+          commit('deActiveMyLoading','capacityTicketsLoading');
             const resp = respObj.getResp();
             if(resp){
                 commit("fillData", {

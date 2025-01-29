@@ -47,8 +47,9 @@
           </div>
         </div>
 
+        <SVG_LoadingLines v-if="$store.state.application.eventTicketsLoading"/>
 
-        <div v-if="!hasTrans && countEvents" class="list-empty">
+        <div v-else-if="!hasTrans && countEvents" class="list-empty">
           <div class="error">
             <div class="card-add">
               <img class="group6" src="@/assets/imgs/transactions/group5.svg" />
@@ -85,8 +86,7 @@
           </div>
         </div>
 
-
-        <TicketMan v-if="isTrans&&isSuperVisor" />
+        <TicketMan v-else-if="isTrans&&isSuperVisor" />
         <TicketOne v-else-if="isTrans" />
 
 
@@ -134,13 +134,14 @@ import ActionInlineItem from "@/components/pages/ActionInlineItem.vue";
 import ActionInlineGroup from "@/components/pages/ActionInlineGroup.vue";
 import LevelMixin from "@/mixins/LevelMixin";
 import StatMixin from "@/mixins/StatMixin";
+import SVG_LoadingLines from "@/components/global/Icon/svgs/SVG_LoadingLines.vue";
 
 export default {
   name: "EventsMan",
   head:{
     title:'اینسایت | تیکت های اینسایت'
   },
-  components: {ActionInlineGroup, ActionInlineItem, AHref, Loaders },
+  components: {SVG_LoadingLines, ActionInlineGroup, ActionInlineItem, AHref, Loaders },
   data() {
     return {
       loadingActBankCard:false,
