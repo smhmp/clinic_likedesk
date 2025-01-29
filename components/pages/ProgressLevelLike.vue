@@ -96,7 +96,7 @@ export default {
     this.broking = false;
     // this.apiChkLevel();
     const levelProgressRef = this.$refs.levelProgressRef;
-    this.clkRadioLegal('asVIP');
+    this.clkRadioLegal('asNormal');
     window.setTimeout(()=>{
       /*this.$zplUi.animateMove({untilNum:-1 * levelProgressRef.offsetWidth,token:{callEndOccured:true}},({count=-1,token})=>{
         if(token.endOccured){
@@ -193,7 +193,7 @@ export default {
       if(uniqKey === 'asNormal'){
         this.ticketType = 'normal';
         this.nextTicket = 'معمولی';
-        this.descTicket = 'جایگاه شما در سالن شماره 2 هست و از طریق ویدیو پروژکتور برنامه رو دنبال می‌کنید، اما برای شبکه‌سازی همه در کنار هم هستیم.';
+        this.descTicket = 'جایگاه شما در سالن شماره 2 هست و از طریق ویدیو پروژکتور برنامه رو دنبال می‌کنید، برای شبکه‌سازی همه در کنار هم هستیم.';
       }
       else if(uniqKey === 'asVIP'){
         this.ticketType = 'vip';
