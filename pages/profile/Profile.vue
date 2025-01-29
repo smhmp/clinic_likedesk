@@ -53,7 +53,6 @@ import AHref from "@/components/global/AHref.vue";
 import {EventBus} from "@/plugins/event-bus";
 import ActionItem from "@/components/pages/ActionItem.vue";
 import ActionGroup from "@/components/pages/ActionGroup.vue";
-import ProgressLevelLike from "@/components/pages/ProgressLevelLike.vue";
 import LevelMixin from "@/mixins/LevelMixin";
 import StatMixin from "@/mixins/StatMixin";
 import TooltipPro from "@/components/form/TooltipPro.vue";
@@ -64,7 +63,7 @@ export default {
   head:{
     title:'اینسایت | اطلاعات کاربری'
   },
-  components: {ButtonSimple, TooltipPro, ProgressLevelLike, ActionGroup, ActionItem, AHref, Loaders },
+  components: {ButtonSimple, TooltipPro, ActionGroup, ActionItem, AHref, Loaders },
   data() {
     return {
       loadingActPrsn:false,

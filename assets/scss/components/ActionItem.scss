@@ -45,7 +45,7 @@
 
     @media (max-width: 628px) {
       align-items: flex-start;
-      padding: 12px 0px 24px 12px;
+      padding: 18px 0px 24px 12px;
     }
   }
 
@@ -168,6 +168,7 @@
     position: relative;
     max-width: 256px;
     min-width: 126px;
+    border-bottom: 1px solid #889b84;
   }
 
   .label3_divider{

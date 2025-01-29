@@ -8,10 +8,10 @@
       <div class="stack">
         <div class="stack2">
           <div class="label3" v-html="ttl"></div>
-          <div class="label3_divider"></div>
-          <div class="value2" v-html="midCaption"></div>
+          <div v-if="midCaption" class="label3_divider"></div>
+          <div v-if="midCaption" class="value2" v-html="midCaption"></div>
         </div>
-        <div :class="['label2Parent',{visibleStat:statActFa}]">
+        <div v-if="statActFa" :class="['label2Parent',{visibleStat:statActFa}]">
           <div :class="['label2','st_'+statAct]">{{statActFa}}</div>
         </div>
       </div>
