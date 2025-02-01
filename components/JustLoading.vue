@@ -1,9 +1,7 @@
 <template>
-  <div class="Events profilePg body">
-    <div class="">
-      <SVG_LoadingLines/>
-    </div>
-
+  <div class="loadingLinesPar flex justify-center items-center flex-col w-full">
+    <SVG_LoadingLines/>
+    <div>در حال بارگذاری</div>
   </div>
 </template>
 <script>
