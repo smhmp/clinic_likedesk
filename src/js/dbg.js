@@ -168,17 +168,18 @@ const confList = {
   col_HighGreen:{backCol:'#1a8500',col:'#ffffff'},
   col_HighRed:{backCol:'#bb0202',col:'#ffffff'},
   col_HighPurple:{backCol:'#7723cc',col:'#ffffff'},
-  col_HighOrange:{backCol:'#dc5207',col:'#ffffff'},
-  col_evOccured:{backCol:'#eeffcc',col:'#189a56'},
-  col_goingCall:{backCol:'#eeffcc',col:'#008ac5'},
+  col_HighOrange:{backCol:'#dc6407',col:'#ffffff'},
+  col_evOccured:{backCol:'#eeffcc',col:'#189a56',grp:'evOccured'},
+  col_goingCall:{backCol:'#eeffcc',col:'#008ac5',grp:'goingCall'},
   col_moreData:{backCol:'#464646',col:'#fffee2',grp:'moreData'},
   col_toolsData:{backCol:'#1a71c5',col:'#fffee2',grp:'toolsData'},
   col_calcMath:{backCol:'#18b287',col:'#fffee2',grp:'calcMath'},
-  col_onTyping:{backCol:'#5618b2',col:'#ffffff',grp:'onTyping'},
+  col_onTyping:{backCol:'#18b287',col:'#ffffff',grp:'onTyping'},
   col_onTyping2:{backCol:'#179fb2',col:'#ffffff',grp:'onTyping'},
   col_onKeyup:{backCol:'#020202',col:'#ffffff',grp:'onKeyup'},
   col_chkValid:{backCol:'#a40aa1',col:'#ffffff',grp:'chkValid'},
   col_boldOrange:{backCol:'#ff0000',col:'#ffffff',grp:'bold'},
+  col_onResp:{backCol:'#ffffff',col:'#484848',grp:'onResp'},
 }
 
 for (let eCol in confList) {

@@ -148,6 +148,7 @@ export class DirectRequest_v2{
       }
 
       configs.headers.Authorization=$zpl.getStorage('AuthorizationKey')||'Nothing';
+      configs.headers.AuthorizationKey=$zpl.getStorage('AuthorizationKey2')||'Nothing';
 
       /*lg('gqlQuery/isDevelopment/reqSchema',{
         configs:configs,
@@ -161,10 +162,7 @@ export class DirectRequest_v2{
 
           respObj.setRespServer(true);
 
-          let reqType = 'post';
-          if(configs['get']){
-            reqType = 'get';
-          }
+          const reqType = configs.reqType || 'post';
 
           try{
               if(reqType==='get'){

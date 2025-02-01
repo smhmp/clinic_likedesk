@@ -109,7 +109,7 @@ export const actions = {
     const respObj = await $zpl.zplConnectPrj_v2.reqDirect({
       baseUrl:'https://reservation-api.insight-clinic.com/api/event/user/get_user',
       configs:{
-        get:1,
+        reqType:'get',
       }
     });
 
@@ -135,7 +135,7 @@ export const actions = {
         $zpl.zplConnectPrj_v2.reqDirect({
             baseUrl:'https://reservation-api.insight-clinic.com/api/event/tickets',
             configs:{
-                get:1
+              reqType:'get',
             },
         }).then(async (respObj)=>{
           commit('deActiveMyLoading','eventTicketsLoading')
@@ -169,7 +169,7 @@ export const actions = {
         $zpl.zplConnectPrj_v2.reqDirect({
             baseUrl:'https://reservation-api.insight-clinic.com/api/event/ticket/capacity',
             configs:{
-                get:1
+              reqType:'get',
             },
         }).then(async (respObj)=>{
           commit('deActiveMyLoading','capacityTicketsLoading');
