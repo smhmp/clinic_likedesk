@@ -17,7 +17,7 @@
           :onClkBtn="goToOtp" ButtonSimple
           isLoader="1"
           :val-btn="`مرحله بعد`"
-          type="new"
+          type="secondary"
         />
       </div>
     </form>
