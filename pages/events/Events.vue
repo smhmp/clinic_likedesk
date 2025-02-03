@@ -71,7 +71,7 @@ export default {
   components: {ButtonSimple, TooltipPro, ProgressLevelLike, ActionGroup, ActionItem, AHref, Loaders },
   data() {
     return {
-      endEvent:false,
+      endEvent:true,
       loadingActPrsn:false,
       loadingActKyc:false,
       loadingActLegal:false,
