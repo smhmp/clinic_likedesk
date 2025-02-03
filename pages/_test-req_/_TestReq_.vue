@@ -3,9 +3,19 @@
     <page-heading caption="مشاهده تیکت ها و فعالیتهای ثبت شده" title="تیکت‌های من" backPath="/profile/"/>
     <div class="ActInline card">
 
-
-
       <div class="list-empty">
+        <div class="formPersonalPg pgForm content">
+          <form @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card']">
+            <div class="form" style="gap: 24px;">
+              <TextInput
+                v-if="activeInp"
+                iName="test"
+                :i-label="'test'"
+                v-model="fieldFiller('test').test"
+              />
+            </div>
+          </form>
+        </div>
         <div class="content2">
           <div class="title2">test1</div>
           <div class="caption2">
@@ -34,16 +44,18 @@ import ActionInlineGroup from "@/components/pages/ActionInlineGroup.vue";
 import LevelMixin from "@/mixins/LevelMixin";
 import StatMixin from "@/mixins/StatMixin";
 import {$zpl} from "@/plugins/zpl";
+import TextInput from "@/components/form/TextInput.vue";
 
 export default {
   name: "_TestReq_",
   head:{
     title:'_TestReq_'
   },
-  components: {ActionInlineGroup, ActionInlineItem, AHref, Loaders },
+  components: {TextInput, ActionInlineGroup, ActionInlineItem, AHref, Loaders },
   data() {
     return {
-
+      activeInp:false,
+      fields: {}
     };
   },
   created() {
@@ -58,17 +70,20 @@ export default {
   },
   methods: {
 
-    reqGetUser(){
-      // this.goReq('purchase','post',{"ticket_id": 1, "user_mobile": "09131566906"});
-      // this.goReq('update-profile','post',{mobile: "09131566906", "first_name": "حامد", "last_name": "موسوی", "gender": "male", "age": 30});
-
+    async reqGetUser(){
       // this.goReq('login','post',{mobile: "09131566906"},{},(resp)=>{
       //   lg('token set');
       //   $zpl.setStorage('AuthorizationKey2',resp['auth_token']);
-      // });
+      // })
 
       // this.goReq('logout','post');
-      // this.goReq('admin/tickets','get');
+
+      // this.goReq('update-profile','post',{mobile: "09131566906", "first_name": "حامد", "last_name": "موسوی", "gender": "male", "age": 30});
+
+      // this.goReq('purchase','post',{"ticket_id": 1, "user_mobile": "09131566906"});
+
+      this.goReq('admin/tickets','get');
+
       // this.goReq('my-tickets','get');
 
       // this.goReq('purchase-multiple','post',{
@@ -78,17 +93,19 @@ export default {
       //   ]
       // });
 
+      // todo after purchase multiple
+      // const sessId ="bed40071-81b1-4170-bc2b-fa6520bd0c9c";
       //todo from bank
-      // const sessId ='2fbd1554-2bc7-4cd2-83a5-d6827c5877a8';
       // this.goReq(`update-payment-status?session_id=${sessId}&status=paid`,'get');
 
-      // this.goReq('order-status/2fbd1554-2bc7-4cd2-83a5-d6827c5877a8','get');
+      // this.goReq('order-status/'+sessId,'get');
 
-      this.goReq('assign-tickets','post',{
+      //todo assign other user
+      /*this.goReq('assign-tickets','post',{
         "assignments": [
           {
             "mobile": "09121112222",
-            "ticket_id": 1,
+            "transaction_id": "gsUJCJ44162",
             "first_name": "Ali",
             "last_name": "Rezaei",
             "gender": "male",
@@ -96,15 +113,45 @@ export default {
           },
           {
             "mobile": "09332221111",
-            "ticket_id": 2,
+            "transaction_id": "JboQd396242",
             "first_name": "Sara",
             "last_name": "Ahmadi",
             "gender": "female",
             "age": 25
           }
         ]
-      });
+      });*/
 
+      // this.goReq('admin/logs?per_page=30&page=1','get');
+
+      this.readySrchUser();
+
+    },
+    readySrchUser(){
+      this.activeInp = true;
+      this.setTyping = function (mobilePart){
+        if (mobilePart.length < 4) return;
+
+        clearTimeout(this.delT);
+        this.delT = window.setTimeout(async ()=>{
+          this.goReq(`users/search?mobile=${mobilePart}`,'get');
+        },300)
+      }
+    },
+    fieldFiller(mark='test'){
+      const vm = this
+      const obj={};
+      Object.defineProperty(obj, mark, {
+        get: function () {
+          return vm.fields[mark];
+        },
+
+        set: function (val) {
+          vm.fields[mark]=val;
+          if(vm.setTyping) vm.setTyping(val)
+        },
+        configurable: true});
+      return obj;
     },
     goReq(path,reqType='post',args={},headers,calb){
       if(path.indexOf('?')>-1){
@@ -133,6 +180,9 @@ export default {
          * @var respObj
          * @type RespObj
          */
+        if(!respObj.getErrMsg){
+          debugger
+        }
         const msg = respObj.getErrMsg();
         if(msg){
           $zpl.toastError(msg);
