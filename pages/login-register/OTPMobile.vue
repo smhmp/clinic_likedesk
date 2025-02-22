@@ -83,6 +83,7 @@ import {otpMan} from "@/src/js/otp/otpMan";
 import {langTools} from "@/src/js/langMan";
 import {$zpl} from "@/plugins/zpl";
 import {GqlJSSdk} from "@/src/js/GqlJSSdk";
+import UrlMixin from "@/mixins/UrlMixin";
 
 export default {
   name: "OTPMobile",
@@ -99,7 +100,6 @@ export default {
     const userInf = this.$store.state.application.userInfo;
     const $route = this.$route;
     this.mobile = userInf.mobile || $route.query.phone;
-    $zpl.currRouter = this.$router;
   },
   mounted() {
     const vm = this;
@@ -112,13 +112,14 @@ export default {
 
 
       $zpl.zplConnectPrj_v2.reqDirect({
-        baseUrl:'https://reservation-api.insight-clinic.com/api/event/otp/send',
+        // baseUrl:'https://reservation-api.insight-clinic.com/api/event/otp/send',
+        baseUrl:'http://clinic_ticket.local/api/send-otp?XDEBUG_SESSION_START=11224',
         args:vars,
       }).then(async (respObj)=>{
 
       })
       .catch((respObj)=>{
-        respObj.showErr();
+        $zpl.showRespErr(respObj);
       }).finally(()=>{
         calbFinal();
       });
@@ -141,10 +142,28 @@ export default {
       this.sendOtpCode(otpCode,{
         mobile:langTools.convertToEnNum(vm.mobile),
         calbDone(resp){
-          $zpl.toastMsg('با موفقیت وارد شدید')
-          $zpl.setStorage('AuthorizationKey','Bearer '+resp.data['token'])
-          $zpl.currRouter.replace({path:`/events/`});
-          $zpl.currRouter = null;
+          const msg = resp.data['message']; // "OTP verified successfully. Please set your password now."
+          if(resp.data['auth_token_short']){
+            $zpl.setStorage('Authorization-Valid',resp.data['auth_token_short'])
+            $zpl.toastMsg('شماره شما با موفقیت ثبت شد');
+
+            vm.getRemoteUrl('callbackOtp','callbackData',{
+              calb(callbackData){
+                if(callbackData){
+                  //todo todo set kardane passworde dovom bedoone confirm az user be soorate movaghat
+                  vm.setOtpAsPass(otpCode,()=>{
+                    vm.$router.replace({path:callbackData.path,query:callbackData.query});
+                  });
+                }
+                else{
+                  vm.$router.replace({path:`/events/`});
+                }
+              },
+            });
+          }
+          else{
+            $zpl.toastError(msg);
+          }
         },
         calbFinal(){
           otpMan.goingSend = false;
@@ -176,12 +195,51 @@ export default {
       // this.$router.go(-1);
       this.$router.push({path:`/login-register/`,query:{phone:this.mobile}});
     },
+    setOtpAsPass(otpCode,calb){
+      const vm = this;
+      const vars = {
+        password:otpCode
+      }
+
+      $zpl.zplConnectPrj_v2.reqDirect({
+        // baseUrl:'https://reservation-api.insight-clinic.com/api/event/otp/send',
+        baseUrl:'http://clinic_ticket.local/api/auth/set-password?XDEBUG_SESSION_START=11224',
+        args:vars,
+      }).then(async (respObj)=>{
+        const resp = respObj.getResp();
+        vm.verifyPass(otpCode,calb);
+      })
+      .catch((respObj)=>{
+        $zpl.showRespErr(respObj);
+      }).finally(()=>{
+
+      });
+    },
+    verifyPass(pass,calb){
+      const vars = {
+        password:pass
+      }
+
+      $zpl.zplConnectPrj_v2.reqDirect({
+        baseUrl:'http://clinic_ticket.local/api/auth/verify-password?XDEBUG_SESSION_START=11224',
+        args:vars,
+      }).then(async (respObj)=>{
+        const resp = respObj.getResp();
+        $zpl.setStorage('Authorization-Valid',resp.data['auth_token_long']);
+        calb();
+      })
+      .catch((respObj)=>{
+        $zpl.showRespErr(respObj);
+      }).finally(()=>{
+
+      });
+    }
   },
   watch:{
 
   },
-  mixins:[],
-  components: {AHref, Loaders },
+  mixins:[UrlMixin],
+  components: {AHref, Loaders},
 };
 </script>
 

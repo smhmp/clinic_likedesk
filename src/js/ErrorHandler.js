@@ -119,4 +119,21 @@ export class ErrorHandler{
     return {errors:errors,arrErrors:gotErrors}
   }
 
+  static getTrans_vSelf(errors){
+    // console.dir(errors)
+
+    let gotErrors = [],mobile='';
+
+    if(errors?.response?.data){
+      let dataErr = errors?.response?.data
+      if(dataErr.message){
+        gotErrors.push(dataErr.message)
+      }
+      if(dataErr.mobile){
+        mobile = dataErr.mobile;
+      }
+    }
+
+    return {errors:errors,arrErrors:gotErrors,mobile:mobile}
+  }
 }

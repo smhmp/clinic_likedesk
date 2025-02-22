@@ -50,6 +50,7 @@ import GetLegal from "@/gql/FormLegal/GetLegal";
 import StatMixin from "@/mixins/StatMixin";
 import PreviewLegal from "@/components/pages/PreviewLegal.vue";
 import MyUpload from "~/components/form/MyUpload.vue";
+import {$zpl} from "@/plugins/zpl";
 
 export default {
   name: "FormLegal",
@@ -117,7 +118,7 @@ export default {
               }
             })
             .catch((respObj)=>{
-              respObj.showErr();
+              $zpl.showRespErr(respObj);
               const err = respObj.getErrMsg();
               vm.loading = false;
               vm.general_error = 'خطای نامشخصی رخ داد، لطفا اطلاعات وارد شده را بررسی کنید و مجددا تلاش نمایید.'

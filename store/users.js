@@ -10,7 +10,7 @@ export const state = () => ({
 export const mutations = globalMutations
 
 export const actions = {
-  //queries
+
   async fetch({commit},{variables}) {
       commit('activeLoading');
 

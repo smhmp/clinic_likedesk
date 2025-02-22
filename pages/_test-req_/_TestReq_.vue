@@ -2,13 +2,14 @@
   <div class="profilePg body">
     <page-heading caption="مشاهده تیکت ها و فعالیتهای ثبت شده" title="تیکت‌های من" backPath="/profile/"/>
     <div class="ActInline card">
-
+      <div class="content2">
+        <div class="title2">محیط تست</div>
+      </div>
       <div class="list-empty">
         <div class="formPersonalPg pgForm content">
-          <form @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card']">
+          <form v-if="activeInp" @submit="(e)=>{$zpl.prevEvery(e)}" :class="['card']">
             <div class="form" style="gap: 24px;">
               <TextInput
-                v-if="activeInp"
                 iName="test"
                 :i-label="'test'"
                 v-model="fieldFiller('test').test"
@@ -16,15 +17,14 @@
             </div>
           </form>
         </div>
-        <div class="content2">
-          <div class="title2">test1</div>
-          <div class="caption2">
-            res1
-          </div>
+        <div v-if="titleReq" class="contained-button cursor-pointer" @click="onClickTestReq">
+          <div class="label2">{{titleReq}}</div>
         </div>
-        <div class="contained-button cursor-pointer" @click="reqGetUser">
-          <div class="label2">do test1</div>
-          <img class="plus" src="@/assets/imgs/transactions/plus0.svg" />
+        <div class="content2">
+          <div class="title2">:تتیجه تست</div>
+          <div class="caption2">
+            {{resVWTest}}
+          </div>
         </div>
       </div>
 
@@ -55,7 +55,9 @@ export default {
   data() {
     return {
       activeInp:false,
-      fields: {}
+      fields: {},
+      titleReq: '',
+      resTest: {},
     };
   },
   created() {
@@ -63,45 +65,66 @@ export default {
   },
   mounted() {
     this.$store.dispatch('layouts/setProfileMounted', true);
-
+    this.mkSendReq();
   },
   computed: {
-
+    resVWTest(){
+      try{
+        return JSON.stringify(this.resTest)
+      }
+      catch (e) {
+        return this.resTest+''
+      }
+    }
   },
   methods: {
+    onClickTestReq:function () {},
+    async mkSendReq(){
 
-    async reqGetUser(){
-      // this.goReq('login','post',{mobile: "09131566906"},{},(resp)=>{
-      //   lg('token set');
-      //   $zpl.setStorage('AuthorizationKey2',resp['auth_token']);
-      // })
+      this.mkReq(0, 'login','post',{
+        args:{mobile: "09131566906"},
+        calb(resp){
+          lg('token set');
+          $zpl.setStorage('Authorization-Anony',resp['auth_token']);
+        }
+      })
 
-      // this.goReq('logout','post');
+      this.mkReq(0, 'logout','post');
 
-      // this.goReq('update-profile','post',{mobile: "09131566906", "first_name": "حامد", "last_name": "موسوی", "gender": "male", "age": 30});
+      this.mkReq(1, 'user-info','get');
 
-      // this.goReq('purchase','post',{"ticket_id": 1, "user_mobile": "09131566906"});
+      this.mkReq(0, 'update-profile','post',{args:{mobile: "09131566906", "first_name": "حامد", "last_name": "موسوی", "gender": "male", "age": 30}});
 
-      this.goReq('admin/tickets','get');
+      this.mkReq(0, 'purchase','post',{
+        args:{"ticket_title": 'vip', "mobile": "09131566906"},
+        calb(resp){
+          lg('purchase',resp);
+        }
+      },);
 
-      // this.goReq('my-tickets','get');
+      this.mkReq(0, 'admin/tickets','get');
 
-      // this.goReq('purchase-multiple','post',{
-      //   "tickets": [
-      //     { "ticket_title": 'vip', "quantity": 1 },
-      //     { "ticket_title": 'normal', "quantity": 2 }
-      //   ]
-      // });
+      this.mkReq(0, 'my-tickets','get');
 
-      // todo after purchase multiple
-      // const sessId ="bed40071-81b1-4170-bc2b-fa6520bd0c9c";
+      this.mkReq(0, 'purchase-multiple','post',{args:{
+          "tickets": [
+            { "ticket_title": 'vip', "quantity": 1 },
+            { "ticket_title": 'normal', "quantity": 2 }
+          ],
+          calb(resp){
+            lg('purchase-multiple',resp);
+          }
+      }});
+
+      //todo after purchase multiple
+      const sessId ="1c0e306b-5ee1-4290-af21-d649d81a436c";
       //todo from bank
-      // this.goReq(`update-payment-status?session_id=${sessId}&status=paid`,'get');
+      this.mkReq(0, `update-payment-status?session_id=${sessId}&status=paid`,'get');
 
-      // this.goReq('order-status/'+sessId,'get');
+      this.mkReq(0, 'order-status/'+sessId,'get');
 
       //todo assign other user
-      /*this.goReq('assign-tickets','post',{
+      this.mkReq(0, 'assign-tickets','post',{args:{
         "assignments": [
           {
             "mobile": "09121112222",
@@ -120,23 +143,105 @@ export default {
             "age": 25
           }
         ]
-      });*/
+      }});
 
-      // this.goReq('admin/logs?per_page=30&page=1','get');
+      this.mkReq(0, 'admin/logs?per_page=30&page=1','get');
 
-      this.readySrchUser();
+      this.mkSrchUser(0, 'users/search');
+
+
+      this.mkReq(0, 'send-otp','post');
+
+      this.mkReq(0, 'verify-otp','post',{
+        args:{
+          "otp": "481238"
+        },
+        calb(resp){
+          lg('token valid set',resp);
+          $zpl.setStorage('Authorization-Valid',resp['auth_token_short']);
+        }
+      });
+
+      this.mkReq(0, 'auth/set-password','post',{
+        args:{
+          password:'hamed140333'
+        },
+      });
+
+      this.mkReq(0, 'auth/verify-password','post',{
+        args:{
+          password:'hamed140333'
+        },
+        calb(resp){
+            lg('token valid set',resp);
+            $zpl.setStorage('Authorization-Valid',resp['auth_token_long']);
+        }
+      });
+
 
     },
-    readySrchUser(){
+    mkSrchUser(unknown,path){
+      if(!unknown)return;
+
+      this.titleReq = path;
+      const vm = this;
       this.activeInp = true;
-      this.setTyping = function (mobilePart){
+      this.onTypingTestReq = function (mobilePart){
         if (mobilePart.length < 4) return;
 
-        clearTimeout(this.delT);
-        this.delT = window.setTimeout(async ()=>{
-          this.goReq(`users/search?mobile=${mobilePart}`,'get');
+        clearTimeout(vm.delT);
+        vm.delT=0;
+        vm.delT = window.setTimeout(async ()=>{
+          this.sendApiRequest(`${path}?mobile=${mobilePart}`,'get',{
+            configs:{expireObj:vm,expirePrp:'delT'}
+          });
         },300)
       }
+    },
+    mkReq(unknown,path,reqType='post', {args = {}, headers, calb, configs}={}){
+      if(!unknown)return;
+
+      this.titleReq = path;
+
+      this.onClickTestReq = ()=>{
+        if(path.indexOf('?')>-1){
+          path+='&'
+        }
+        else{
+          path+='?'
+        }
+
+        this.sendApiRequest(path,reqType, {args, headers, calb, configs});
+      }
+    },
+    sendApiRequest(path,reqType='post', {args = {}, headers, calb, configs}={}){
+      $zpl.zplConnectPrj_v2.reqDirect({
+        baseUrl:`http://clinic_ticket.local/api/${path}XDEBUG_SESSION_START=11224`,
+        args:args,
+        configs:{
+          reqType:reqType,
+          headers:headers,
+          ...configs,
+        },
+      }).then(async (respObj)=>{
+        const resp = respObj.getResp();
+        lg.col_onResp(`resp/ ${path}`,resp||respObj?.err);
+        this.resTest = resp?.data||respObj?.err;
+        calb && calb(resp?.data);
+      })
+      .catch((respObj)=>{
+        /**
+         * @var respObj
+         * @type RespObj
+         */
+        const msg = respObj.getErrMsg();
+        if(msg){
+          $zpl.toastError(msg);
+        }
+        else{
+          $zpl.toastError(respObj.err+'');
+        }
+      })
     },
     fieldFiller(mark='test'){
       const vm = this
@@ -148,50 +253,11 @@ export default {
 
         set: function (val) {
           vm.fields[mark]=val;
-          if(vm.setTyping) vm.setTyping(val)
+          if(vm.onTypingTestReq) vm.onTypingTestReq(val)
         },
         configurable: true});
       return obj;
     },
-    goReq(path,reqType='post',args={},headers,calb){
-      if(path.indexOf('?')>-1){
-        path+='&'
-      }
-      else{
-        path+='?'
-      }
-
-      $zpl.zplConnectPrj_v2.reqDirect({
-        baseUrl:`http://clinic_ticket.local/api/${path}XDEBUG_SESSION_START=11224`,
-        args:args,
-        configs:{
-          reqType:reqType,
-          headers:headers
-        },
-      }).then(async (respObj)=>{
-        const resp = respObj.getResp().data;
-        lg.col_onResp(`resp/ ${path}`,resp);
-        if(resp.stat){
-          calb && calb(resp);
-        }
-      })
-      .catch((respObj)=>{
-        /**
-         * @var respObj
-         * @type RespObj
-         */
-        if(!respObj.getErrMsg){
-          debugger
-        }
-        const msg = respObj.getErrMsg();
-        if(msg){
-          $zpl.toastError(msg);
-        }
-        else{
-          $zpl.toastError(respObj.err+'');
-        }
-      })
-    }
   },
   mixins:[UserMixin,LevelMixin,StatMixin]
 };

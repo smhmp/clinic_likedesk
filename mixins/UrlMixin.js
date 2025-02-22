@@ -42,6 +42,20 @@ let UrlMixin = {
           if(onChg) onChg()
         }
       })
+    },
+    goToUrl(path,{query,remote}={}){
+        this.$router.push({path:path,query:query});
+        if(remote){
+            const key = Object.keys(remote)[0];
+            this.urlManager.setRemoteQuery(key,remote[key])
+        }
+    },
+    getRemoteUrl(remoteKey,spcKey, {calb,once=true}={}){
+        const res = this.urlManager.getRemoteQuery(remoteKey,{spcKey,once})
+        if(calb){
+            calb.call(this,res);
+        }
+        return res;
     }
   }
 }

@@ -84,10 +84,11 @@ export const otpFlow = {
   sendOtpCode(otp_code,{calbDone,calbFinal,calbError,mobile}){
     otpActs.loadingA('start');
       $zpl.zplConnectPrj_v2.reqDirect({
-          baseUrl:'https://reservation-api.insight-clinic.com/api/event/otp/verify',
+          // baseUrl:'https://reservation-api.insight-clinic.com/api/event/otp/verify',
+        baseUrl:'http://clinic_ticket.local/api/verify-otp?XDEBUG_SESSION_START=11224',
           args:{
               otp:otp_code,
-              mobile:mobile
+              // mobile:mobile
           },
       }).then((respObj)=>{
           const resp = respObj.getResp();
@@ -99,7 +100,7 @@ export const otpFlow = {
           }
       })
       .catch((respObj)=>{
-          respObj.showErr();
+          $zpl.showRespErr(respObj);
           calbError && calbError();
       }).finally(()=>{
           otpActs.loadingA('end');

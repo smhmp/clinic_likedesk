@@ -16,6 +16,14 @@
     width: 100%;
   }
 
+  &.disabledUntil {
+    opacity: .3;
+    .counterBtn{
+      position: absolute !important;
+      right: 7px;
+      top: 33%;
+    }
+  }
 
   .labelBtn {
     text-align: right;

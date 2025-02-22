@@ -3,6 +3,7 @@ import {GqlJSSdk} from "~/src/js/GqlJSSdk";
 import {lg} from "~/src/js/dbg";
 import {$zplUi} from "~/plugins/zplUi";
 import {UserMan} from "@/mixins/UserMixin";
+import {$zpl} from "@/plugins/zpl";
 
 export const sortLevel = [
   (key)=>!key?'NEW':key==='NEW',
@@ -134,7 +135,7 @@ let LevelMixin = {
               if(calbDone)calbDone();
             }
           }).catch((respObj)=>{
-              respObj.showErr();
+            $zpl.showRespErr(respObj);
           }).finally(()=>{
             calbFinal && calbFinal();
         });

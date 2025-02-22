@@ -83,9 +83,18 @@ let UserMixin = {
     },
       isLogedin() {
           try{
-              return !!this.$store.state.application.userInfo?.mobile;
+              const res = !!this.$store.state.application.userInfo?.mobile;
+              if(!res){
+              }
+              return res;
           }
           catch (e) {}
+      },
+      isCompleteProfile() {
+        try{
+          return !!this.$store.state.application.userInfo?.profile_complete;
+        }
+        catch (e) {}
       },
       isMustComplete(){
         return this.isLogedin && this.$store.state.application.eventTickets?.length && !this.$store.state.application.userInfo?.name;
@@ -110,6 +119,13 @@ let UserMixin = {
         }
         catch (e) {}
       },
+      isNeedOtp(){
+        const unAuth = $zpl.storeMan.state.application.userInfo?.unauthorized_issue;
+        return  unAuth == 'Unauthorized: need otp' || unAuth == 'Unauthorized: need send otp';
+      },
+      isNeedPass(){
+        return $zpl.storeMan.state.application.userInfo?.unauthorized_issue == 'Unauthorized: need password';
+      }
   },
   methods:{
       isCountTicket(type){

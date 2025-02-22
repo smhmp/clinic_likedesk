@@ -67,6 +67,7 @@ import ValidationMixin from "@/mixins/ValidationMixin";
 import StatMixin from "@/mixins/StatMixin";
 import PreviewManualKyc from "@/components/pages/PreviewManualKyc.vue";
 import MyUpload from "~/components/form/MyUpload.vue";
+import {$zpl} from "@/plugins/zpl";
 
 export default {
   name: "ManualKYC",
@@ -138,8 +139,7 @@ export default {
               }
             })
             .catch((respObj)=>{
-              respObj.showErr();
-              const err = respObj.getErrMsg();
+              $zpl.showRespErr(respObj);
               vm.loading = false;
               vm.general_error = 'خطای نامشخصی رخ داد، لطفا اطلاعات وارد شده را بررسی کنید و مجددا تلاش نمایید.'
             })

@@ -19,21 +19,21 @@ export class UrlManager{
     }
   }
 
-  getRemoteQuery(key='',isVal=null,byIncl=false,once=true){
+  getRemoteQuery(key='', {spcKey=null,isVal = null, byIncl = false, once = true}={}){
     const options = this.vm.$router.options;
-    const res = chkKeyVal(options,key,isVal,byIncl)
-    if(options[key] && once){
+    const res = chkKeyVal(options,key,{spcKey,isVal,byIncl})
+    if((key in options || options[key]) && once){
       delete options[key]
     }
     return res
   }
 
-  setRemoteQuery(key,val,once=true){
+  setRemoteQuery(key,val){
     this.vm.$router.options[key]=val;
   }
 
   getRoutQuery(key='', {isVal = null, byIncl = false,toInt=false}={}) {
-    let res = chkKeyVal(this.vm.$route.query,key,isVal,byIncl)
+    let res = chkKeyVal(this.vm.$route.query,key, {isVal, byIncl})
     if(toInt){
       res = parseInt(res)
     }

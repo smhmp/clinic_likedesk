@@ -74,7 +74,7 @@
         <div class="midContent" v-else-if="forNotif">
           <div class="Title">{{moreData.mainTitle}}</div>
           <div class="Caption">
-            <span>{{moreData.descHtml()}}</span>
+            <span v-html="moreData.descHtml()"></span>
           </div>
         </div>
         <div class="midContent" v-else-if="forKycNeed">
@@ -116,6 +116,7 @@
         <ButtonSimple
           v-else-if="forNotif" ButtonSimple
           v-for="(eBtn,indx) in moreData.btnInf"
+          :disabledUntil="eBtn.disabledUntil"
           :key="indx"
           :onClkBtn="eBtn.doClose ? close : (e)=>{
             onClickOtherLevel(e,{eBtn});
@@ -146,6 +147,7 @@ export default {
     forNotif:false,
     onGotoKyc:null,
     moreData:{
+      disabledUntil:0,
       mainTitle:'',
       descHtml(){
         return  ''

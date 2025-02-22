@@ -22,6 +22,9 @@ export const state = () => ({
       family:'',
     email:'',
       questions:'',
+    profile_complete:false,
+    unauthorized_issue:'',
+    userRole:''
   },
   portal:{},
   switchList: [
@@ -55,11 +58,18 @@ export const mutations = {
 }
 
 export const actions = {
+  setMobile({commit},mobile){
+    commit("updateProp", {
+      stateName: "userInfo",
+      prop: "mobile",
+      value: mobile
+    });
+  },
   async GetUpdateUser({ state, commit },calbCommit){
 
     let respObj = await new GqlStore('Me',{querySchema:GetUpdateUser}).reqZplConnectPrj()
     .catch((respObj)=>{
-        respObj.showErr();
+      $zpl.showRespErr(respObj);
     });
 
     const resp = respObj.getResp();
@@ -104,36 +114,85 @@ export const actions = {
       value: respObj.getResp().email
     });
   },
-  async getMe({ state, commit }) {
+    async getMe({ state, commit }) {
 
-    const respObj = await $zpl.zplConnectPrj_v2.reqDirect({
-      baseUrl:'https://reservation-api.insight-clinic.com/api/event/user/get_user',
-      configs:{
-        reqType:'get',
-      }
-    });
+        const respObj = await $zpl.zplConnectPrj_v2.reqDirect({
+            // baseUrl:'https://reservation-api.insight-clinic.com/api/event/user/get_user',
+            baseUrl:'http://clinic_ticket.local/api/user-info?XDEBUG_SESSION_START=11224',
+            configs:{
+                reqType:'get',
+            }
+        }).catch((respObj)=>{
+          $zpl.showRespErr(respObj)
+        });
 
-    const resp = respObj.getResp();
-    if(!resp?.data?.user){
-      return
-    }
+        const resp = respObj.getResp();
 
-    if($zpl.isTest().__testData_legal__){
-      $zpl.isTest().__testData_legal__(resp,'getMe')
-    }
+        const [msg,mobile] = respObj.getErrMsg_vSelf({moreData:true});
 
-    commit("fillData", {
-      stateName: "userInfo",
-      data: resp.data.user
-    });
-  },
+        if(mobile){
+            commit("updateProp", {
+                stateName: "userInfo",
+                prop: "mobile",
+                value: mobile
+            });
+        }
+
+        commit("updateProp", {
+            stateName: "userInfo",
+            prop: "unauthorized_issue",
+            value: msg
+        });
+
+        if(msg){
+            if(msg == 'Unauthorized: need login'){
+                return false;
+            }
+
+            if(msg == 'Unauthorized: need token'){
+                return false;
+            }
+
+            if(msg == "Unauthorized: need otp"){
+                return false;
+            }
+
+            if(msg == "Unauthorized: need send otp"){
+                return false;
+            }
+
+            if(msg == "Unauthorized: need password"){
+                return false;
+            }
+        }
+
+        if(resp?.data?.user){
+            commit("fillData", {
+                stateName: "userInfo",
+                data: resp.data.user
+            });
+
+            commit("updateProp", {
+                stateName: "userInfo",
+                prop: "userRole",
+                value: resp.data.role
+            });
+
+            commit("updateProp", {
+                stateName: "userInfo",
+                prop: "profile_complete",
+                value: resp.data.profile_complete
+            });
+        }
+    },
     async chkTickets({ state, commit }){
       if(state.eventTickets?.length){
           return
       }
       commit('activeMyLoading','eventTicketsLoading')
         $zpl.zplConnectPrj_v2.reqDirect({
-            baseUrl:'https://reservation-api.insight-clinic.com/api/event/tickets',
+            // baseUrl:'https://reservation-api.insight-clinic.com/api/event/tickets',
+            baseUrl:'http://clinic_ticket.local/api/my-tickets?XDEBUG_SESSION_START=11224',
             configs:{
               reqType:'get',
             },
@@ -143,7 +202,7 @@ export const actions = {
             if(resp){
                 commit("fillData", {
                     stateName: "eventTickets",
-                    data: resp.data.data.tickets
+                    data: resp.data.tickets
                 });
             }
         })

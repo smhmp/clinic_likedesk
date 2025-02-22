@@ -496,6 +496,18 @@ export const $zpl={
       }
     }
     return coll;
+  },
+
+  /**
+   * @param {RespObj} respObj
+   */
+  showRespErr(respObj){
+    if(respObj && respObj.showErr){
+      $zpl.showRespErr(respObj);
+    }
+    else{
+      console.log(respObj)
+    }
   }
 }
 

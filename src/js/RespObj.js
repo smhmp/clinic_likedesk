@@ -43,7 +43,7 @@ export default class RespObj{
       this.keepGoing = !$zpl.toastError(this.err);
     }
 
-    getErrMsg({keepGoing = false, globalMsg = false}={}){
+    getErrMsg_vSaeid({keepGoing = false, globalMsg = false}={}){
         this.keepGoing = keepGoing;
         let msg = '';
         const msgArr = ErrorHandler.getTrans(this.err);
@@ -55,6 +55,28 @@ export default class RespObj{
         }
         if(!msg && globalMsg){
           msg = 'خطا در برقراری ارتباط با سرور. لطفا لحظاتی دیگر مجددا تلاش نمایید.';
+        }
+        return msg;
+    }
+
+    getErrMsg_vSelf({keepGoing = false, globalMsg = false, moreData = false}={}){
+        if(!this.err){
+            return ['','']
+        }
+        this.keepGoing = keepGoing;
+        let msg = '';
+        const msgArr = ErrorHandler.getTrans_vSelf(this.err);
+        if(msgArr && msgArr.arrErrors.length){
+          msg = msgArr.arrErrors[0];
+        }
+        else{
+            msg = this.err.message
+        }
+        if(!msg && globalMsg){
+          msg = 'خطا در برقراری ارتباط با سرور. لطفا لحظاتی دیگر مجددا تلاش نمایید.';
+        }
+        if(moreData){
+          return [msg,msgArr.mobile]
         }
         return msg;
     }

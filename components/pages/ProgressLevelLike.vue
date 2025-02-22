@@ -165,9 +165,10 @@ export default {
       const vm = this;
       vm.loadingGoPay = true;
       $zpl.zplConnectPrj_v2.reqDirect({
-        baseUrl:'https://reservation-api.insight-clinic.com/api/event/payment/request',
+        // baseUrl:'https://reservation-api.insight-clinic.com/api/event/payment/request',
+        baseUrl:'http://clinic_ticket.local/api/purchase?XDEBUG_SESSION_START=11224',
         args:{
-          ticket_type:this.ticketType
+          ticket_title:this.ticketType
         },
       }).then(async (respObj)=>{
         if(calbDone)calbDone();

@@ -1,5 +1,6 @@
 <template>
-  <button :class="['ButtonSimple contained-button',type,{isFullWidth}]" @click="onClickBtn">
+  <button :class="['ButtonSimple contained-button',type,{isFullWidth,disabledUntil}]" @click="onClickBtn">
+    <span v-if="disabledUntil" class="labelBtn counterBtn">{{ disabledUntil }}</span>
     <span class="labelBtn">{{ valBtn }}</span>
     <svg v-if="isArrowOut" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M8 8L16 16" :stroke="colDark ? '#FFFFFF':'#393946'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -19,6 +20,7 @@
 <script>
 export default {
   props:{
+    disabledUntil:0,
     ButtonSimple:'',
     onClkBtn:null,
     valBtn:'',
@@ -37,7 +39,14 @@ export default {
 
   },
   mounted() {
-
+    if(this.disabledUntil){
+      let delT;
+      delT = window.setInterval(()=>{
+        if((--this.disabledUntil)<1){
+          clearInterval(delT)
+        }
+      },1000)
+    }
   },
   beforeDestroy() {
 
@@ -49,6 +58,9 @@ export default {
   },
   methods: {
     onClickBtn(e){
+      if(this.disabledUntil){
+        return;
+      }
       const vm = this;
       this.clkedBtn = true;
       this.onClkBtn(e,{

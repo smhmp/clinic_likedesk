@@ -147,8 +147,9 @@ export class DirectRequest_v2{
           configs.headers={};
       }
 
-      configs.headers.Authorization=$zpl.getStorage('AuthorizationKey')||'Nothing';
-      configs.headers.AuthorizationKey=$zpl.getStorage('AuthorizationKey2')||'Nothing';
+      configs.headers.Authorization=$zpl.getStorage('AuthorizationSaved')||'Nothing';
+      configs.headers['Authorization-Anony']=$zpl.getStorage('Authorization-Anony')||'';
+      configs.headers['Authorization-Valid']=$zpl.getStorage('Authorization-Valid')||'';
 
       /*lg('gqlQuery/isDevelopment/reqSchema',{
         configs:configs,
@@ -165,6 +166,9 @@ export class DirectRequest_v2{
           const reqType = configs.reqType || 'post';
 
           try{
+            if(configs?.expireObj){
+              if(!configs.expireObj[configs.expirePrp])return
+            }
               if(reqType==='get'){
                   resp = await this.axios.get(baseUrl+queryStr,configs);
               }
@@ -181,6 +185,10 @@ export class DirectRequest_v2{
       else{
         respObj.setResp(resp);
       }
+
+    if(configs?.expireObj){
+      if(!configs.expireObj[configs.expirePrp])return
+    }
 
       $zpl.setAftReq(resp,queryKey,respObj.respServer)
 

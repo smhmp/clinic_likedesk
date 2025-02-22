@@ -85,7 +85,6 @@ import ButtonSimple from "@/components/form/ButtonSimple.vue";
 import PreviewPersonal from "@/components/pages/PreviewPersonal.vue";
 import FieldValidator from "@/src/ts/validation/FieldValidator.ts";
 import {langMan, langTools} from "@/src/js/langMan";
-import StatMixin from "@/mixins/StatMixin";
 import ValidationMixin from "@/mixins/ValidationMixin";
 import DatePickerInline from "@/components/form/DatePickerInline.vue";
 import TooltipPro from "@/components/form/TooltipPro.vue";
@@ -93,6 +92,7 @@ import RadioCard from "@/components/RadioCard.vue";
 import {listCountries} from "@/src/js/personalData";
 import TextAreaSimple from "@/components/form/TextAreaSimple.vue";
 import {$zpl} from "@/plugins/zpl";
+import UserMixin from "@/mixins/UserMixin";
 
 
 export default {
@@ -230,11 +230,11 @@ export default {
         const fields = this.fields;
 
         const vars = {
-          name: fields.first_name,
-          family: fields.last_name,
+          first_name: fields.first_name,
+          last_name: fields.last_name,
           gender: fields.gender,
-          description: fields.explain,
-          questions: fields.questPlan,
+          description_event: fields.explain,
+          questions_event: fields.questPlan,
         }
 
 
@@ -245,7 +245,8 @@ export default {
 
 
         $zpl.zplConnectPrj_v2.reqDirect({
-          baseUrl:'https://reservation-api.insight-clinic.com/api/event/user/update_user',
+          // baseUrl:'https://reservation-api.insight-clinic.com/api/event/user/update_user',
+          baseUrl:'http://clinic_ticket.local/api/update-profile?XDEBUG_SESSION_START=11224',
           args:vars,
         }).then(async (respObj)=>{
           if(calbDone)calbDone();
@@ -276,7 +277,7 @@ export default {
       this.$router.replace({path:`/events-man/`});
     },
   },
-  mixins:[ValidationMixin,StatMixin]
+  mixins:[ValidationMixin,UserMixin]
 };
 </script>
 

@@ -47,6 +47,7 @@
 import moment from "moment-jalaali";
 import {GqlStore} from "@/src/js/GqlStore";
 import GetLegal from "@/gql/FormLegal/GetLegal";
+import {$zpl} from "@/plugins/zpl";
 
 export default {
   name: "PreviewLegal",
@@ -73,7 +74,7 @@ export default {
         vm.legalInf = respObj.getResp();
         vm.loadingInf = false;
       }).catch((respObj)=>{
-        respObj.showErr();
+        $zpl.showRespErr(respObj);
       });
     },
     getValueField(key){
